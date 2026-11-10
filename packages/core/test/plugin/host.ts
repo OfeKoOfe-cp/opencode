@@ -510,6 +510,7 @@ function agentInfo(value: Agent.Info) {
       body: { ...value.request.body },
     },
     permissions: value.permissions.map((permission) => ({ ...permission })),
+    directives: value.directives?.map((layer) => ({ ...layer })),
   }
 }
 

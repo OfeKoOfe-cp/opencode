@@ -34,6 +34,7 @@ import { HttpClientRequest, HttpClientResponse } from "effect/http"
 import { makeLocationNode } from "@opencode/util/effect/app-node"
 import { App } from "../app.js"
 import { Instructions } from "../instructions/index.js"
+import { Directive } from "../directive.js"
 import { Permission } from "../permission.js"
 import { PluginHooks } from "../plugin/hooks.js"
 import { QuestionTool } from "../tool/plugin/question.js"
@@ -122,6 +123,11 @@ export const baseTranscript = (input: {
         ...SystemPart.make(Instructions.join(input.initial)),
         metadata: { experimental: { instructions: input.initial } },
       },
+      // The directive layers land last, so the standing instructions are the
+      // most recent thing the model read before the conversation.
+      ...(input.agent.directives?.length
+        ? [SystemPart.make(Directive.render(input.agent.directives))]
+        : []),
     ].filter((part) => part.text.length > 0),
     messages: toLLMMessages(input.messages, input.model.ref, providerMetadataKey),
   }

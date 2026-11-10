@@ -7,6 +7,7 @@ import path from "path"
 import { Effect, Result, SchemaIssue, SchemaParser } from "effect"
 import { Agent } from "../../agent.js"
 import { Config } from "../../config.js"
+import { Directive } from "../../directive.js"
 import { ConfigMarkdown } from "../markdown.js"
 import { ConfigEntryObserver } from "./entry-observer.js"
 import { FSUtil } from "@opencode/util/fs-util"
@@ -66,10 +67,23 @@ export const Plugin = define({
         loaded.documents.flatMap((document) => document.info.permissions ?? []),
         global.home,
       )
+      // The standing instruction layers every agent starts with: the preset, then the global layers.
+      const base = Directive.layers({
+        preset: loaded.documents.reduce<string | undefined>(
+          (current, document) => document.info.directives?.preset ?? current,
+          undefined,
+        ),
+        global: loaded.documents
+          .flatMap((document) => document.info.directives?.layers ?? [])
+          .map(Directive.toLayer),
+      })
       const configuredDefault = Config.latest(loaded.documents, "default_agent")
       if (configuredDefault !== undefined) editor.default(Agent.ID.make(configuredDefault))
       for (const current of editor.list()) {
-        editor.update(current.id, (agent) => agent.permissions.push(...permissions))
+        editor.update(current.id, (agent) => {
+          agent.permissions.push(...permissions)
+          agent.directives = [...(agent.directives ?? []), ...base]
+        })
       }
 
       for (const document of loaded.documents) {
@@ -82,7 +96,10 @@ export const Plugin = define({
 
           const exists = editor.get(agentID) !== undefined
           editor.update(agentID, (agent) => {
-            if (!exists) agent.permissions.push(...permissions)
+            if (!exists) {
+              agent.permissions.push(...permissions)
+              agent.directives = [...(agent.directives ?? []), ...base]
+            }
             if (item.model !== undefined)
               agent.model = {
                 id: item.model.model,
@@ -94,6 +111,7 @@ export const Plugin = define({
               Object.assign(agent.request.body, item.request.body ?? {})
             }
             if (item.system !== undefined) agent.system = item.system
+            if (item.directives) agent.directives = [...(agent.directives ?? []), ...item.directives.map(Directive.toLayer)]
             if (item.description !== undefined) agent.description = item.description
             if (item.mode !== undefined) agent.mode = item.mode
             if (item.hidden !== undefined) agent.hidden = item.hidden

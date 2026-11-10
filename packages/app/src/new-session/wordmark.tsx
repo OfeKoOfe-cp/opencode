@@ -17,6 +17,7 @@ import {
 import "./wordmark.css"
 
 // Each letter in the 234×42 logo viewBox, with its counter shadow, stem, and bottom-centre pivot.
+// Each letter in the 204x42 logo viewBox, with its counter shadow, stem, and bottom-centre pivot.
 const LETTERS = [
   {
     cx: 12,
@@ -26,9 +27,9 @@ const LETTERS = [
   },
   {
     cx: 42,
-    weak: "M48 30H36V18H48V30Z",
+    weak: "null",
     fill: "var(--icon-base)",
-    stem: "M36 30H48V12H36V30ZM54 36H36V42H30V6H54V36Z",
+    stem: "M30 36V6H48V0H54V12H36V18H54V24H36V36Z",
   },
   {
     cx: 72,
@@ -38,38 +39,32 @@ const LETTERS = [
   },
   {
     cx: 102,
-    weak: "M108 36H96V18H108V36Z",
-    fill: "var(--icon-base)",
-    stem: "M108 12H96V36H90V6H108V12ZM114 36H108V12H114V36Z",
+    weak: "null",
+    fill: "var(--icon-strong-base)",
+    stem: "M114 12H96V30H114V36H90V6H114V12Z",
   },
   {
     cx: 132,
-    weak: "M144 30H126V18H144V30Z",
+    weak: "M114 30H96V18H114V30Z",
     fill: "var(--icon-strong-base)",
-    stem: "M144 12H126V30H144V36H120V6H144V12Z",
+    stem: "M138 12H126V30H138V12ZM144 36H120V6H144V36Z",
   },
   {
     cx: 162,
-    weak: "M168 30H156V18H168V30Z",
+    weak: "M138 30H126V18H138V30Z",
     fill: "var(--icon-strong-base)",
-    stem: "M168 12H156V30H168V12ZM174 36H150V6H174V36Z",
+    stem: "M168 12H156V30H168V12ZM174 36H150V6H168V0H174V36Z",
   },
   {
     cx: 192,
-    weak: "M198 30H186V18H198V30Z",
+    weak: "M168 30H156V18H168V30Z",
     fill: "var(--icon-strong-base)",
-    stem: "M198 12H186V30H198V12ZM204 36H180V6H198V0H204V36Z",
-  },
-  {
-    cx: 222,
-    weak: "M234 24V30H216V24H234Z",
-    fill: "var(--icon-strong-base)",
-    stem: "M216 12V18H228V12H216ZM234 24H216V30H234V36H210V6H234V24Z",
+    stem: "M186 12V18H198V12H186ZM204 24H186V30H204V36H180V6H204V24Z",
   },
 ] as const
 
 // Lodger geometry, in the logo's 234×42 viewBox units. The lodger is drawn from its bottom centre.
-const W = 234
+const W = 204
 
 const H = 42
 
@@ -175,7 +170,7 @@ export function NewSessionWordmark(props: {
           props.ref(el)
         }}
         data-slot="wordmark-box"
-        class="relative mx-auto aspect-[234/42] w-4/5"
+        class="relative mx-auto aspect-[204/42] w-4/5"
       >
         <Show when={lodger}>
           <WordmarkLodger
@@ -233,7 +228,7 @@ function WordmarkLodger(props: {
   return (
     <div ref={stage} class="absolute">
       <div ref={flat} data-slot="wordmark-flat" class="absolute inset-0">
-        <svg viewBox="0 0 234 42" fill="none" class="block size-full overflow-visible">
+        <svg viewBox="0 0 204 42" fill="none" class="block size-full overflow-visible">
           <For each={LETTERS}>
             {(item, i) => (
               <g ref={(el) => (letters[i()] = el)}>
@@ -261,7 +256,7 @@ function WordmarkLodger(props: {
       <svg
         ref={svg}
         data-slot="wordmark-lodger"
-        viewBox="0 0 234 42"
+        viewBox="0 0 204 42"
         class="absolute inset-0 size-full overflow-visible"
       >
         <line ref={neck} stroke="var(--lodger-body)" stroke-linecap="round" style={{ opacity: 0 }} />
@@ -412,11 +407,11 @@ function mountLodger(
 
     if (!l.width) return
     const s = parts.box.closest('[data-component="new-session"]')?.getBoundingClientRect()
-    const pitch = Math.max(3, Math.round(l.width / 78))
+    const pitch = Math.max(3, Math.round(l.width / 68))
 
     const x = s
-      ? Math.round(l.left - s.left + (l.width - pitch * 78) / 2) - (l.left - s.left)
-      : (l.width - pitch * 78) / 2
+      ? Math.round(l.left - s.left + (l.width - pitch * 68) / 2) - (l.left - s.left)
+      : (l.width - pitch * 68) / 2
 
     const y = s
       ? Math.round(l.top - s.top + (l.height - pitch * 14) / 2) - (l.top - s.top)
@@ -424,7 +419,7 @@ function mountLodger(
 
     parts.stage.style.left = `${x}px`
     parts.stage.style.top = `${y}px`
-    parts.stage.style.width = `${pitch * 78}px`
+    parts.stage.style.width = `${pitch * 68}px`
     parts.stage.style.height = `${pitch * 14}px`
     measure()
   }
@@ -438,7 +433,7 @@ function mountLodger(
     }
 
     parts.grip.style.display = ""
-    const box = where === "hidden" ? { x: 213, y: 8, w: 18, h: 14 } : { x: 234, y: 18, w: 24, h: 24 }
+    const box = where === "hidden" ? { x: 186, y: 8, w: 16, h: 14 } : { x: 204, y: 18, w: 21, h: 24 }
     parts.grip.style.left = `${(box.x / W) * 100}%`
     parts.grip.style.top = `${(box.y / H) * 100}%`
     parts.grip.style.width = `${(box.w / W) * 100}%`
@@ -544,7 +539,7 @@ function mountLodger(
     send(SETTLED.snap)
     restHidden()
 
-    if (sound()) PinSound.slot(70, 78, c.x, W)
+    if (sound()) PinSound.slot(70, 68, c.x, W)
     blinkOnce()
   }
 
@@ -593,7 +588,7 @@ function mountLodger(
     {
       at: 1.35,
       run: () => {
-        if (sound()) PinSound.slot(75, 78, PIN_SLOT.x, W)
+        if (sound()) PinSound.slot(75, 68, PIN_SLOT.x, W)
       },
     },
     { at: 1.72, run: () => land(0.32) },
@@ -804,7 +799,7 @@ function mountLodger(
     {
       at: 0.95,
       run: () => {
-        if (sound()) PinSound.slot(75, 78, HOLE.x, W)
+        if (sound()) PinSound.slot(75, 68, HOLE.x, W)
       },
     },
     // The pin board unmounts once this cue has run (`selectPinBoard`).

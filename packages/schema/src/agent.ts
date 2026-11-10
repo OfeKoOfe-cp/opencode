@@ -2,6 +2,7 @@ export * as Agent from "./agent.js"
 
 import { Schema } from "effect"
 import { ephemeral, inventory } from "./event.js"
+import { Directive } from "./directive.js"
 import { optional } from "./schema.js"
 import { Model } from "./model.js"
 import { Permission } from "./permission.js"
@@ -32,6 +33,7 @@ export const Info = Schema.Struct({
   color: Color.pipe(optional),
   steps: PositiveInt.pipe(optional),
   permissions: Permission.Ruleset,
+  directives: Schema.Array(Directive.Layer).pipe(optional),
 })
   .annotate({ identifier: "Agent.Info" })
   .pipe(

@@ -561,6 +561,46 @@ Provider `settings.transport: "websocket"` selects its session WebSocket.
 
 See the [providers guide](/providers) for credentials, custom endpoints, provider packages, the WebSocket transport, and model configuration.
 
+## Directives
+
+Directives are standing instructions the model reads with every request. They
+stack, and the model sees them in order, so a later layer refines an earlier
+one.
+
+```jsonc title="opencode.jsonc"
+{
+  "$schema": "https://opencode.ai/config.json",
+  "directives": {
+    "preset": "direct",
+    "layers": [
+      { "name": "house-style", "text": "Every change ships with a test." },
+    ],
+  },
+}
+```
+
+| Field | Behavior |
+| --- | --- |
+| `preset` | `"direct"` adds the built-in set that tells the model to do the work instead of discussing it, to keep going through failures, and never to claim a tool result it did not produce. `"none"` adds nothing. |
+| `layers` | Named instruction layers, applied in order after the preset. |
+
+An agent adds its own layers on top of the global ones:
+
+```jsonc title="opencode.jsonc"
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agents": {
+    "review": {
+      "directives": [
+        { "name": "review-scope", "text": "Review only the changed files." },
+      ],
+    },
+  },
+}
+```
+
+The order the model reads is the preset, the global layers, then the agent's own.
+
 ## Variables
 
 You can use variable substitution in your config files to reference environment variables and file contents. Place references inside JSON strings.
