@@ -42,7 +42,18 @@
 
 ---
 
-OfeCode is a fork of [OpenCode](https://github.com/anomalyco/opencode), rebranded and extended. It keeps the upstream configuration layout, so an existing OpenCode install and an OfeCode install read the same data, config, and state directories.
+OfeCode is a fork of [OpenCode](https://github.com/anomalyco/opencode), rebranded and extended. It reads the same configuration layout as OpenCode (`opencode.json`, `.opencode/`, and the same data directories), so an existing OpenCode configuration works unchanged.
+
+### Channels and data
+
+A build takes its channel from the git branch it is built on, so a fork branch keeps its own database and background service registration alongside an existing OpenCode install:
+
+```bash
+bun run build --single                        # channel from the current branch
+OPENCODE_CHANNEL=ofecode bun run build --single # fixed channel
+```
+
+Share the upstream `dev` channel with `OPENCODE_CHANNEL=dev`.
 
 ### Building from source
 
