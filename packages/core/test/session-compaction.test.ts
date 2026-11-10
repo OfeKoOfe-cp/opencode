@@ -470,6 +470,23 @@ it.effect("auto compaction estimates current content against the buffered prompt
       }),
     )
 
+    // A context budget replaces the window the model reports, so an endpoint that accepts more than the
+    // catalog claims compacts later. A token count sets the window; a share scales the reported one.
+    yield* Effect.scoped(
+      Effect.gen(function* () {
+        yield* compaction.transform((editor) => editor.configure({ context: 200_000 }))
+        expect(yield* due(input(169_999, contextLimited))).toBe(false)
+        expect(yield* due(input(170_000, contextLimited))).toBe(true)
+      }),
+    )
+    yield* Effect.scoped(
+      Effect.gen(function* () {
+        yield* compaction.transform((editor) => editor.configure({ context: "200%" }))
+        expect(yield* due(input(169_999, contextLimited))).toBe(false)
+        expect(yield* due(input(170_000, contextLimited))).toBe(true)
+      }),
+    )
+
     const assistant = input(89_000, contextLimited).messages[0]
     const tool = SessionMessage.AssistantTool.make({
       type: "tool",
@@ -1105,8 +1122,42 @@ it.effect("summary cache prefix still flattens genuinely oversized measured inpu
   }),
 )
 
-it.effect("summary measured recovery shrinks from the rejected measured size", () =>
+it.effect("a tool policy reduces tool output in the summarized prefix", () =>
   Effect.gen(function* () {
+    const assistant = Schema.decodeUnknownSync(SessionMessage.Assistant)({
+      id: SessionMessage.ID.create(),
+      type: "assistant",
+      agent: Agent.defaultID,
+      model: { id: "summary-model", providerID: "test" },
+      content: [
+        {
+          type: "tool",
+          id: "call_read",
+          name: "read",
+          executed: true,
+          state: { status: "completed", input: {}, content: [{ type: "text", text: "SECRET-TOOL-OUTPUT" }] },
+          time: { created: 0 },
+        },
+      ],
+      tokens: { input: 1_000, output: 100, reasoning: 0, cache: { read: 0, write: 0 } },
+      time: { created: 0, completed: 1 },
+    })
+    const fixture = yield* summaryFixture([
+      textUser(tokenText(summaryBuffer + 10_000)),
+      assistant,
+      textUser("Latest question"),
+    ])
+    expect(yield* fixture.run()).toEqual({ status: "completed" })
+    expect(JSON.stringify(requests.at(-1)?.messages)).toContain("SECRET-TOOL-OUTPUT")
+
+    yield* fixture.compaction.transform((editor) => editor.configure({ tools: "drop" }))
+    expect(yield* fixture.run()).toEqual({ status: "completed" })
+    expect(JSON.stringify(requests.at(-1)?.messages)).not.toContain("SECRET-TOOL-OUTPUT")
+    expect(JSON.stringify(requests.at(-1)?.messages)).toContain("[Tool result omitted]")
+  }),
+)
+
+it.effect("summary measured recovery shrinks from the rejected measured size", () =>  Effect.gen(function* () {
     const text = tokenText(summaryCeiling / 2)
     const fixture = yield* summaryFixture([
       textUser(text),

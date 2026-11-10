@@ -43,6 +43,10 @@ export type Settings = {
   auto: boolean
   /** Room kept free below the model's limits before compacting: a share such as "20%", or tokens. Unset keeps 15%, and at least 16k, free. */
   buffer?: number | string
+  /** The effective context window, overriding the one the model reports: a share such as "120%", or tokens. */
+  context?: number | string
+  /** What a summary does with tool output in the exchanges it covers. */
+  tools: "keep" | "clip" | "drop"
   /** Tokens of recent conversation kept verbatim beside the summary. */
   keep: number
   /** Summarize in the background as the context nears the threshold, so automatic compaction can swap it in. */
@@ -146,6 +150,12 @@ const OUTPUTS_REMOVED = 2
 const USER_ONLY = 3
 const OMITTED = 4
 const TRANSCRIPT_LEVELS = [0, OUTPUTS_CLIPPED, OUTPUTS_REMOVED, USER_ONLY, OMITTED]
+/** The first shortening level a tool policy selects; compaction only shortens further from there. */
+const TOOL_POLICY_LEVEL: Record<Settings["tools"], number> = {
+  keep: 0,
+  clip: OUTPUTS_CLIPPED,
+  drop: OUTPUTS_REMOVED,
+}
 /** Characters kept, from the start and end, of a cut tool input, tool output, or user message. */
 const TRANSCRIPT_CLIP = 2_000
 const IMAGE_TOKEN_ESTIMATE = 1_500
@@ -266,7 +276,7 @@ export const layer = Layer.effect(
 
     const state = State.create<Settings, Editor>({
       name: "session-compaction",
-      initial: () => ({ auto: true, keep: 15_000, precompute: false }),
+      initial: () => ({ auto: true, keep: 15_000, precompute: false, tools: "keep" }),
       editor: (settings) => ({
         configure: (update) => {
           Object.assign(settings, update)
@@ -287,11 +297,11 @@ export const layer = Layer.effect(
             .resolve({ ...context.session, model: agent.model }, catalog.available)
             .pipe(Effect.orElseSucceed(() => undefined)))) ??
         context.model
-      const ceiling = calculateCeiling(model.limit, buffer)
+      const ceiling = calculateCeiling(model.limit, buffer, state.get().context)
       // An unknown window never triggers auto compaction, but the compaction request still needs a size to aim for.
       const cap = Number.isFinite(ceiling)
         ? ceiling
-        : calculateCeiling({ ...model.limit, context: UNKNOWN_WINDOW }, buffer)
+        : calculateCeiling({ ...model.limit, context: UNKNOWN_WINDOW }, buffer, state.get().context)
       return { context: model === context.model ? context : { ...context, model }, cap }
     })
 
@@ -303,7 +313,7 @@ export const layer = Layer.effect(
       if (trigger.reason !== "manual" && !settings.auto) return { status: "skipped" }
       if (
         trigger.reason === "auto" &&
-        !due(context, calculateCeiling(context.model.limit, settings.buffer), trigger.estimate)
+        !due(context, calculateCeiling(context.model.limit, settings.buffer, settings.context), trigger.estimate)
       )
         return { status: "skipped" }
       const held = precomputed.get(context.session.id)
@@ -326,7 +336,7 @@ export const layer = Layer.effect(
         ? Effect.succeed(swapped)
         : native
           ? compactNatively(selected, budget, settings.keep)
-          : summarize(selected, budget, settings.keep)
+          : summarize(selected, budget, settings.keep, settings.tools)
       return yield* compaction.pipe(
         Effect.matchEffect({
           onSuccess: (result) => publish(selected, result),
@@ -353,7 +363,7 @@ export const layer = Layer.effect(
       if (!settings.precompute || !settings.auto) return
       const context = yield* load
       if (context.model.compaction?.type === "native") return
-      const ceiling = calculateCeiling(context.model.limit, settings.buffer)
+      const ceiling = calculateCeiling(context.model.limit, settings.buffer, settings.context)
       if (!Number.isFinite(ceiling)) return
       const estimate = given ?? estimatePrompt(context)
       if (due(context, ceiling, estimate)) return
@@ -387,7 +397,7 @@ export const layer = Layer.effect(
 
       const model = yield* selectModel(context, settings.buffer, false)
       const usage: SessionUsage.Recorded[] = []
-      const fiber = yield* summarize({ reason: "auto", context: model.context }, model.cap, settings.keep, {
+      const fiber = yield* summarize({ reason: "auto", context: model.context }, model.cap, settings.keep, settings.tools, {
         messages: context.messages.slice(0, anchorIndex),
         usage: (recorded) => usage.push(recorded),
       }).pipe(Effect.forkIn(scope))
@@ -469,6 +479,7 @@ export const layer = Layer.effect(
       trigger: Trigger,
       budget: number,
       keep: number,
+      tools: Settings["tools"],
       background?: Background,
     ): Effect.fn.Return<Result, Failure> {
       const context = trigger.context
@@ -482,7 +493,7 @@ export const layer = Layer.effect(
       const prompt = buildPrompt(previous !== undefined, previous?.summary.includes(LEGACY_HEADING) ?? false)
       const headings = SUMMARY_TEMPLATE.split("\n").filter((line) => line.startsWith("##"))
       const filled = (text: string) => text.split("\n").some((line) => headings.includes(line.trim()))
-      const prepared = yield* prepare(context, messages, budget)
+      const prepared = yield* prepare(context, messages, budget, tools, keepID)
       // Size the unchanged request with the number that decided to compact: the last response's count plus an
       // estimate of what came after it. Characters overstate a conversation whose old reasoning the provider drops.
       // A hook can still make this request larger than that count; the provider then rejects it and it is resent as
@@ -568,7 +579,7 @@ export const layer = Layer.effect(
       if (!context.messages.some(SessionRecentText.messageToText)) return yield* Effect.fail(NOTHING_TO_COMPACT)
       const unsupported = (message: string) =>
         Effect.fail<Failure>({ error: { type: "provider.unsupported-operation", message } })
-      const prepared = yield* prepare(context, context.messages, budget, "session")
+      const prepared = yield* prepare(context, context.messages, budget, "keep", undefined, "session")
 
       const toResult = (window: ReadonlyArray<Message>, usage: Usage | undefined) =>
         spend(context.session.id, usage && SessionUsage.record(usage, context.model.cost)).pipe(
@@ -629,6 +640,7 @@ export const layer = Layer.effect(
       background?: Background,
     ): Effect.fn.Return<Result, Failure> {
       const context = trigger.context
+      const settings = state.get()
       if (prepared.event.result) return yield* fromHook(context, prepared.event.result, background)
 
       const policy = yield* SessionRunnerRetry.policy(context.session.id)
@@ -648,11 +660,11 @@ export const layer = Layer.effect(
               : undefined
         const request =
           unchanged ??
-          flattenAndDropOldest(shrink.history, context, target) ??
+          flattenAndDropOldest(shrink.history, context, target, settings.tools) ??
           (rejections > 0
             ? undefined
             : asText
-              ? flattenAndDropOldest(shrink.history, context, Number.POSITIVE_INFINITY)
+              ? flattenAndDropOldest(shrink.history, context, Number.POSITIVE_INFINITY, settings.tools)
               : shrink.history)
         if (!request) {
           return yield* Effect.fail<Failure>({
@@ -714,7 +726,12 @@ export const layer = Layer.effect(
      * detail is lost from the oldest history first and whole exchanges are omitted only as a last resort. The newest
      * exchange is never omitted; undefined when the transcript cannot fit even so.
      */
-    const flattenAndDropOldest = (request: LLMRequest, context: SessionContext.Loaded, target: number) => {
+    const flattenAndDropOldest = (
+      request: LLMRequest,
+      context: SessionContext.Loaded,
+      target: number,
+      tools: Settings["tools"],
+    ) => {
       const previous = previousCompaction(context.messages)
       const end =
         request.messages.findLastIndex(
@@ -762,10 +779,12 @@ export const layer = Layer.effect(
         estimateRequest({ system: request.system, tools: [], messages: lead }) -
         Token.estimate(note(exchanges.length))
 
-      const levels = exchanges.map(() => 0)
-      let total = exchanges.reduce((sum, renders) => sum + size(renders[0]), 0)
+      const base = TOOL_POLICY_LEVEL[tools]
+      const levels = exchanges.map(() => base)
+      let total = exchanges.reduce((sum, renders) => sum + size(renders[base]), 0)
       const newest = exchanges.length - 1
-      for (const level of TRANSCRIPT_LEVELS.slice(1)) {
+      for (const level of TRANSCRIPT_LEVELS) {
+        if (level <= base) continue
         for (let index = 0; index < exchanges.length && total > room; index++) {
           // The newest exchange is what the summary most needs; it is shortened but never left out.
           if (index === newest && !exchanges[index][level]) continue
@@ -851,6 +870,8 @@ export const layer = Layer.effect(
       context: SessionContext.Loaded,
       messages: ReadonlyArray<SessionMessage.Info>,
       budget: number,
+      tools: Settings["tools"],
+      keepID: SessionMessage.ID | undefined,
       webSocket?: "session",
     ) => {
       const base = transcript(context, messages)
@@ -860,7 +881,7 @@ export const layer = Layer.effect(
         model: context.model,
         tools: context.tools,
         system: base.system,
-        messages: base.messages,
+        messages: reduceToolOutputs(base.messages, keepID, tools),
         webSocket,
         inputTokens: { measured: budget, estimated: 0 },
       })
@@ -1106,6 +1127,37 @@ const clip = (value: string) => {
   return `${chars.slice(0, half).join("")}\n[… ${omitted} characters omitted …]\n${chars.slice(-half).join("")}`
 }
 
+/**
+ * Tool output in the summarized prefix, reduced by the configured policy: "clip" trims it to a sample and
+ * "drop" leaves a marker. The tail kept beside the summary keeps its output, so the newest exchange stays whole.
+ */
+const reduceToolOutputs = (
+  messages: ReadonlyArray<Message>,
+  keepID: SessionMessage.ID | undefined,
+  policy: Settings["tools"],
+): Message[] => {
+  if (policy === "keep") return [...messages]
+  const boundary = keepID === undefined ? messages.length : messages.findIndex((message) => message.id === keepID)
+  if (boundary < 0) return [...messages]
+  return messages.map((message, index) => {
+    if (index >= boundary) return message
+    if (!message.content.some((part) => part.type === "tool-result")) return message
+    const content = message.content.map((part) => {
+      if (part.type !== "tool-result") return part
+      if (policy === "drop") return { type: "text" as const, text: "[Tool result omitted]" }
+      const result = part.result
+      const output =
+        result.type === "content"
+          ? SessionRecentText.serializeToolContent(result.value)
+          : typeof result.value === "string"
+            ? result.value
+            : (JSON.stringify(result.value) ?? "")
+      return { type: "text" as const, text: clip(output) }
+    })
+    return { ...message, content } as Message
+  })
+}
+
 /** The newest whole, real user messages within `keep` tokens: no synthetic guidance, no half of an attachment. */
 export const recentUserMessages = (
   messages: ReadonlyArray<SessionMessage.Info>,
@@ -1157,9 +1209,20 @@ export const estimatePrompt = (context: SessionContext.Loaded): Estimate => {
  * `RESERVE_MIN` when that is more. A summary request that must be shrunk is aimed at the same size. A window too small
  * to give up `RESERVE_MIN` keeps `RESERVE_SHARE`.
  */
-const calculateCeiling = (limit: SessionContext.Loaded["model"]["limit"], buffer: Settings["buffer"]) => {
-  // With no window at all, only a provider rejection can limit the request.
-  const window = inputWindow(limit)
+const calculateCeiling = (
+  limit: SessionContext.Loaded["model"]["limit"],
+  buffer: Settings["buffer"],
+  context?: Settings["context"],
+) => {
+  const reported = inputWindow(limit)
+  if (reported <= 0) return Number.POSITIVE_INFINITY
+  // `context` replaces the window the model reports: a token count sets it, a share scales the reported window.
+  const window =
+    context === undefined
+      ? reported
+      : typeof context === "string"
+        ? Math.round((reported * Number.parseFloat(context)) / 100)
+        : context
   if (window <= 0) return Number.POSITIVE_INFINITY
   const tokens = typeof buffer === "string" ? Math.round((window * Number.parseFloat(buffer)) / 100) : buffer
   // A buffer that leaves no room, such as one set for a larger model, is ignored.

@@ -85,6 +85,9 @@ Add `compaction` to any [OpenCode configuration file](/config):
 | `auto` | `true` | Compact automatically near the context limit, and recover once when a provider rejects a request as too long. Manual compaction always works. |
 | `keep.tokens` | `15000` | Approximate recent conversation kept beside the summary. Larger values preserve more detail but leave less room for new work. |
 | `buffer` | `"15%"`, at least 16k | Share of the model's context window kept free. Automatic compaction starts once the conversation reaches the rest. Larger values compact earlier. |
+| `context` | the model's window | The context window compaction plans for, replacing the one the model reports. |
+| `tools` | `"keep"` | What a summary does with tool output in the summarized prefix. |
+| `precompute` | `false` | Write the summary in the background before compaction is due. |
 
 `keep.tokens` accepts a non-negative integer.
 
@@ -101,6 +104,68 @@ Add `compaction` to any [OpenCode configuration file](/config):
 - Accepts `"1%"` to `"99%"`, including decimals such as `"12.5%"`.
 - A token count such as `20000` also works. The same count is a large share of a small window and a small share of a large one.
 - A token count at least as large as the model's window is ignored and the default applies.
+
+### Context budget
+
+`context` replaces the window the model reports. Use it when the endpoint accepts
+more than the catalog's model ID claims:
+
+```jsonc title="opencode.jsonc"
+{
+  "$schema": "https://opencode.ai/config.json",
+  "compaction": {
+    "context": "200%",
+  },
+}
+```
+
+| Value | Meaning |
+| --- | --- |
+| A token count such as `400000` | The window is that many tokens. |
+| A share such as `"200%"` | The window is that share of the reported window. Shares above 100% are allowed. |
+
+`buffer` is then a share of this window, so the two settings compose. The
+provider still enforces its own limit, and a request it rejects is compacted and
+retried once.
+
+### Tool output
+
+`tools` decides what a summary does with tool output in the exchanges it covers:
+
+```jsonc title="opencode.jsonc"
+{
+  "$schema": "https://opencode.ai/config.json",
+  "compaction": {
+    "tools": "drop",
+  },
+}
+```
+
+| Value | Behavior |
+| --- | --- |
+| `"keep"` | Tool output is sent verbatim. |
+| `"clip"` | Tool output is trimmed to a sample, so the summary sees its shape without its bulk. |
+| `"drop"` | Tool output is replaced with a marker. |
+
+The conversation kept beside the summary is never reduced, so the newest
+exchange stays whole.
+
+### Background compaction
+
+`precompute` writes the summary in the background once the conversation nears the
+threshold, so automatic compaction swaps it in without a pause:
+
+```jsonc title="opencode.jsonc"
+{
+  "$schema": "https://opencode.ai/config.json",
+  "compaction": {
+    "precompute": true,
+  },
+}
+```
+
+A summary that is never used still costs tokens. See
+[Background compaction](#background-compaction) for the full rules.
 
 ## Model
 
