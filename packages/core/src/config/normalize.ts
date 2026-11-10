@@ -396,6 +396,33 @@ function normalizeCompaction(
     : undefined
   const buffer = prefer(legacyBuffer, nativeBuffer, ["compaction", "buffer"], diagnostics)
   if (buffer !== undefined) result.buffer = buffer
+  if (own(input.compaction, "context")) {
+    const value = decodeEncoded(
+      ConfigCompaction.Info.fields.context,
+      input.compaction.context,
+      ["compaction", "context"],
+      diagnostics,
+    )
+    if (value !== undefined) result.context = value
+  }
+  if (own(input.compaction, "tools")) {
+    const value = decodeEncoded(
+      ConfigCompaction.Info.fields.tools,
+      input.compaction.tools,
+      ["compaction", "tools"],
+      diagnostics,
+    )
+    if (value !== undefined) result.tools = value
+  }
+  if (own(input.compaction, "precompute")) {
+    const value = decodeEncoded(
+      ConfigCompaction.Info.fields.precompute,
+      input.compaction.precompute,
+      ["compaction", "precompute"],
+      diagnostics,
+    )
+    if (value !== undefined) result.precompute = value
+  }
   if (Object.keys(result).length || !Object.keys(input.compaction).length) encoded.compaction = result
 }
 

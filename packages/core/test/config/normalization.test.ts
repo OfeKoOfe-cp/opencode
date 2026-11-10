@@ -546,6 +546,21 @@ describe("ConfigNormalize", () => {
     }
   })
 
+  test("keeps the compaction context budget, tool policy, and precompute settings", () => {
+    expect(
+      normalized({ compaction: { context: "200%", tools: "drop", precompute: true } }).encoded.compaction,
+    ).toEqual({ context: "200%", tools: "drop", precompute: true })
+    expect(normalized({ compaction: { context: 400000 } }).encoded.compaction).toEqual({ context: 400000 })
+
+    const invalidShare = normalized({ compaction: { context: "0%" } })
+    expect(invalidShare.encoded.compaction).toBeUndefined()
+    expect(invalidShare.diagnostics.map((item) => [item.kind, item.path])).toEqual([["invalid", ["compaction", "context"]]])
+
+    const invalidPolicy = normalized({ compaction: { tools: "trim" } })
+    expect(invalidPolicy.encoded.compaction).toBeUndefined()
+    expect(invalidPolicy.diagnostics.map((item) => [item.kind, item.path])).toEqual([["invalid", ["compaction", "tools"]]])
+  })
+
   test("distinguishes empty, mixed, and wholly malformed enabled provider lists", () => {
     expect(normalized({ enabled_providers: [] }).encoded.policies).toEqual([
       { action: "provider.use", resource: "*", effect: "deny" },

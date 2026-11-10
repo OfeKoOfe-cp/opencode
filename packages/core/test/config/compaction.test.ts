@@ -143,6 +143,36 @@ describe("ConfigCompactionPlugin.Plugin", () => {
       yield* Effect.die(new Error("Timed out waiting for compaction config reload"))
     }),
   )
+
+  it.live("applies a context budget that replaces the model's window", () =>
+    Effect.gen(function* () {
+      const compaction = yield* SessionCompaction.Service
+      const config = yield* Config.Test
+      const bus = yield* Bus.Service
+      // The model's window is 100k, so the default ceiling is 84k and 95k tokens are due.
+      const due = (input: typeof nearInput) =>
+        compaction
+          .compact({ reason: "auto", context: input.context })
+          .pipe(Effect.map((outcome) => outcome.status !== "skipped"))
+      expect(yield* due(nearInput)).toBe(true)
+
+      yield* config.setEntries([
+        new Document({
+          type: "document",
+          info: new Info({ compaction: new ConfigCompaction.Info({ context: 200_000 }) }),
+        }),
+      ])
+      yield* ConfigCompactionPlugin.Plugin.effect(host({ event: { subscribe: () => bus.subscribe(Event.Updated) } }))
+      yield* bus.publish(Event.Updated, {})
+      // A 200k budget leaves a 170k ceiling, so the same conversation is no longer due.
+      for (let attempt = 0; attempt < 200; attempt++) {
+        const stillDue = yield* due(nearInput)
+        if (!stillDue) return
+        yield* Effect.sleep("10 millis")
+      }
+      yield* Effect.die(new Error("Timed out waiting for compaction config reload"))
+    }),
+  )
 })
 
 const session = Session.Info.make({
