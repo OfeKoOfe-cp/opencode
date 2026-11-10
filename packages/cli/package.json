@@ -5,8 +5,8 @@
   "type": "module",
   "license": "MIT",
   "bin": {
-    "opencode": "./bin/opencode.cjs",
-    "opencode2": "./bin/opencode2.cjs"
+    "ofecode": "./bin/ofecode.cjs",
+    "ofecode2": "./bin/ofecode2.cjs"
   },
   "files": [
     "bin"

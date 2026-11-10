@@ -18,9 +18,9 @@ await mkdir(archiveDir, { recursive: true })
 await packDistribution({
   root,
   name: pkg.name,
-  command: "opencode",
-  legacyCommand: "opencode2",
-  binary: "opencode",
+  command: "ofecode",
+  legacyCommand: "ofecode2",
+  binary: "ofecode",
   packagePrefix: "@opencode/cli-",
   archive: (target) => target.startsWith("linux-"),
 })
@@ -28,8 +28,8 @@ if (existsSync(path.join(root, "node"))) {
   await packDistribution({
     root: path.join(root, "node"),
     name: "@opencode/cli-node",
-    command: "opencode2-node",
-    binary: "opencode2-node",
+    command: "ofecode2-node",
+    binary: "ofecode2-node",
     packagePrefix: "@opencode/cli-node-",
     archive: () => true,
   })

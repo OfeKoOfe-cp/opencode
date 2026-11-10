@@ -3,13 +3,13 @@ import { Effect, Option } from "effect"
 import { Global } from "@opencode/util/global"
 import { Commands } from "../../commands"
 import { Runtime } from "../../../framework/runtime"
-import { databasePath } from "../../../database-path"
+import { pathsOf } from "../paths"
 
 export default Runtime.handler(
   Commands.commands.debug.commands.paths,
   Effect.fn("cli.debug.paths")(function* (input) {
     const global = yield* Global.Service
-    const paths = { ...global, db: databasePath(global.data) }
+    const paths = pathsOf(global)
     if (Option.isSome(input.name)) {
       process.stdout.write(paths[input.name.value] + EOL)
       return

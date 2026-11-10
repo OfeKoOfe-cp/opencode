@@ -109,8 +109,8 @@
       "name": "@opencode/cli",
       "version": "2.2.5",
       "bin": {
-        "opencode": "./bin/opencode.cjs",
-        "opencode2": "./bin/opencode2.cjs",
+        "ofecode": "./bin/ofecode.cjs",
+        "ofecode2": "./bin/ofecode2.cjs",
       },
       "dependencies": {
         "@agentclientprotocol/sdk": "1.6.0",

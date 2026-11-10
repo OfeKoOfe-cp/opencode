@@ -9,7 +9,7 @@ import { StoryFooter } from "./footer"
 const items = [
   {
     title: "Built-In Worktree Tools",
-    body: "Ask OpenCode to use `worktree_create`, `worktree_list`, and `worktree_remove` in Code Mode. You can create isolated worktrees, move sessions into them, and remove them with normal edit approval.",
+    body: "Ask OfeCode to use `worktree_create`, `worktree_list`, and `worktree_remove` in Code Mode. You can create isolated worktrees, move sessions into them, and remove them with normal edit approval.",
   },
   {
     title: "Safer Remote Pairing",

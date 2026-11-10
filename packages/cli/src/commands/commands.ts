@@ -46,13 +46,13 @@ const PermissionParams = {
   ),
 }
 
-const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME : "opencode", {
-  description: "OpenCode command line interface",
+const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME : "ofecode", {
+  description: "OfeCode command line interface",
   params: {
     ...ServerParams,
     ...PermissionParams,
     directory: Argument.String("directory").pipe(
-      Argument.withDescription("Directory to start OpenCode in"),
+      Argument.withDescription("Directory to start OfeCode in"),
       Argument.optional,
     ),
     continue: Flag.Boolean("continue").pipe(
@@ -69,7 +69,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
   },
   commands: [
     Spec.make("upgrade", {
-      description: "Upgrade OpenCode to the latest or a specific version",
+      description: "Upgrade OfeCode to the latest or a specific version",
       aliases: ["update"],
       params: {
         target: Argument.String("target").pipe(
@@ -84,7 +84,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
       },
     }),
     Spec.make("uninstall", {
-      description: "Uninstall OpenCode, keeping session data, configuration, and state",
+      description: "Uninstall OfeCode, keeping session data, configuration, and state",
       params: {
         dryRun: Flag.Boolean("dry-run").pipe(
           Flag.withDescription("Show what would be removed without removing"),
@@ -361,6 +361,64 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
         json: Flag.Boolean("json").pipe(Flag.withDescription("Output statistics as JSON"), Flag.withDefault(false)),
       },
     }),
+    Spec.make("doctor", {
+      description: "Check the installation and report problems",
+      params: {
+        json: Flag.Boolean("json").pipe(Flag.withDescription("Output the report as JSON"), Flag.withDefault(false)),
+        quiet: Flag.Boolean("quiet").pipe(
+          Flag.withDescription("Only print checks that are not ok"),
+          Flag.withDefault(false),
+        ),
+      },
+    }),
+    Spec.make("version", {
+      description: "Print version and build information",
+      params: {
+        json: Flag.Boolean("json").pipe(
+          Flag.withDescription("Output version information as JSON"),
+          Flag.withDefault(false),
+        ),
+      },
+    }),
+    Spec.make("paths", {
+      description: "Show global paths (data, config, cache, state)",
+      params: {
+        name: Argument.Literals("name", [
+          "db",
+          "home",
+          "data",
+          "config",
+          "cache",
+          "state",
+          "tmp",
+          "bin",
+          "log",
+          "repos",
+        ]).pipe(
+          Argument.withDescription(
+            "Print only one path: db, home, data, config, cache, state, tmp, bin, log, repos",
+          ),
+          Argument.optional,
+        ),
+        json: Flag.Boolean("json").pipe(Flag.withDescription("Output paths as JSON"), Flag.withDefault(false)),
+      },
+    }),
+    Spec.make("logs", {
+      description: "Show the background server log",
+      params: {
+        path: Flag.Boolean("path").pipe(Flag.withDescription("Print only the log file path"), Flag.withDefault(false)),
+        tail: Flag.Int("tail").pipe(
+          Flag.withSchema(Schema.Int.check(Schema.isGreaterThanOrEqualTo(1))),
+          Flag.withDescription("Number of lines to show (default: 50)"),
+          Flag.optional,
+        ),
+        follow: Flag.Boolean("follow").pipe(
+          Flag.withAlias("f"),
+          Flag.withDescription("Follow the log as it grows"),
+          Flag.withDefault(false),
+        ),
+      },
+    }),
     Spec.make("mini", {
       description: "Start the minimal interactive interface",
       globalFlags: ServerFlags,
@@ -398,7 +456,7 @@ const Root = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME
       },
     }),
     Spec.make("run", {
-      description: "Run OpenCode with a message",
+      description: "Run OfeCode with a message",
       globalFlags: ServerFlags,
       params: {
         message: Argument.String("message").pipe(

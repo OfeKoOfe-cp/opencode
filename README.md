@@ -1,17 +1,16 @@
 <p align="center">
-  <a href="https://opencode.ai">
+  <a href="https://github.com/OfeKoOfe-cp/opencode">
     <picture>
       <source srcset=".github/assets/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset=".github/assets/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src=".github/assets/logo-ornate-light.svg" alt="OpenCode logo">
+      <img src=".github/assets/logo-ornate-light.svg" alt="OfeCode logo">
     </picture>
   </a>
 </p>
 <p align="center">The open source AI coding agent.</p>
+
 <p align="center">
-  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/@opencode/cli"><img alt="npm" src="https://img.shields.io/npm/v/@opencode/cli?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/opencode/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/release.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/OfeKoOfe-cp/opencode/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/OfeKoOfe-cp/opencode/release.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -39,11 +38,29 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![OpenCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencode.ai)
+[![OfeCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://github.com/OfeKoOfe-cp/opencode)
 
 ---
 
-### Installation
+OfeCode is a fork of [OpenCode](https://github.com/anomalyco/opencode), rebranded and extended. It keeps the upstream configuration layout, so an existing OpenCode install and an OfeCode install read the same data, config, and state directories.
+
+### Building from source
+
+OfeCode requires the Bun version pinned in the `packageManager` field of [`package.json`](./package.json) or newer.
+
+```bash
+git clone https://github.com/OfeKoOfe-cp/opencode.git
+cd opencode
+bun install
+bun run build --single        # compile the CLI for the current platform
+bun run dev                   # run the TUI from source
+```
+
+The compiled binary lands in `packages/cli/dist/cli-<platform>-<arch>/bin/ofecode`.
+
+### Installation (upstream)
+
+The upstream project ships installers and packages:
 
 ```bash
 # YOLO
@@ -64,7 +81,7 @@ nix run github:anomalyco/opencode  # Nix
 
 ### Desktop App (BETA)
 
-OpenCode is also available as a desktop application. Download it from [opencode.ai/download](https://opencode.ai/download).
+OfeCode is also available as a desktop application. Download it from [opencode.ai/download](https://opencode.ai/download).
 
 | Platform              | Download                           |
 | --------------------- | ---------------------------------- |
@@ -84,7 +101,7 @@ The install script installs OpenCode to `$HOME/.opencode/bin`.
 
 ### Agents
 
-OpenCode includes two built-in agents you can switch between with the `Tab` key.
+OfeCode includes two built-in agents you can switch between with the `Tab` key.
 
 - **build** - Default, full-access agent for development work
 - **plan** - Read-only agent for analysis and code exploration
@@ -99,16 +116,12 @@ Learn more about [agents](https://opencode.ai/docs/agents).
 
 ### Documentation
 
-For more info on how to configure OpenCode, [**head over to our docs**](https://opencode.ai/docs).
+For more info on how to configure OfeCode, [**head over to the upstream docs**](https://opencode.ai/docs).
 
 ### Contributing
 
-If you're interested in contributing to OpenCode, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
-
-### Building on OpenCode
-
-If you are working on a project that's related to OpenCode and is using "opencode" as part of its name, for example "opencode-dashboard" or "opencode-mobile", please add a note to your README to clarify that it is not built by the OpenCode team and is not affiliated with us in any way.
+If you're interested in contributing to OfeCode, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
 
 ---
 
-**Join our community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)
+**Join the upstream community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)

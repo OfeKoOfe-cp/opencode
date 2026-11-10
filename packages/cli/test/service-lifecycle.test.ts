@@ -121,7 +121,7 @@ serviceTest(
         process.platform !== "win32" && Bun.which("lsof") ? `PID ${process.pid} (` : "another process"
       }`,
     )
-    expect(conflict).toContain("opencode service set port <port>")
+    expect(conflict).toContain("ofecode service set port <port>")
     expect(await servers(home)).toEqual([])
     expect(await Bun.file(home.registration).exists()).toBe(false)
 
@@ -213,7 +213,7 @@ async function cli(home: Home, ...args: string[]) {
     new Response(child.stdout).text(),
     new Response(child.stderr).text(),
   ])
-  if (code !== 0) throw new Error(`opencode ${args.join(" ")} exited ${code}: ${stderr.trim()}`)
+  if (code !== 0) throw new Error(`ofecode ${args.join(" ")} exited ${code}: ${stderr.trim()}`)
   return stdout.trim()
 }
 
