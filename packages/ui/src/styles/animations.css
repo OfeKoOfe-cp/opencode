@@ -1,5 +1,10 @@
 :root {
-  --animate-pulse: pulse-opacity 2s ease-in-out infinite;
+  /* Smooth motion: one eased curve and one duration, so every surface settles the same way. */
+  --v2-ease-smooth: cubic-bezier(0.32, 0.72, 0, 1);
+  --v2-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --v2-duration-fast: 120ms;
+  --v2-duration-smooth: 220ms;
+  --animate-pulse: pulse-opacity 2s var(--v2-ease-soft) infinite;
 }
 
 @keyframes pulse-opacity {

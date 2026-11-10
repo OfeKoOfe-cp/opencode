@@ -1,6 +1,6 @@
 ---
 title: "TUI"
-description: "Build the TUI part of an OpenCode plugin for the terminal UI using @opencode/plugin/tui."
+description: "Build the TUI part of an OfeCode plugin for the terminal UI using @opencode/plugin/tui."
 ---
 
 TUI plugins extend the terminal UI with commands, routes, slots, Markdown renderers, notifications, and local state. A
@@ -18,12 +18,12 @@ export default Plugin.define({
 })
 ```
 
-Import `@opencode/plugin/tui` directly. OpenCode resolves this import at runtime, so local TUI plugins do not need an
-absolute path to an OpenCode checkout.
+Import `@opencode/plugin/tui` directly. OfeCode resolves this import at runtime, so local TUI plugins do not need an
+absolute path to an OfeCode checkout.
 
 ## Context
 
-`setup` receives configuration, app metadata, the current location, the OpenCode client, cached data, theme tokens, the
+`setup` receives configuration, app metadata, the current location, the OfeCode client, cached data, theme tokens, the
 OpenTUI renderer, and the UI APIs documented below.
 
 ```ts
@@ -49,7 +49,7 @@ setup(context) {
 
 ## Client
 
-`context.client` is the generated OpenCode client and can call the connected server, including a remote server.
+`context.client` is the generated OfeCode client and can call the connected server, including a remote server.
 
 ```ts
 const response = await context.client.plugin.list({
@@ -204,7 +204,7 @@ Attention requests can show a system notification, play a configured sound, or d
 
 ```ts
 const result = await context.attention.notify({
-  title: "OpenCode",
+  title: "OfeCode",
   message: "Session done",
   notification: { when: "blurred" },
   sound: { name: "done", volume: 0.5, when: "always" },
@@ -238,12 +238,12 @@ structure and styles can change in any release.
 
 ### Plugins built for OpenTUI 0.5
 
-OpenCode runs plugins with its own OpenTUI. Since OpenTUI 0.6:
+OfeCode runs plugins with its own OpenTUI. Since OpenTUI 0.6:
 
 - `SyntaxStyle.create()`, `SyntaxStyle.fromStyles()`, `SyntaxStyle.fromTheme()`, `TextBuffer.create()`, and
   `EditBuffer.create()` take an owner as their last argument. `OptimizedBuffer.create()` takes it in the `owner` option.
   Pass `context.renderer.nativeScene`. OpenTUI 0.5 ignores the extra argument, so the plugin still runs on older
-  OpenCode releases.
+  OfeCode releases.
 - `generateSyntax()` from `@opencode/theme/tui` takes the owner as its second argument:
   `generateSyntax(context.theme, context.renderer.nativeScene)`. Older `@opencode/theme` versions build the style
   without an owner, so update the package too.
@@ -308,7 +308,7 @@ Call `layer` from `setup`, including after an `await`, or from a component. Each
 - The plugin is disabled, reloaded, or fails setup.
 - The component or reactive computation that created it, such as a slot, route, or dialog, is disposed.
 
-The layer factory must be pure. OpenCode evaluates it once without dependency tracking to validate the initial command shape, then reactively. Initial command-shape errors, such as a palette command without an ID, throw from `layer()`. OpenTUI handles binding-parse errors. Errors from later reactive updates follow Solid's error handling.
+The layer factory must be pure. OfeCode evaluates it once without dependency tracking to validate the initial command shape, then reactively. Initial command-shape errors, such as a palette command without an ID, throw from `layer()`. OpenTUI handles binding-parse errors. Errors from later reactive updates follow Solid's error handling.
 
 ```ts
 async setup(context) {
@@ -538,7 +538,7 @@ context.ui.slot({ replace: "home.footer", render: () => <text>New footer</text> 
 ```
 
 Use `home.footer.status` to add content to the built-in footer row without replacing it. Status contributions appear
-after OpenCode's health indicators and before the version.
+after OfeCode's health indicators and before the version.
 
 ```tsx
 context.ui.slot({ append: "home.footer.status", render: () => <text>SYNCED</text> })

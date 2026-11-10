@@ -6,7 +6,7 @@ import { storyDocument, storyTool } from "../storybook/current-session-scenarios
 import { type ContextGroupPart, CurrentContextToolGroup } from "./tool-renderer"
 
 export default {
-  title: "OpenCode/Work/Tool group",
+  title: "OfeCode/Work/Tool group",
   id: "current-tool-group",
   component: CurrentContextToolGroup,
 }

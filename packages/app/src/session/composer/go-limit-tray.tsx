@@ -12,7 +12,7 @@ import type { ModelSelection } from "@/providers/models/selection"
 import { formatLimitReset } from "../usage-exceeded-dialogs"
 import { Grow } from "./spring-height"
 
-// OpenCode Console names the workspace and the limit (5 hour, weekly or monthly) in its Go usage limit refusal.
+// OfeCode Console names the workspace and the limit (5 hour, weekly or monthly) in its Go usage limit refusal.
 const decodeGoLimitBody = Schema.decodeUnknownOption(
   Schema.fromJsonString(
     Schema.Struct({
@@ -35,7 +35,7 @@ function goLimit(locale: string, event: SessionStepFailed): GoLimit {
   }
 }
 
-// A tray that grows out from under the composer, like the queue panel, when an OpenCode Go subscriber reaches a usage
+// A tray that grows out from under the composer, like the queue panel, when an OfeCode Go subscriber reaches a usage
 // limit: when Go is back, and how to keep going now.
 export function SessionGoLimitTray(props: {
   sessionID: string | undefined

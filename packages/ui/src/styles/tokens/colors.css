@@ -1,19 +1,19 @@
 @layer theme {
   :root {
     /* ── Grey ── */
-    --v2-grey-50: #ffffffff;
-    --v2-grey-100: #fafafaff;
-    --v2-grey-200: #f2f2f2ff;
-    --v2-grey-300: #eeeeeeff;
-    --v2-grey-400: #dbdbdbff;
-    --v2-grey-500: #aeaeaeff;
-    --v2-grey-600: #808080ff;
-    --v2-grey-700: #5c5c5cff;
-    --v2-grey-800: #3a3a3aff;
-    --v2-grey-900: #2e2e2eff;
-    --v2-grey-1000: #242424ff;
-    --v2-grey-1100: #161616ff;
-    --v2-grey-1200: #080808ff;
+    --v2-grey-50: #fffdfbff;
+    --v2-grey-100: #fbf6f0ff;
+    --v2-grey-200: #f5ece2ff;
+    --v2-grey-300: #ecdfd1ff;
+    --v2-grey-400: #dfcdb9ff;
+    --v2-grey-500: #c3ac94ff;
+    --v2-grey-600: #a68d74ff;
+    --v2-grey-700: #87705aff;
+    --v2-grey-800: #685546ff;
+    --v2-grey-900: #50402fff;
+    --v2-grey-1000: #3b2f22ff;
+    --v2-grey-1100: #2a211aff;
+    --v2-grey-1200: #1b1510ff;
 
     /* ── Alpha Dark ── */
     --v2-alpha-dark-100: #000000ff;
@@ -140,6 +140,21 @@
     --v2-blue-1000: #263fa9ff;
     --v2-blue-1100: #22388fff;
     --v2-blue-1200: #021945ff;
+
+
+    /* ── Coffee ── */
+    --v2-coffee-100: #fbf3e9ff;
+    --v2-coffee-200: #f5e4d0ff;
+    --v2-coffee-300: #ecccb0ff;
+    --v2-coffee-400: #dfae87ff;
+    --v2-coffee-500: #cd9063ff;
+    --v2-coffee-600: #b3764bff;
+    --v2-coffee-700: #96603cff;
+    --v2-coffee-800: #7a4d31ff;
+    --v2-coffee-900: #5e3a26ff;
+    --v2-coffee-1000: #4a2d1dff;
+    --v2-coffee-1100: #372115ff;
+    --v2-coffee-1200: #24150eff;
 
     /* ── Purple ── */
     --v2-purple-100: #ebecfeff;

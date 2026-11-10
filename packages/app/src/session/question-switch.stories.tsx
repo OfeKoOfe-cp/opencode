@@ -3,7 +3,7 @@ import { SessionPreview } from "./story-model"
 import { SettingsExperimental } from "@/settings/experimental/experimental"
 
 export default {
-  title: "OpenCode/Session/Question switch",
+  title: "OfeCode/Session/Question switch",
   id: "session-question-switch",
   component: SessionPreview,
   parameters: {

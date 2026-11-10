@@ -57,7 +57,7 @@ export function DocsLayout(props: {
   const previous = at > 0 ? pages[at - 1] : undefined
   const next = at >= 0 ? pages[at + 1] : undefined
   const current = pages[at]
-  const description = props.description ?? `${props.title} documentation for OpenCode.`
+  const description = props.description ?? `${props.title} documentation for OfeCode.`
   const canonical = new URL(docsHref(props.currentSlug), "https://opencode.ai").href
   const contents = props.headings
     .filter((heading) => heading.depth === 2 || heading.depth === 3)
@@ -93,7 +93,7 @@ export function DocsLayout(props: {
         <link rel="canonical" href={canonical} />
         <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
         <Show when={props.markdown}>{(href) => <link rel="alternate" type="text/markdown" href={href()} />}</Show>
-        <title>{`${props.title} | OpenCode`}</title>
+        <title>{`${props.title} | OfeCode`}</title>
         <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin="anonymous" />
         <link rel="preload" href={monoFontLatin} as="font" type="font/woff2" crossorigin="anonymous" />
         <style innerHTML={`${interFaces}\n${monoFontFaces}`} />

@@ -15,7 +15,7 @@ Bir oturum sırasında agent'lar arasında geçiş yapabilir veya onları `@` if
 
 ## Türler
 
-opencode'da iki tür agent vardır; birincil agent'lar ve alt agent'lar.
+ofecode'da iki tür agent vardır; birincil agent'lar ve alt agent'lar.
 
 ---
 
@@ -27,7 +27,7 @@ Birincil agent'lar, doğrudan etkileşim kurduğunuz ana yardımcılardır. **Se
 Bir oturum sırasında birincil agent'lar arasında geçiş yapmak için **Sekme** tuşunu kullanabilirsiniz.
 :::
 
-opencode, **Build** ve **Plan** olmak üzere iki yerleşik birincil agent ile birlikte gelir. Bunlara aşağıda bakacağız.
+ofecode, **Build** ve **Plan** olmak üzere iki yerleşik birincil agent ile birlikte gelir. Bunlara aşağıda bakacağız.
 
 ---
 
@@ -35,13 +35,13 @@ opencode, **Build** ve **Plan** olmak üzere iki yerleşik birincil agent ile bi
 
 Alt agent'lar, birincil agent'ların belirli görevler için çağırabileceği uzman yardımcılardır. Ayrıca mesajlarınızda **@ bahsederek** bunları manuel olarak da çağırabilirsiniz.
 
-OpenCode, **General**, **Explore** ve **Scout** olmak üzere üç yerleşik alt agent ile birlikte gelir. Buna aşağıda bakacağız.
+OfeCode, **General**, **Explore** ve **Scout** olmak üzere üç yerleşik alt agent ile birlikte gelir. Buna aşağıda bakacağız.
 
 ---
 
 ## Yerleşik
 
-OpenCode iki yerleşik birincil agent ve üç yerleşik alt agent ile birlikte gelir.
+OfeCode iki yerleşik birincil agent ve üç yerleşik alt agent ile birlikte gelir.
 
 ---
 
@@ -87,7 +87,7 @@ Kod tabanlarını keşfetmeye yönelik hızlı, salt okunur bir agent. Dosyalar 
 
 _Mod_: `subagent`
 
-Harici dokümanlar ve bağımlılık araştırmaları için salt okunur bir agent. Bir bağımlılık repository'sini OpenCode'un yönetilen cache'ine clone etmeniz, kütüphane kaynak kodunu incelemeniz veya workspace'inizi değiştirmeden yerel kodu upstream implementasyonlarla karşılaştırmanız gerektiğinde bunu kullanın.
+Harici dokümanlar ve bağımlılık araştırmaları için salt okunur bir agent. Bir bağımlılık repository'sini OfeCode'un yönetilen cache'ine clone etmeniz, kütüphane kaynak kodunu incelemeniz veya workspace'inizi değiştirmeden yerel kodu upstream implementasyonlarla karşılaştırmanız gerektiğinde bunu kullanın.
 
 ---
 
@@ -188,10 +188,10 @@ Agent'ları `opencode.json` yapılandırma dosyanızda yapılandırın:
 
 Ayrıca agent'ları Markdown dosyalarını kullanarak da tanımlayabilirsiniz. Bunları şuraya yerleştirin:
 
-- Global: `~/.config/opencode/agents/`
-- Proje başına: `.opencode/agents/`
+- Global: `~/.config/ofecode/agents/`
+- Proje başına: `.ofecode/agents/`
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Reviews code for quality and best practices
 mode: subagent
@@ -284,7 +284,7 @@ Sıcaklık değerleri tipik olarak 0,0 ila 1,0 arasındadır:
 }
 ```
 
-Sıcaklık belirtilmezse opencode modeline özgü varsayılanları kullanır; çoğu model için genellikle 0, Qwen modelleri için 0,55.
+Sıcaklık belirtilmezse ofecode modeline özgü varsayılanları kullanır; çoğu model için genellikle 0, Qwen modelleri için 0,55.
 
 ---
 
@@ -344,7 +344,7 @@ Bu agent için `prompt` yapılandırmasıyla özel bir sistem prompt dosyası be
 }
 ```
 
-Bu yol, yapılandırma dosyasının bulunduğu yere göredir. Yani bu hem global opencode yapılandırması hem de projeye özel yapılandırma için işe yarar.
+Bu yol, yapılandırma dosyasının bulunduğu yere göredir. Yani bu hem global ofecode yapılandırması hem de projeye özel yapılandırma için işe yarar.
 
 ---
 
@@ -366,7 +366,7 @@ Bir model belirtmezseniz, birincil agent'lar [küresel olarak yapılandırılmı
 }
 ```
 
-opencode yapılandırmanızdaki model kimliği `provider/model-id` biçimini kullanır. Örneğin, [OpenCode Models](https://opencode.ai/docs/console/) kullanıyorsanız, GPT-6.1 Sol için `opencode/gpt-6.1-sol` kullanırsınız.
+ofecode yapılandırmanızdaki model kimliği `provider/model-id` biçimini kullanır. Örneğin, [OfeCode Models](https://opencode.ai/docs/console/) kullanıyorsanız, GPT-6.1 Sol için `ofecode/gpt-6.1-sol` kullanırsınız.
 
 ---
 
@@ -454,7 +454,7 @@ Bu izinleri agent başına geçersiz kılabilirsiniz.
 
 İzinleri Markdown agent'larında da ayarlayabilirsiniz.
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent
@@ -664,16 +664,16 @@ Agent yapılandırmanızdaki diğer seçenekler, model seçenekleri olarak **do�
 Bu ek seçenekler modele ve sağlayıcıya özeldir. Kullanılabilir parametreler için sağlayıcınızın belgelerine bakın.
 
 :::tip
-Mevcut modellerin listesini görmek için `opencode models` komutunu çalıştırın.
+Mevcut modellerin listesini görmek için `ofecode models` komutunu çalıştırın.
 :::
 
 ---
 
 ## Agent Oluşturma
 
-Yeni bir agent oluşturmak için proje düzeyinde `.opencode/agents/` dizinine veya global olarak `~/.config/opencode/agents/` dizinine bir Markdown dosyası ekleyin. Dosya adı agent'ın adı olur; frontmatter ise açıklamasını, modunu, modelini ve izinlerini yapılandırır. Dosya biçimi için yukarıdaki [Markdown](#markdown) bölümüne bakın.
+Yeni bir agent oluşturmak için proje düzeyinde `.ofecode/agents/` dizinine veya global olarak `~/.config/ofecode/agents/` dizinine bir Markdown dosyası ekleyin. Dosya adı agent'ın adı olur; frontmatter ise açıklamasını, modunu, modelini ve izinlerini yapılandırır. Dosya biçimi için yukarıdaki [Markdown](#markdown) bölümüne bakın.
 
-OpenCode'un yüklediği agent'ları listelemek için `opencode agent list` komutunu çalıştırın.
+OfeCode'un yüklediği agent'ları listelemek için `ofecode agent list` komutunu çalıştırın.
 
 ---
 
@@ -694,14 +694,14 @@ Farklı agent'lara yönelik bazı yaygın kullanım senaryoları aşağıda veri
 Yararlı bulabileceğiniz bazı örnek agent'ları burada bulabilirsiniz.
 
 :::tip
-Paylaşmak istediğiniz bir agent'ınız var mı? [Submit a PR](https://github.com/anomalyco/opencode).
+Paylaşmak istediğiniz bir agent'ınız var mı? [Submit a PR](https://github.com/anomalyco/ofecode).
 :::
 
 ---
 
 ### Dokümantasyon agent'ı
 
-```markdown title="~/.config/opencode/agents/docs-writer.md"
+```markdown title="~/.config/ofecode/agents/docs-writer.md"
 ---
 description: Writes and maintains project documentation
 mode: subagent
@@ -723,7 +723,7 @@ Focus on:
 
 ### Güvenlik denetçisi
 
-```markdown title="~/.config/opencode/agents/security-auditor.md"
+```markdown title="~/.config/ofecode/agents/security-auditor.md"
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent

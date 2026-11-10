@@ -213,7 +213,7 @@ function addServerPrimaryButton(input: {
   opencodeCheck: WslOpencodeCheck | null
   /** Main runs a job the dialog waits for, or the dialog waits for its own call. */
   busy: boolean
-  /** The dialog asked main to install OpenCode in the selected distro and waits for the answer. */
+  /** The dialog asked main to install OfeCode in the selected distro and waits for the answer. */
   installingOpencode: boolean
   adding: boolean
   probingAddable: boolean

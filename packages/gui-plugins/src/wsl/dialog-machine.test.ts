@@ -50,7 +50,7 @@ const distros = {
   ],
 }
 
-// Ubuntu is ready to add; Debian needs OpenCode; Fedora can be installed from the catalog. Main runs no job.
+// Ubuntu is ready to add; Debian needs OfeCode; Fedora can be installed from the catalog. Main runs no job.
 const idle = wsl({
   ...distros,
   distroProbes: { Ubuntu: probe("Ubuntu"), Debian: probe("Debian") },
@@ -166,7 +166,7 @@ describe("wsl add-server dialog", () => {
       { type: "action.run", attempt: 1, action: { kind: "install-wsl" }, timeoutMs: WSL_INSTALL_TIMEOUT_MS },
     ])
 
-    // Install OpenCode spins at once; before, it waited for main's "updating" with every control still enabled.
+    // Install OfeCode spins at once; before, it waited for main's "updating" with every control still enabled.
     expect(view(opencode.state).primaryButton).toMatchObject({
       action: "install-opencode",
       loading: true,

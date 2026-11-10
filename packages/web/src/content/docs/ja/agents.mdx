@@ -15,7 +15,7 @@ Plan エージェントを使用すると、コードを変更せずにコード
 
 ## 種類
 
-OpenCode には 2 種類のエージェントがあります。プライマリエージェントとサブエージェント。
+OfeCode には 2 種類のエージェントがあります。プライマリエージェントとサブエージェント。
 
 ---
 
@@ -27,7 +27,7 @@ OpenCode には 2 種類のエージェントがあります。プライマリ�
 **Tab** キーを使用して、セッション中にプライマリエージェントを切り替えることができます。
 :::
 
-OpenCode には、**Build** と **Plan** という 2 つの組み込みプライマリエージェントが付属しています。これらについて以下で説明します。
+OfeCode には、**Build** と **Plan** という 2 つの組み込みプライマリエージェントが付属しています。これらについて以下で説明します。
 
 ---
 
@@ -35,13 +35,13 @@ OpenCode には、**Build** と **Plan** という 2 つの組み込みプライ
 
 サブエージェントは、プライマリエージェントが特定のタスクのために呼び出すことができる特殊なアシスタントです。メッセージ内で **@ メンション**することで、手動で呼び出すこともできます。
 
-OpenCode には、**General**、**Explore**、**Scout** という 3 つの組み込みサブエージェントが付属しています。これについては以下で見ていきます。
+OfeCode には、**General**、**Explore**、**Scout** という 3 つの組み込みサブエージェントが付属しています。これについては以下で見ていきます。
 
 ---
 
 ## 組み込み
 
-OpenCode には、2 つの組み込みプライマリエージェントと 3 つの組み込みサブエージェントが付属しています。
+OfeCode には、2 つの組み込みプライマリエージェントと 3 つの組み込みサブエージェントが付属しています。
 
 ---
 
@@ -87,7 +87,7 @@ _モード_: `subagent`
 
 _モード_: `subagent`
 
-外部ドキュメントや依存関係の調査を行うための読み取り専用エージェントです。依存関係のリポジトリを OpenCode の管理キャッシュにクローンしたいとき、ライブラリのソースコードを調べたいとき、あるいはワークスペースを変更せずにローカルコードを upstream の実装と突き合わせたいときに使用します。
+外部ドキュメントや依存関係の調査を行うための読み取り専用エージェントです。依存関係のリポジトリを OfeCode の管理キャッシュにクローンしたいとき、ライブラリのソースコードを調べたいとき、あるいはワークスペースを変更せずにローカルコードを upstream の実装と突き合わせたいときに使用します。
 
 ---
 
@@ -188,10 +188,10 @@ _モード_: `primary`
 
 Markdown ファイルを使用してエージェントを定義することもできます。それらを次の場所に置きます。
 
-- グローバル: `~/.config/opencode/agents/`
-- プロジェクトごと: `.opencode/agents/`
+- グローバル: `~/.config/ofecode/agents/`
+- プロジェクトごと: `.ofecode/agents/`
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Reviews code for quality and best practices
 mode: subagent
@@ -284,7 +284,7 @@ Markdown ファイル名がエージェント名になります。たとえば�
 }
 ```
 
-温度が指定されていない場合、OpenCode はモデル固有のデフォルトを使用します。通常、ほとんどのモデルでは 0、Qwen モデルでは 0.55 です。
+温度が指定されていない場合、OfeCode はモデル固有のデフォルトを使用します。通常、ほとんどのモデルでは 0、Qwen モデルでは 0.55 です。
 
 ---
 
@@ -344,7 +344,7 @@ Markdown ファイル名がエージェント名になります。たとえば�
 }
 ```
 
-このパスは、設定ファイルが配置されている場所に対する相対パスです。したがって、これはグローバルな OpenCode 設定とプロジェクト固有の設定の両方で機能します。
+このパスは、設定ファイルが配置されている場所に対する相対パスです。したがって、これはグローバルな OfeCode 設定とプロジェクト固有の設定の両方で機能します。
 
 ---
 
@@ -366,7 +366,7 @@ Markdown ファイル名がエージェント名になります。たとえば�
 }
 ```
 
-OpenCode 設定内のモデル ID は、`provider/model-id` という形式を使用します。たとえば、[OpenCode Models](https://opencode.ai/docs/console/) を使用している場合、GPT-6.1 Sol には `opencode/gpt-6.1-sol` を使用します。
+OfeCode 設定内のモデル ID は、`provider/model-id` という形式を使用します。たとえば、[OfeCode Models](https://opencode.ai/docs/console/) を使用している場合、GPT-6.1 Sol には `ofecode/gpt-6.1-sol` を使用します。
 
 ---
 
@@ -453,7 +453,7 @@ MCP サーバーからすべてのツールを無効にするには、次のよ�
 
 Markdown エージェントで権限を設定することもできます。
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent
@@ -661,16 +661,16 @@ Only analyze code and suggest changes.
 これらの追加オプションはモデルとプロバイダーに固有です。使用可能なパラメータについては、プロバイダのドキュメントを確認してください。
 
 :::tip
-`opencode models` を実行して、利用可能なモデルのリストを表示します。
+`ofecode models` を実行して、利用可能なモデルのリストを表示します。
 :::
 
 ---
 
 ## エージェントの作成
 
-新しいエージェントを作成するには、プロジェクト用は `.opencode/agents/`、グローバル用は `~/.config/opencode/agents/` に Markdown ファイルを追加します。ファイル名がエージェント名になり、フロントマターで説明、モード、モデル、権限を設定します。ファイル形式については、上記の [Markdown](#markdown) を参照してください。
+新しいエージェントを作成するには、プロジェクト用は `.ofecode/agents/`、グローバル用は `~/.config/ofecode/agents/` に Markdown ファイルを追加します。ファイル名がエージェント名になり、フロントマターで説明、モード、モデル、権限を設定します。ファイル形式については、上記の [Markdown](#markdown) を参照してください。
 
-`opencode agent list` を実行すると、OpenCode が読み込んだエージェントを一覧表示できます。
+`ofecode agent list` を実行すると、OfeCode が読み込んだエージェントを一覧表示できます。
 
 ---
 
@@ -691,14 +691,14 @@ Only analyze code and suggest changes.
 以下に、役立つと思われるエージェントの例をいくつか示します。
 
 :::tip
-共有したいエージェントはいますか? [PR](https://github.com/anomalyco/opencode) を送信します。
+共有したいエージェントはいますか? [PR](https://github.com/anomalyco/ofecode) を送信します。
 :::
 
 ---
 
 ### ドキュメント作成エージェント
 
-```markdown title="~/.config/opencode/agents/docs-writer.md"
+```markdown title="~/.config/ofecode/agents/docs-writer.md"
 ---
 description: Writes and maintains project documentation
 mode: subagent
@@ -720,7 +720,7 @@ Focus on:
 
 ### セキュリティ監査エージェント
 
-```markdown title="~/.config/opencode/agents/security-auditor.md"
+```markdown title="~/.config/ofecode/agents/security-auditor.md"
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent

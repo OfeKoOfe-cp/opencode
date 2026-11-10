@@ -18,12 +18,12 @@ export const content = {
       action: "Installa",
     },
     sdk: {
-      body: "Controlla OpenCode dai tuoi script, job di CI e strumenti.",
+      body: "Controlla OfeCode dai tuoi script, job di CI e strumenti.",
       action: "Leggi i docs",
     },
     ide: {
       name: "Estensioni IDE",
-      body: "Apri OpenCode in VS Code, Cursor e Windsurf, oppure in Zed e negli IDE JetBrains tramite ACP.",
+      body: "Apri OfeCode in VS Code, Cursor e Windsurf, oppure in Zed e negli IDE JetBrains tramite ACP.",
       action: "Installa",
     },
     mini: {
@@ -33,9 +33,9 @@ export const content = {
   },
   productDetails: {
     desktop: {
-      title: "OpenCode | App desktop per macOS, Windows e Linux",
+      title: "OfeCode | App desktop per macOS, Windows e Linux",
       description:
-        "Esegui in parallelo tutti gli agenti OpenCode che vuoi, guarda ogni modifica in un browser accanto e riprendili su qualsiasi dispositivo. Per macOS, Windows e Linux.",
+        "Esegui in parallelo tutti gli agenti OfeCode che vuoi, guarda ogni modifica in un browser accanto e riprendili su qualsiasi dispositivo. Per macOS, Windows e Linux.",
       intro:
         "Esegui più agenti insieme, ogni sessione nella sua scheda. Rivedi ogni modifica come diff, commenta qualsiasi riga e controlla il risultato nel browser integrato. Per macOS, Windows e Linux.",
       showcase: {
@@ -53,16 +53,16 @@ export const content = {
         },
         "extend-it": {
           title: "Estendilo",
-          body: "Collega i tuoi strumenti e servizi così l'agente può lavorare con qualsiasi cosa. Oppure fai creare a OpenCode plugin per sé stesso, con la loro interfaccia nella barra laterale.",
+          body: "Collega i tuoi strumenti e servizi così l'agente può lavorare con qualsiasi cosa. Oppure fai creare a OfeCode plugin per sé stesso, con la loro interfaccia nella barra laterale.",
         },
       },
     },
     mobile: {
-      title: "OpenCode | Mobile, le tue sessioni di coding sul telefono",
+      title: "OfeCode | Mobile, le tue sessioni di coding sul telefono",
       description:
-        "Avvia e guida sessioni OpenCode dal telefono. Parla con l'agente mentre gira sul tuo computer.",
+        "Avvia e guida sessioni OfeCode dal telefono. Parla con l'agente mentre gira sul tuo computer.",
       intro:
-        "Avvia e guida sessioni dal telefono, ovunque tu sia. Chiama una sessione e parla con l'agente, oppure apri una sessione per riprendere da dove eri rimasto, tutto con OpenCode sul tuo computer.",
+        "Avvia e guida sessioni dal telefono, ovunque tu sia. Chiama una sessione e parla con l'agente, oppure apri una sessione per riprendere da dove eri rimasto, tutto con OfeCode sul tuo computer.",
       features: {
         "notify-when-done": {
           title: "Avviso a fine lavoro",
@@ -86,7 +86,7 @@ export const content = {
         },
         "your-computer": {
           title: "Il tuo computer",
-          body: "Si collega a OpenCode in esecuzione sulla tua macchina.",
+          body: "Si collega a OfeCode in esecuzione sulla tua macchina.",
         },
         "share-sheet": {
           title: "Condivisione",
@@ -117,9 +117,9 @@ export const content = {
       },
     },
     terminal: {
-      title: "OpenCode | UI da terminale per l'agente di coding open source",
+      title: "OfeCode | UI da terminale per l'agente di coding open source",
       description:
-        "Un'interfaccia da terminale veloce per OpenCode che funziona in qualsiasi shell, editor o server remoto. Descrivi cosa vuoi, vedi ogni modifica come diff e approva i comandi.",
+        "Un'interfaccia da terminale veloce per OfeCode che funziona in qualsiasi shell, editor o server remoto. Descrivi cosa vuoi, vedi ogni modifica come diff e approva i comandi.",
       intro:
         "Un'interfaccia da terminale veloce che funziona in qualsiasi shell, editor o server remoto. Descrivi cosa vuoi a parole tue, guarda ogni modifica arrivare come diff e scegli quali comandi partono da soli.",
       features: {
@@ -149,7 +149,7 @@ export const content = {
         },
         "any-server": {
           title: "Ogni server",
-          body: "Collegati a un server OpenCode tramite URL con --server.",
+          body: "Collegati a un server OfeCode tramite URL con --server.",
         },
         "usage-stats": {
           title: "Statistiche",
@@ -176,11 +176,11 @@ export const content = {
       },
     },
     sdk: {
-      title: "OpenCode | SDK TypeScript per script, job di CI e strumenti",
+      title: "OfeCode | SDK TypeScript per script, job di CI e strumenti",
       description:
-        "Controlla OpenCode dai tuoi script, job di CI e strumenti. Il client TypeScript tipizzato crea sessioni, invia prompt e trasmette ogni evento in tempo reale.",
+        "Controlla OfeCode dai tuoi script, job di CI e strumenti. Il client TypeScript tipizzato crea sessioni, invia prompt e trasmette ogni evento in tempo reale.",
       intro:
-        "Controlla OpenCode dai tuoi script, job di CI e strumenti. L'SDK esegue OpenCode nel tuo processo, con la tua configurazione e i tuoi modelli, e il suo client tipizzato crea sessioni, invia prompt e trasmette ogni evento.",
+        "Controlla OfeCode dai tuoi script, job di CI e strumenti. L'SDK esegue OfeCode nel tuo processo, con la tua configurazione e i tuoi modelli, e il suo client tipizzato crea sessioni, invia prompt e trasmette ogni evento.",
       features: {
         "typescript-client": {
           title: "Client TypeScript",
@@ -192,7 +192,7 @@ export const content = {
         },
         "any-model": {
           title: "Ogni modello",
-          body: "Usa i modelli configurati nel tuo OpenCode.",
+          body: "Usa i modelli configurati nel tuo OfeCode.",
         },
         "npm-or-bun": {
           title: "npm o bun",
@@ -200,7 +200,7 @@ export const content = {
         },
         "in-process-host": {
           title: "Host in-process",
-          body: "Esegue OpenCode in memoria, senza passare dalla rete.",
+          body: "Esegue OfeCode in memoria, senza passare dalla rete.",
         },
         "your-plugins": {
           title: "I tuoi plugin",
@@ -212,13 +212,13 @@ export const content = {
         },
         "cloudflare-workers": {
           title: "Cloudflare Workers",
-          body: "Esegui OpenCode in un Durable Object di Cloudflare su Workers.",
+          body: "Esegui OfeCode in un Durable Object di Cloudflare su Workers.",
         },
       },
       showcase: {
         "fix-ci-from-code": {
           title: "Ripara la CI da codice",
-          body: "Un breve script chiede a OpenCode di correggere i test falliti, poi li riesegue.",
+          body: "Un breve script chiede a OfeCode di correggere i test falliti, poi li riesegue.",
         },
         "follow-every-step": {
           title: "Segui ogni passo",
@@ -226,24 +226,24 @@ export const content = {
         },
         "build-your-own-tools": {
           title: "Crea i tuoi strumenti",
-          body: "Integra OpenCode in bot, dashboard e workflow con poche righe.",
+          body: "Integra OfeCode in bot, dashboard e workflow con poche righe.",
         },
         "in-your-process": {
           title: "Nel tuo processo",
-          body: "Esegue OpenCode nel tuo processo, con la tua config e i tuoi modelli.",
+          body: "Esegue OfeCode nel tuo processo, con la tua config e i tuoi modelli.",
         },
       },
     },
     ide: {
-      title: "OpenCode | Integrazioni editor per VS Code, Cursor e Zed",
+      title: "OfeCode | Integrazioni editor per VS Code, Cursor e Zed",
       description:
-        "Usa OpenCode nel tuo editor, con l'estensione per VS Code, Cursor, Windsurf e VSCodium, e opencode acp per Zed, gli IDE JetBrains e altri editor ACP.",
+        "Usa OfeCode nel tuo editor, con l'estensione per VS Code, Cursor, Windsurf e VSCodium, e opencode acp per Zed, gli IDE JetBrains e altri editor ACP.",
       intro:
-        "Usa OpenCode nel tuo editor. In VS Code, Cursor, Windsurf e VSCodium, esegui opencode nel terminale integrato e l'estensione si installa da sola. Zed, gli IDE JetBrains e gli altri editor che supportano l'Agent Client Protocol eseguono OpenCode con opencode acp.",
+        "Usa OfeCode nel tuo editor. In VS Code, Cursor, Windsurf e VSCodium, esegui opencode nel terminale integrato e l'estensione si installa da sola. Zed, gli IDE JetBrains e gli altri editor che supportano l'Agent Client Protocol eseguono OfeCode con opencode acp.",
       features: {
         "quick-launch": {
           title: "Avvio rapido",
-          body: "Cmd+Esc o Ctrl+Esc apre OpenCode in un terminale diviso.",
+          body: "Cmd+Esc o Ctrl+Esc apre OfeCode in un terminale diviso.",
         },
         "new-session": {
           title: "Nuova sessione",
@@ -251,7 +251,7 @@ export const content = {
         },
         context: {
           title: "Contesto",
-          body: "Condivide con OpenCode la selezione o la scheda corrente.",
+          body: "Condivide con OfeCode la selezione o la scheda corrente.",
         },
         "file-references": {
           title: "Riferimenti ai file",
@@ -271,16 +271,16 @@ export const content = {
         },
         "same-agent": {
           title: "Stesso agente",
-          body: "L'OpenCode che usi nel terminale, accanto al tuo codice.",
+          body: "L'OfeCode che usi nel terminale, accanto al tuo codice.",
         },
       },
     },
     mini: {
-      title: "OpenCode | Mini, un'interfaccia da terminale minimale",
+      title: "OfeCode | Mini, un'interfaccia da terminale minimale",
       description:
-        "Mini esegue OpenCode in un'interfaccia da terminale minimale. Le risposte finiscono nello scrollback del terminale, e in basso restano solo un prompt e una riga di stato.",
+        "Mini esegue OfeCode in un'interfaccia da terminale minimale. Le risposte finiscono nello scrollback del terminale, e in basso restano solo un prompt e una riga di stato.",
       intro:
-        "Un'interfaccia da terminale minimale per OpenCode. Esegui opencode mini e le risposte finiscono direttamente nello scrollback del tuo terminale, così puoi scorrerle, cercarle e copiarle come qualsiasi altro output. In basso restano solo il prompt e una riga di stato.",
+        "Un'interfaccia da terminale minimale per OfeCode. Esegui opencode mini e le risposte finiscono direttamente nello scrollback del tuo terminale, così puoi scorrerle, cercarle e copiarle come qualsiasi altro output. In basso restano solo il prompt e una riga di stato.",
       features: {
         "your-scrollback": {
           title: "Il tuo scrollback",
@@ -303,7 +303,7 @@ export const content = {
           body: "Continua l'ultima sessione con -c, o una qualsiasi con -s.",
         },
         "same-opencode": {
-          title: "Stesso OpenCode",
+          title: "Stesso OfeCode",
           body: "Lo stesso server, gli stessi agenti e modelli delle altre app.",
         },
         agents: {
@@ -319,15 +319,15 @@ export const content = {
   },
   extensionCard: {
     name: "Estensioni",
-    body: "Usa OpenCode in VS Code, oppure in Zed e altri editor tramite ACP.",
+    body: "Usa OfeCode in VS Code, oppure in Zed e altri editor tramite ACP.",
     action: "Installa",
   },
   extensions: {
     browse: {
       body: "Fai usare agli agenti il tuo vero browser.",
-      title: "OpenCode | Browse, il tuo vero browser per agenti di coding",
+      title: "OfeCode | Browse, il tuo vero browser per agenti di coding",
       description:
-        "Browse permette a OpenCode e ad altri client MCP di usare il tuo vero browser. Gli agenti guidano schede in background con Playwright e ti ripassano login e 2FA.",
+        "Browse permette a OfeCode e ad altri client MCP di usare il tuo vero browser. Gli agenti guidano schede in background con Playwright e ti ripassano login e 2FA.",
       intro:
         "Un server MCP e un'estensione Chromium che permettono ai tuoi agenti di usare il tuo vero browser, con le tue schede, i tuoi login e le tue estensioni. Aprono e guidano le schede con Playwright, fanno screenshot e registrano lo schermo, in schede in background raggruppate e fuori dai piedi. Quando tocca a te, per un login, una richiesta 2FA o un pagamento, ti ripassano la scheda e continuano appena fai clic su Continua.",
       features: {
@@ -353,7 +353,7 @@ export const content = {
         },
         "any-mcp-client": {
           title: "Ogni client MCP",
-          body: "OpenCode, Claude Code, Cursor, Codex, Zed e molti altri.",
+          body: "OfeCode, Claude Code, Cursor, Codex, Zed e molti altri.",
         },
         "all-your-logins": {
           title: "Tutti i tuoi accessi",
@@ -388,10 +388,10 @@ export const content = {
   },
   getStarted: {
     title: "Inizia",
-    lead: "Il modo più semplice per iniziare è scaricare OpenCode e usare i modelli gratuiti. Nessun account necessario. Per avere di più, usa il tuo abbonamento oppure OpenCode Go.",
+    lead: "Il modo più semplice per iniziare è scaricare OfeCode e usare i modelli gratuiti. Nessun account necessario. Per avere di più, usa il tuo abbonamento oppure OfeCode Go.",
     phrases: {
       "download-opencode": {
-        text: "scaricare OpenCode",
+        text: "scaricare OfeCode",
       },
       "free-models": {
         text: "modelli gratuiti",
@@ -415,20 +415,20 @@ export const content = {
       },
       "use-free-models": {
         title: "Modelli gratuiti",
-        line: "OpenCode include una serie di modelli gratuiti. Nessun account necessario.",
+        line: "OfeCode include una serie di modelli gratuiti. Nessun account necessario.",
       },
       "add-more-models": {
         title: "Altri modelli",
-        line: "Usa il tuo abbonamento oppure i modelli selezionati di OpenCode Go da 10 $/mese.",
+        line: "Usa il tuo abbonamento oppure i modelli selezionati di OfeCode Go da 10 $/mese.",
       },
     },
     sentence:
-      "Scarica OpenCode, inizia con i modelli gratuiti e aggiungi il tuo abbonamento o OpenCode Go quando vuoi di più.",
+      "Scarica OfeCode, inizia con i modelli gratuiti e aggiungi il tuo abbonamento o OfeCode Go quando vuoi di più.",
   },
   byos: {
     title: "Porta il tuo abbonamento",
     headline: "Usa gli abbonamenti che hai già.",
-    line: "Accedi con ChatGPT Plus o Pro oppure con GitHub Copilot. Oppure usa un abbonamento OpenCode.",
+    line: "Accedi con ChatGPT Plus o Pro oppure con GitHub Copilot. Oppure usa un abbonamento OfeCode.",
     yours: {
       label: "Il tuo abbonamento",
       items: {
@@ -437,9 +437,9 @@ export const content = {
         },
       },
     },
-    planLinks: ["abbonamento OpenCode"],
+    planLinks: ["abbonamento OfeCode"],
     ours: {
-      label: "Piani OpenCode",
+      label: "Piani OfeCode",
     },
   },
   brand: {
@@ -451,7 +451,7 @@ export const content = {
     },
     naming: {
       title: "Nome",
-      body: "Scrivi OpenCode come una sola parola, con la O e la C maiuscole. Non scrivere Opencode, Open Code, OpenCode AI o Open-Code.",
+      body: "Scrivi OfeCode come una sola parola, con la O e la C maiuscole. Non scrivere Opencode, Open Code, OfeCode AI o Open-Code.",
       code: "Usa `opencode` in minuscolo solo nel codice e nei nomi dei pacchetti, come `opencode-figma` o `@acme/opencode-plugin`.",
     },
     families: {
@@ -475,7 +475,7 @@ export const content = {
       },
       wordmark: {
         title: "Logotipo",
-        body: "Il nome completo nelle lettere di OpenCode. Usalo ovunque ci sia spazio per scrivere il nome per intero.",
+        body: "Il nome completo nelle lettere di OfeCode. Usalo ovunque ci sia spazio per scrivere il nome per intero.",
         assets: {
           light: {
             name: "Chiaro",
@@ -680,7 +680,7 @@ export const content = {
     },
     integrations: {
       title: "Integrazioni",
-      body: "Plugin, provider e strumenti che funzionano con OpenCode, e i progetti creati con esso, possono dirlo. Usa un badge o un lockup partner, e dai al progetto un nome che chiarisca che è tuo.",
+      body: "Plugin, provider e strumenti che funzionano con OfeCode, e i progetti creati con esso, possono dirlo. Usa un badge o un lockup partner, e dai al progetto un nome che chiarisca che è tuo.",
       badges: {
         body: "Metti un badge nel README, nella documentazione o sul sito e collegalo a opencode.ai. Scegli il file chiaro o scuro in base allo sfondo (l'HTML cambia da solo) e non modificare colori o testo.",
         sizes: "Ogni stile è disponibile a 20, 32 e 44px (Shields solo a 20px), in SVG e in PNG a 2×.",
@@ -688,13 +688,13 @@ export const content = {
         groups: {
           "works-with": {
             title: "Funziona con",
-            alt: "Funziona con OpenCode",
-            body: "Per plugin, provider e strumenti che funzionano con OpenCode.",
+            alt: "Funziona con OfeCode",
+            body: "Per plugin, provider e strumenti che funzionano con OfeCode.",
           },
           "built-with": {
             title: "Creato con",
-            alt: "Creato con OpenCode",
-            body: "Per progetti realizzati con OpenCode.",
+            alt: "Creato con OfeCode",
+            body: "Per progetti realizzati con OfeCode.",
           },
         },
         styles: {
@@ -714,33 +714,33 @@ export const content = {
       },
       lockup: {
         title: "Lockup partner",
-        body: "Metti il logo OpenCode e il logo del partner affiancati, con una × in mezzo. Lascia 3 tratti di spazio su ogni lato della ×, dimensiona il logo del partner perché sembri alto quanto il logo OpenCode e lascia spazio libero intorno all'intero lockup.",
+        body: "Metti il logo OfeCode e il logo del partner affiancati, con una × in mezzo. Lascia 3 tratti di spazio su ogni lato della ×, dimensiona il logo del partner perché sembri alto quanto il logo OfeCode e lascia spazio libero intorno all'intero lockup.",
       },
       naming: {
         title: "Dare un nome al progetto",
         body: "Metti prima il tuo nome, così è chiaro che il progetto è tuo.",
-        rule: "Scrivi `Linear for OpenCode` o chiama il pacchetto `opencode-linear`. Non scrivere `OpenCode Linear` o `Linear by OpenCode`.",
+        rule: "Scrivi `Linear for OfeCode` o chiama il pacchetto `opencode-linear`. Non scrivere `OfeCode Linear` o `Linear by OfeCode`.",
       },
     },
     trademarks: {
       title: "Marchi",
-      body: "OpenCode e il logo OpenCode sono marchi di Anomaly. Non usarli per far intendere che Anomaly ti sostiene o ti sponsorizza, nel nome del tuo prodotto o della tua azienda, o su merchandising senza permesso.",
+      body: "OfeCode e il logo OfeCode sono marchi di Anomaly. Non usarli per far intendere che Anomaly ti sostiene o ti sponsorizza, nel nome del tuo prodotto o della tua azienda, o su merchandising senza permesso.",
       contact: {
         before: "Per domande, scrivi a ",
       },
     },
   },
   press: {
-    title: "OpenCode | Press kit con dati aziendali e asset del brand",
+    title: "OfeCode | Press kit con dati aziendali e asset del brand",
     description:
-      "Il press kit di OpenCode, con informazioni su OpenCode e su Anomaly, l'azienda che lo sviluppa, più logo e logotipi da scaricare e un contatto per la stampa.",
+      "Il press kit di OfeCode, con informazioni su OfeCode e su Anomaly, l'azienda che lo sviluppa, più logo e logotipi da scaricare e un contatto per la stampa.",
     hero: {
       title: "Stampa",
-      body: "Dati, asset del brand e contatti per scrivere di OpenCode e Anomaly.",
+      body: "Dati, asset del brand e contatti per scrivere di OfeCode e Anomaly.",
     },
     company: {
       title: "Chi è Anomaly",
-      lead: "Anomaly è l'azienda dietro OpenCode. Crea strumenti open source per sviluppatori.",
+      lead: "Anomaly è l'azienda dietro OfeCode. Crea strumenti open source per sviluppatori.",
       more: "Tra gli altri progetti ci sono SST e OpenTUI, tutti open source su [GitHub](github).",
       projects: {
         opencode: {
@@ -751,7 +751,7 @@ export const content = {
         },
         opentui: {
           name: "OpenTUI",
-          body: "Una libreria per UI da terminale in TypeScript, React o Solid, con un core in Zig. OpenCode la usa in produzione. Oltre 13.000 stelle su GitHub.",
+          body: "Una libreria per UI da terminale in TypeScript, React o Solid, con un core in Zig. OfeCode la usa in produzione. Oltre 13.000 stelle su GitHub.",
         },
         "models-dev": {
           body: "Un database open source di specifiche, prezzi e capacità dei modelli di IA, con un'API pubblica. Elenca oltre 8.900 modelli di oltre 200 provider.",
@@ -766,30 +766,30 @@ export const content = {
       learnMore: "Per saperne di più, visita [anoma.ly](site).",
     },
     about: {
-      title: "Chi è OpenCode",
-      body: "Descrizioni di OpenCode e dei suoi prodotti in versione lunga e breve, pronte da copiare.",
+      title: "Chi è OfeCode",
+      body: "Descrizioni di OfeCode e dei suoi prodotti in versione lunga e breve, pronte da copiare.",
       boilerplate: {
-        long: "OpenCode è un agente di coding open source. È disponibile come app desktop, UI da terminale, app mobile e SDK, e funziona con modelli di qualsiasi provider, tra cui Claude, GPT e Gemini. OpenCode ha licenza MIT ed è sviluppato da Anomaly. Ha oltre 220.000 stelle su GitHub e più di 1.000 contributori, e oltre 22 milioni di sviluppatori lo usano ogni mese.",
+        long: "OfeCode è un agente di coding open source. È disponibile come app desktop, UI da terminale, app mobile e SDK, e funziona con modelli di qualsiasi provider, tra cui Claude, GPT e Gemini. OfeCode ha licenza MIT ed è sviluppato da Anomaly. Ha oltre 220.000 stelle su GitHub e più di 1.000 contributori, e oltre 22 milioni di sviluppatori lo usano ogni mese.",
         short:
-          "OpenCode è un agente di coding open source di Anomaly, con app per desktop, terminale e mobile, e un SDK.",
+          "OfeCode è un agente di coding open source di Anomaly, con app per desktop, terminale e mobile, e un SDK.",
       },
       products: {
         "opencode-console": {
-          name: "OpenCode Console",
-          long: "OpenCode Console è l'app web in cui sviluppatori e team acquistano e gestiscono l'accesso ai modelli di IA per OpenCode e altri agenti di coding. Offre inferenza a consumo per modelli frontier e open-weight, addebitata per richiesta su crediti prepagati, e gli abbonamenti OpenCode Go. I team hanno workspace con i ruoli Member, Admin e Owner, limiti di spesa per workspace e per utente, single sign-on con Okta, Microsoft Entra ID o Google Workspace, e SCIM. Console supporta oltre 30 provider, così i team possono collegare gli account che hanno già, e la sua inferenza è facoltativa. Si trova su opencode.ai/console.",
+          name: "OfeCode Console",
+          long: "OfeCode Console è l'app web in cui sviluppatori e team acquistano e gestiscono l'accesso ai modelli di IA per OfeCode e altri agenti di coding. Offre inferenza a consumo per modelli frontier e open-weight, addebitata per richiesta su crediti prepagati, e gli abbonamenti OfeCode Go. I team hanno workspace con i ruoli Member, Admin e Owner, limiti di spesa per workspace e per utente, single sign-on con Okta, Microsoft Entra ID o Google Workspace, e SCIM. Console supporta oltre 30 provider, così i team possono collegare gli account che hanno già, e la sua inferenza è facoltativa. Si trova su opencode.ai/console.",
           short:
-            "OpenCode Console è l'app web di Anomaly per l'accesso a consumo ai modelli di IA, gli abbonamenti OpenCode Go e i controlli per i team come budget e single sign-on.",
+            "OfeCode Console è l'app web di Anomaly per l'accesso a consumo ai modelli di IA, gli abbonamenti OfeCode Go e i controlli per i team come budget e single sign-on.",
         },
         "opencode-go": {
-          long: "OpenCode Go è un abbonamento per sviluppatori che vogliono un prezzo mensile fisso per i modelli di coding. Go costa 10 $/mese, Go Plus 40 $/mese con limiti più alti e Go Teams 20 $/mese per membro. Ogni piano include una selezione di modelli testati per il coding agentico. I limiti d'uso sono importi mensili in dollari per ogni modello, con quote mobili su 5 ore e settimanali pari al 20% e al 50% del limite mensile. Gli abbonati possono ricaricare credito, passare a un saldo a consumo e disdire in qualsiasi momento. Go funziona con OpenCode e altri agenti. Si trova su opencode.ai/console/go.",
+          long: "OfeCode Go è un abbonamento per sviluppatori che vogliono un prezzo mensile fisso per i modelli di coding. Go costa 10 $/mese, Go Plus 40 $/mese con limiti più alti e Go Teams 20 $/mese per membro. Ogni piano include una selezione di modelli testati per il coding agentico. I limiti d'uso sono importi mensili in dollari per ogni modello, con quote mobili su 5 ore e settimanali pari al 20% e al 50% del limite mensile. Gli abbonati possono ricaricare credito, passare a un saldo a consumo e disdire in qualsiasi momento. Go funziona con OfeCode e altri agenti. Si trova su opencode.ai/console/go.",
           short:
-            "OpenCode Go è un abbonamento mensile di Anomaly che dà agli sviluppatori limiti d'uso mensili su una selezione di modelli di coding, da 10 $/mese.",
+            "OfeCode Go è un abbonamento mensile di Anomaly che dà agli sviluppatori limiti d'uso mensili su una selezione di modelli di coding, da 10 $/mese.",
         },
         "opencode-data": {
-          name: "OpenCode Data",
-          long: "OpenCode Data è una dashboard pubblica che mostra quali modelli di IA gli sviluppatori usano in OpenCode e come cambia questo mix nel tempo. Pubblica una classifica dei modelli principali, l'uso dei token, i costi per sessione e per token, i rapporti di cache, le quote di mercato e una ripartizione per paese. I dati sono aggregati ogni ora, con giorni e settimane in UTC. I conteggi di utenti e sessioni sono approssimativi, e i costi usano i prezzi di listino del catalogo modelli di OpenCode. I giornalisti possono citarla come OpenCode Data (opencode.ai/data), con l'orario di aggiornamento indicato nella pagina.",
+          name: "OfeCode Data",
+          long: "OfeCode Data è una dashboard pubblica che mostra quali modelli di IA gli sviluppatori usano in OfeCode e come cambia questo mix nel tempo. Pubblica una classifica dei modelli principali, l'uso dei token, i costi per sessione e per token, i rapporti di cache, le quote di mercato e una ripartizione per paese. I dati sono aggregati ogni ora, con giorni e settimane in UTC. I conteggi di utenti e sessioni sono approssimativi, e i costi usano i prezzi di listino del catalogo modelli di OfeCode. I giornalisti possono citarla come OfeCode Data (opencode.ai/data), con l'orario di aggiornamento indicato nella pagina.",
           short:
-            "OpenCode Data è una dashboard pubblica su opencode.ai/data che classifica i modelli di IA in base all'uso reale in OpenCode, con token, costi e quote di mercato aggiornati ogni ora.",
+            "OfeCode Data è una dashboard pubblica su opencode.ai/data che classifica i modelli di IA in base all'uso reale in OfeCode, con token, costi e quote di mercato aggiornati ogni ora.",
         },
       },
     },
@@ -820,7 +820,7 @@ export const content = {
         },
         "opencode-1-0": {
           date: "Ott 2025",
-          text: "OpenCode 1.0",
+          text: "OfeCode 1.0",
         },
         "desktop-app-ships": {
           date: "Dic 2025",
@@ -832,7 +832,7 @@ export const content = {
         },
         "opencode-2-0": {
           date: "Set 2026",
-          text: "OpenCode 2.0",
+          text: "OfeCode 2.0",
         },
         "220-000-github-stars": {
           date: "Nov 2026",
@@ -842,7 +842,7 @@ export const content = {
     },
     news: {
       title: "Ultime release",
-      intro: "OpenCode esce spesso. Queste sono le release più recenti con nuove funzionalità.",
+      intro: "OfeCode esce spesso. Queste sono le release più recenti con nuove funzionalità.",
       changelog: {
         text: "Changelog completo",
       },
@@ -852,7 +852,7 @@ export const content = {
     },
     media: {
       title: "Media",
-      intro: "Immagini e brevi video di ogni app, registrati dal prodotto reale. Puoi usarli per scrivere di OpenCode.",
+      intro: "Immagini e brevi video di ogni app, registrati dal prodotto reale. Puoi usarli per scrivere di OfeCode.",
       note: "Tutte le acquisizioni usano il tema scuro. Immagini e poster sono JPG fino a 1920 × 1080, o 1080 × 1350 in verticale. I video sono clip MP4 senza audio.",
       products: {
         desktop: {
@@ -1011,12 +1011,12 @@ export const content = {
     brand: {
       title: "Brand",
       before:
-        "Scarica i logo e i logotipi di OpenCode in un unico file ZIP. Per i singoli file, le varianti e le regole d'uso, vai alla ",
+        "Scarica i logo e i logotipi di OfeCode in un unico file ZIP. Per i singoli file, le varianti e le regole d'uso, vai alla ",
       link: {
         text: "pagina Brand",
       },
       usage:
-        "Puoi usare questi file per scrivere di OpenCode. Non modificarli e non far intendere che OpenCode sostenga il tuo lavoro.",
+        "Puoi usare questi file per scrivere di OfeCode. Non modificarli e non far intendere che OfeCode sostenga il tuo lavoro.",
     },
     product: {
       title: "Prodotto",
@@ -1027,7 +1027,7 @@ export const content = {
         },
         mobile: {
           name: "Mobile",
-          body: "L'app OpenCode più recente. Chiama una sessione per parlare con l'agente, poi rivedi e approva le sue modifiche dal telefono, ovunque.",
+          body: "L'app OfeCode più recente. Chiama una sessione per parlare con l'agente, poi rivedi e approva le sue modifiche dal telefono, ovunque.",
         },
         terminal: {
           name: "Terminal",
@@ -1047,7 +1047,7 @@ export const content = {
         },
         support: {
           title: "Supporto",
-          body: "Per aiuto con OpenCode, apri una issue o chiedi alla community. Per domande su account e fatturazione, scrivici.",
+          body: "Per aiuto con OfeCode, apri una issue o chiedi alla community. Per domande su account e fatturazione, scrivici.",
           links: {
             "github-issues": {
               text: "Issue su GitHub",
@@ -1134,7 +1134,7 @@ export const content = {
       },
     },
     mini: {
-      lead: "Mini è incluso nella CLI di OpenCode. Installala con uno di questi comandi, poi esegui opencode mini.",
+      lead: "Mini è incluso nella CLI di OfeCode. Installala con uno di questi comandi, poi esegui opencode mini.",
       commands: {
         curl: {
           name: "Script",
@@ -1153,11 +1153,11 @@ export const content = {
     title: "Collega il telefono",
     cardTitle: "Abbina il telefono con un solo comando",
     intro:
-      "OpenCode Mobile è un telecomando per OpenCode sul tuo computer. Le sessioni continuano a girare lì, e l'app le mostra e ti permette di guidarle.",
+      "OfeCode Mobile è un telecomando per OfeCode sul tuo computer. Le sessioni continuano a girare lì, e l'app le mostra e ti permette di guidarle.",
     steps: {
       "get-the-app": {
         title: "Scarica l'app",
-        body: "Installa la beta di OpenCode sul tuo iPhone da TestFlight. L'app Android arriverà presto.",
+        body: "Installa la beta di OfeCode sul tuo iPhone da TestFlight. L'app Android arriverà presto.",
       },
       "run-this-on-your-computer": {
         title: "Esegui questo sul computer",
@@ -1191,7 +1191,7 @@ export const content = {
     },
     "steer-your-sessions-from-your-phone": {
       text: "Guida le sessioni dal telefono.",
-      link: "Scopri OpenCode Mobile",
+      link: "Scopri OfeCode Mobile",
     },
     "a-refreshed-desktop-app": {
       text: "Un'app desktop rinnovata.",

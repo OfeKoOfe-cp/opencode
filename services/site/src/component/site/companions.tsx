@@ -10,7 +10,7 @@ import { SectionHeading } from "./on-this-page"
 import { siteSettings } from "./settings"
 
 /**
- * "Works great with OpenCode": Anomaly's apps in one row (icon, name and category), the same on
+ * "Works great with OfeCode": Anomaly's apps in one row (icon, name and category), the same on
  * every product page. On phones the row scrolls sideways. The `companionStyle` setting swaps the
  * ruled grid for grey tiles or a ruled list.
  */

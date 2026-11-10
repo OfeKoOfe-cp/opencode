@@ -87,7 +87,7 @@ function DialogConnectedModels(props: {
     if (newDesigns()) return favorite ? <FavoriteMarker /> : undefined
     return isFreeModel(model) ? "Free" : undefined
   }
-  // OpenCode's own free models get their own group at the end of the list instead of joining "OpenCode".
+  // OfeCode's own free models get their own group at the end of the list instead of joining "OfeCode".
   const freeGroup = (model: ModelInfo) =>
     newDesigns() && !props.providerID && model.providerID === "opencode" && isFreeModel(model)
 

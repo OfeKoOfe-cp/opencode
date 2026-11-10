@@ -6,7 +6,7 @@ Session warming sends periodic model requests to preserve provider-side prompt
 caches or other short-lived state while you pause between prompts. It is
 disabled by default.
 
-Enable warming in any [OpenCode configuration file](/config):
+Enable warming in any [OfeCode configuration file](/config):
 
 ```jsonc title="opencode.jsonc"
 {
@@ -15,7 +15,7 @@ Enable warming in any [OpenCode configuration file](/config):
 }
 ```
 
-With this configuration, OpenCode warms a recently active session after four
+With this configuration, OfeCode warms a recently active session after four
 minutes without a model request. It continues every four minutes until 30
 minutes have passed since the latest non-warming request.
 
@@ -55,7 +55,7 @@ interval:
 ## Automatic interval
 
 Set `interval` to `"auto"` to warm just before each model's prompt cache
-expires. OpenCode uses 90% of the model's [`cache.ttl`](/models#cache-lifetime) setting, so a
+expires. OfeCode uses 90% of the model's [`cache.ttl`](/models#cache-lifetime) setting, so a
 `"5m"` cache is warmed every 4.5 minutes. Models without a `cache.ttl` are not
 warmed.
 
@@ -69,7 +69,7 @@ warmed.
 ```
 
 The interval must be shorter than `duration`, so raise `duration` for long
-cache lifetimes such as `"1h"`. Otherwise OpenCode skips warming and logs a
+cache lifetimes such as `"1h"`. Otherwise OfeCode skips warming and logs a
 warning.
 
 ## Per provider and model
@@ -101,7 +101,7 @@ warning and falls back to the top-level `warming`.
 
 `interval` and `duration` accept duration strings. Both must resolve to finite
 values greater than zero, and `interval` must be shorter than `duration`;
-otherwise OpenCode skips warming and logs a warning.
+otherwise OfeCode skips warming and logs a warning.
 
 ```jsonc title="opencode.jsonc"
 {
@@ -139,7 +139,7 @@ request is sent.
 ## Requests
 
 A warming request uses the session's current model, agent, instructions, and
-conversation context. OpenCode appends the configured prompt transiently,
+conversation context. OfeCode appends the configured prompt transiently,
 makes one model call, and discards the response.
 
 ```text
@@ -149,12 +149,12 @@ makes one model call, and discards the response.
 ```
 
 The request does not admit input, add messages to history, or mutate durable
-session state. OpenCode does not dispatch local tool calls or continue a tool
+session state. OfeCode does not dispatch local tool calls or continue a tool
 loop; the default prompt also tells the model not to use tools.
 
 ## Failures
 
-Warming failures are logged without failing or changing the session. OpenCode
+Warming failures are logged without failing or changing the session. OfeCode
 waits until the next interval before trying again, while the original active
 window continues to count down.
 

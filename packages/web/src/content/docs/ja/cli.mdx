@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: OpenCode CLI のオプションとコマンド。
+description: OfeCode CLI のオプションとコマンド。
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-OpenCode CLI は、引数なしで実行すると、デフォルトで [TUI](/docs/tui) を開始します。
+OfeCode CLI は、引数なしで実行すると、デフォルトで [TUI](/docs/tui) を開始します。
 
 ```bash
-opencode
+ofecode
 ```
 
-ただし、このページに記載されているようにコマンドも受け入れます。これにより、OpenCode をプログラム的に操作できるようになります。
+ただし、このページに記載されているようにコマンドも受け入れます。これにより、OfeCode をプログラム的に操作できるようになります。
 
 ```bash
-opencode run "Explain how closures work in JavaScript"
+ofecode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-OpenCode ターミナルユーザーインターフェイスを開始します。
+OfeCode ターミナルユーザーインターフェイスを開始します。
 
 ```bash
-opencode [project]
+ofecode [project]
 ```
 
 #### フラグ
@@ -44,26 +44,26 @@ opencode [project]
 
 ## コマンド
 
-OpenCode CLI には次のコマンドもあります。
+OfeCode CLI には次のコマンドもあります。
 
 ---
 
 ### attach
 
-`serve` または `web` コマンドを使用して起動された、すでに実行中の OpenCode バックエンドサーバーにターミナルを接続します。
+`serve` または `web` コマンドを使用して起動された、すでに実行中の OfeCode バックエンドサーバーにターミナルを接続します。
 
 ```bash
-opencode attach [url]
+ofecode attach [url]
 ```
 
-これにより、リモート OpenCode バックエンドで TUI を使用できるようになります。例えば：
+これにより、リモート OfeCode バックエンドで TUI を使用できるようになります。例えば：
 
 ```bash
 # Start the backend server for web/mobile access
-opencode web --port 4096 --hostname 0.0.0.0
+ofecode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-opencode attach http://10.20.30.40:4096
+ofecode attach http://10.20.30.40:4096
 ```
 
 #### フラグ
@@ -75,7 +75,7 @@ opencode attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s`     | 続行するセッション ID                                                             |
 | <nobr><code>{"--fork"}</code></nobr>     |          | 続行時にセッションをフォーク（`--continue` または `--session` と使用）            |
 | <nobr><code>{"--password"}</code></nobr> | `-p`     | Basic 認証パスワード（デフォルトは `OPENCODE_SERVER_PASSWORD`）                   |
-| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `OPENCODE_SERVER_USERNAME` または `opencode`） |
+| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `OPENCODE_SERVER_USERNAME` または `ofecode`） |
 
 ---
 
@@ -84,20 +84,20 @@ opencode attach http://10.20.30.40:4096
 プロバイダーの資格情報とログインを管理するコマンド。
 
 ```bash
-opencode auth [command]
+ofecode auth [command]
 ```
 
 ---
 
 #### login
 
-OpenCode は [Models.dev](https://models.dev) のプロバイダーリストを利用しているため、`opencode auth login` を使用して、使用したいプロバイダーの API キーを構成できます。これは `~/.local/share/opencode/auth.json` に保存されます。
+OfeCode は [Models.dev](https://models.dev) のプロバイダーリストを利用しているため、`ofecode auth login` を使用して、使用したいプロバイダーの API キーを構成できます。これは `~/.local/share/ofecode/auth.json` に保存されます。
 
 ```bash
-opencode auth login
+ofecode auth login
 ```
 
-OpenCode が起動すると、認証情報ファイルからプロバイダーがロードされます。また、環境またはプロジェクト内の `.env` ファイルで定義されたキーがあるかどうかも確認します。
+OfeCode が起動すると、認証情報ファイルからプロバイダーがロードされます。また、環境またはプロジェクト内の `.env` ファイルで定義されたキーがあるかどうかも確認します。
 
 ---
 
@@ -106,13 +106,13 @@ OpenCode が起動すると、認証情報ファイルからプロバイダー�
 認証情報ファイルに保存されているすべての認証されたプロバイダーをリストします。
 
 ```bash
-opencode auth list
+ofecode auth list
 ```
 
 またはショートバージョン。
 
 ```bash
-opencode auth ls
+ofecode auth ls
 ```
 
 ---
@@ -122,7 +122,7 @@ opencode auth ls
 資格情報ファイルからプロバイダーをクリアすることで、プロバイダーからログアウトします。
 
 ```bash
-opencode auth logout
+ofecode auth logout
 ```
 
 ---
@@ -132,7 +132,7 @@ opencode auth logout
 リポジトリ自動化のための GitHub エージェントを管理します。
 
 ```bash
-opencode github [command]
+ofecode github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ opencode github [command]
 GitHub エージェントをリポジトリにインストールします。
 
 ```bash
-opencode github install
+ofecode github install
 ```
 
 これにより、必要な GitHub Actions ワークフローが設定され、構成プロセスがガイドされます。 [詳細はこちら](/docs/github)。
@@ -154,7 +154,7 @@ opencode github install
 GitHub エージェントを実行します。これは通常、GitHub Actions で使用されます。
 
 ```bash
-opencode github run
+ofecode github run
 ```
 
 ##### フラグ
@@ -171,7 +171,7 @@ opencode github run
 モデルコンテキストプロトコルサーバーを管理します。
 
 ```bash
-opencode mcp [command]
+ofecode mcp [command]
 ```
 
 ---
@@ -181,7 +181,7 @@ opencode mcp [command]
 MCP サーバーを構成に追加します。
 
 ```bash
-opencode mcp add
+ofecode mcp add
 ```
 
 このコマンドは、ローカルまたはリモートの MCP サーバーを追加する手順を示します。
@@ -193,13 +193,13 @@ opencode mcp add
 構成されているすべての MCP サーバーとその接続ステータスをリストします。
 
 ```bash
-opencode mcp list
+ofecode mcp list
 ```
 
 または、短いバージョンを使用してください。
 
 ```bash
-opencode mcp ls
+ofecode mcp ls
 ```
 
 ---
@@ -209,7 +209,7 @@ opencode mcp ls
 OAuth 対応の MCP サーバーで認証します。
 
 ```bash
-opencode mcp auth [name]
+ofecode mcp auth [name]
 ```
 
 サーバー名を指定しない場合は、利用可能な OAuth 対応サーバーから選択するように求められます。
@@ -217,13 +217,13 @@ opencode mcp auth [name]
 OAuth 対応サーバーとその認証ステータスを一覧表示することもできます。
 
 ```bash
-opencode mcp auth list
+ofecode mcp auth list
 ```
 
 または、短いバージョンを使用してください。
 
 ```bash
-opencode mcp auth ls
+ofecode mcp auth ls
 ```
 
 ---
@@ -233,7 +233,7 @@ opencode mcp auth ls
 MCP サーバーの OAuth 資格情報を削除します。
 
 ```bash
-opencode mcp logout [name]
+ofecode mcp logout [name]
 ```
 
 ---
@@ -243,7 +243,7 @@ opencode mcp logout [name]
 MCP サーバーの OAuth 接続の問題をデバッグします。
 
 ```bash
-opencode mcp debug <name>
+ofecode mcp debug <name>
 ```
 
 ---
@@ -253,7 +253,7 @@ opencode mcp debug <name>
 構成されたプロバイダーから利用可能なすべてのモデルをリストします。
 
 ```bash
-opencode models [provider]
+ofecode models [provider]
 ```
 
 このコマンドは、構成されたプロバイダー全体で利用可能なすべてのモデルを `provider/model` の形式で表示します。
@@ -263,7 +263,7 @@ opencode models [provider]
 オプションでプロバイダー ID を渡して、そのプロバイダーによってモデルをフィルターできます。
 
 ```bash
-opencode models anthropic
+ofecode models anthropic
 ```
 
 #### フラグ
@@ -273,36 +273,36 @@ opencode models anthropic
 | <nobr><code>{"--refresh"}</code></nobr> | models.dev からモデルキャッシュを更新します。                   |
 | <nobr><code>{"--verbose"}</code></nobr> | より詳細なモデル出力を使用します (コストなどのメタデータを含む) |
 
-`--refresh` フラグを使用して、キャッシュされたモデルリストを更新します。これは、新しいモデルがプロバイダーに追加され、それを OpenCode で確認したい場合に便利です。
+`--refresh` フラグを使用して、キャッシュされたモデルリストを更新します。これは、新しいモデルがプロバイダーに追加され、それを OfeCode で確認したい場合に便利です。
 
 ```bash
-opencode models --refresh
+ofecode models --refresh
 ```
 
 ---
 
 ### run
 
-プロンプトを直接渡して、非対話モードで opencode を実行します。
+プロンプトを直接渡して、非対話モードで ofecode を実行します。
 
 ```bash
-opencode run [message..]
+ofecode run [message..]
 ```
 
 これは、スクリプト作成、自動化、または完全な TUI を起動せずに迅速な回答が必要な場合に便利です。例えば。
 
-```bash "opencode run"
-opencode run Explain the use of context in Go
+```bash "ofecode run"
+ofecode run Explain the use of context in Go
 ```
 
-実行中の `opencode serve` インスタンスにアタッチして、実行ごとの MCP サーバーのコールドブート時間を回避することもできます。
+実行中の `ofecode serve` インスタンスにアタッチして、実行ごとの MCP サーバーのコールドブート時間を回避することもできます。
 
 ```bash
 # Start a headless server in one terminal
-opencode serve
+ofecode serve
 
 # In another terminal, run commands that attach to it
-opencode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+ofecode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### フラグ
@@ -318,9 +318,9 @@ opencode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f`     | メッセージに添付するファイル                                                              |
 | <nobr><code>{"--format"}</code></nobr>   |          | 形式: デフォルト (フォーマット済み) または json (生の JSON イベント)                      |
 | <nobr><code>{"--title"}</code></nobr>    |          | セッションのタイトル (値が指定されていない場合は、切り詰められたプロンプトが使用されます) |
-| <nobr><code>{"--attach"}</code></nobr>   |          | 実行中の opencode サーバー (http://localhost:4096 など) に接続します。                    |
+| <nobr><code>{"--attach"}</code></nobr>   |          | 実行中の ofecode サーバー (http://localhost:4096 など) に接続します。                    |
 | <nobr><code>{"--password"}</code></nobr> | `-p`     | Basic 認証パスワード（デフォルトは `OPENCODE_SERVER_PASSWORD`）                           |
-| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `OPENCODE_SERVER_USERNAME` または `opencode`）         |
+| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `OPENCODE_SERVER_USERNAME` または `ofecode`）         |
 | <nobr><code>{"--dir"}</code></nobr>      |          | 実行ディレクトリ、またはアタッチ時のリモートサーバー上のパス                              |
 | <nobr><code>{"--variant"}</code></nobr>  |          | モデルバリアント（プロバイダー固有の推論レベル）                                          |
 | <nobr><code>{"--thinking"}</code></nobr> |          | 思考ブロックを表示                                                                        |
@@ -330,13 +330,13 @@ opencode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 
 ### serve
 
-API アクセスのためにヘッドレス OpenCode サーバーを起動します。完全な HTTP インターフェイスについては、[サーバーのドキュメント](/docs/server) を確認してください。
+API アクセスのためにヘッドレス OfeCode サーバーを起動します。完全な HTTP インターフェイスについては、[サーバーのドキュメント](/docs/server) を確認してください。
 
 ```bash
-opencode serve
+ofecode serve
 ```
 
-これにより、TUI インターフェイスを使用せずに opencode 機能への API アクセスを提供する HTTP サーバーが起動します。 `OPENCODE_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `opencode`)。
+これにより、TUI インターフェイスを使用せずに ofecode 機能への API アクセスを提供する HTTP サーバーが起動します。 `OPENCODE_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `ofecode`)。
 
 #### フラグ
 
@@ -351,20 +351,20 @@ opencode serve
 
 ### session
 
-OpenCode セッションを管理します。
+OfeCode セッションを管理します。
 
 ```bash
-opencode session [command]
+ofecode session [command]
 ```
 
 ---
 
 #### list
 
-すべての OpenCode セッションをリストします。
+すべての OfeCode セッションをリストします。
 
 ```bash
-opencode session list
+ofecode session list
 ```
 
 ##### フラグ
@@ -378,10 +378,10 @@ opencode session list
 
 ### stats
 
-OpenCode セッションのトークンの使用状況とコストの統計を表示します。
+OfeCode セッションのトークンの使用状況とコストの統計を表示します。
 
 ```bash
-opencode stats
+ofecode stats
 ```
 
 #### フラグ
@@ -400,7 +400,7 @@ opencode stats
 セッションデータを JSON としてエクスポートします。
 
 ```bash
-opencode export [sessionID]
+ofecode export [sessionID]
 ```
 
 セッション ID を指定しない場合は、利用可能なセッションから選択するように求められます。
@@ -412,24 +412,24 @@ opencode export [sessionID]
 JSON ファイルからセッションデータをインポートします。
 
 ```bash
-opencode import <file>
+ofecode import <file>
 ```
 
 ```bash
-opencode import session.json
+ofecode import session.json
 ```
 
 ---
 
 ### web
 
-Web インターフェイスを使用してヘッドレス OpenCode サーバーを起動します。
+Web インターフェイスを使用してヘッドレス OfeCode サーバーを起動します。
 
 ```bash
-opencode web
+ofecode web
 ```
 
-これにより、HTTP サーバーが起動し、Web ブラウザが開き、Web インターフェイスを通じて OpenCode にアクセスします。 `OPENCODE_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `opencode`)。
+これにより、HTTP サーバーが起動し、Web ブラウザが開き、Web インターフェイスを通じて OfeCode にアクセスします。 `OPENCODE_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `ofecode`)。
 
 #### フラグ
 
@@ -447,7 +447,7 @@ opencode web
 ACP (エージェントクライアントプロトコル) サーバーを起動します。
 
 ```bash
-opencode acp
+ofecode acp
 ```
 
 このコマンドは、nd-JSON を使用して stdin/stdout 経由で通信する ACP サーバーを起動します。
@@ -464,10 +464,10 @@ opencode acp
 
 ### uninstall
 
-OpenCode をアンインストールし、関連ファイルをすべて削除します。
+OfeCode をアンインストールし、関連ファイルをすべて削除します。
 
 ```bash
-opencode uninstall
+ofecode uninstall
 ```
 
 #### フラグ
@@ -483,22 +483,22 @@ opencode uninstall
 
 ### upgrade
 
-opencode を最新バージョンまたは特定のバージョンに更新します。
+ofecode を最新バージョンまたは特定のバージョンに更新します。
 
 ```bash
-opencode upgrade [target]
+ofecode upgrade [target]
 ```
 
 最新バージョンにアップグレードするには。
 
 ```bash
-opencode upgrade
+ofecode upgrade
 ```
 
 特定のバージョンにアップグレードするには。
 
 ```bash
-opencode upgrade v0.1.48
+ofecode upgrade v0.1.48
 ```
 
 #### フラグ
@@ -511,7 +511,7 @@ opencode upgrade v0.1.48
 
 ## グローバルフラグ
 
-opencode CLI は次のグローバルフラグを受け取ります。
+ofecode CLI は次のグローバルフラグを受け取ります。
 
 | フラグ                                     | ショート | 説明                                  |
 | ------------------------------------------ | -------- | ------------------------------------- |
@@ -524,7 +524,7 @@ opencode CLI は次のグローバルフラグを受け取ります。
 
 ## 環境変数
 
-OpenCode は環境変数を使用して構成できます。
+OfeCode は環境変数を使用して構成できます。
 
 | 変数                                  | タイプ   | 説明                                                                |
 | ------------------------------------- | -------- | ------------------------------------------------------------------- |
@@ -548,7 +548,7 @@ OpenCode は環境変数を使用して構成できます。
 | `OPENCODE_CLIENT`                     | 文字列   | クライアント識別子 (デフォルトは `cli`)                             |
 | `OPENCODE_ENABLE_EXA`                 | ブール値 | Exa Web 検索ツールを有効にする                                      |
 | `OPENCODE_SERVER_PASSWORD`            | 文字列   | `serve`/`web` の基本認証を有効にする                                |
-| `OPENCODE_SERVER_USERNAME`            | 文字列   | 基本認証ユーザー名 (デフォルト `opencode`) をオーバーライドします。 |
+| `OPENCODE_SERVER_USERNAME`            | 文字列   | 基本認証ユーザー名 (デフォルト `ofecode`) をオーバーライドします。 |
 | `OPENCODE_MODELS_URL`                 | 文字列   | モデル設定を取得するためのカスタム URL                              |
 
 ---

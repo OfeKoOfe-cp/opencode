@@ -69,7 +69,7 @@ export const syncTextBom = Effect.fn("FileMutation.syncTextBom")(function* (
 const transactionLocks = KeyedMutex.makeUnsafe<string>()
 
 /**
- * Mutation locking is process-local and serializes cooperating OpenCode
+ * Mutation locking is process-local and serializes cooperating OfeCode
  * changes; external writes can still race.
  */
 const layer = Layer.effect(

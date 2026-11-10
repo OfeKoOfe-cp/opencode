@@ -31,7 +31,7 @@ const disconnectConsole: SettingsProvidersEvent<Item> = {
   type: "disconnect.requested",
   providerIDs: ["opencode", "console-google"],
   integrationID: "opencode",
-  providerName: "OpenCode",
+  providerName: "OfeCode",
 }
 
 const work: ProviderAccount = { type: "credential", id: "cred_work", label: "Work", method: "oauth" }
@@ -46,7 +46,7 @@ const transient = [openai]
 const activate = (catalog: readonly Item[], account = personal): SettingsProvidersEvent<Item> => ({
   type: "account.activate.requested",
   integrationID: "opencode",
-  providerName: "OpenCode",
+  providerName: "OfeCode",
   account,
   activeCredentialID: work.id,
   catalog,
@@ -55,7 +55,7 @@ const activate = (catalog: readonly Item[], account = personal): SettingsProvide
 const remove = (catalog: readonly Item[]): SettingsProvidersEvent<Item> => ({
   type: "account.remove.requested",
   integrationID: "opencode",
-  providerName: "OpenCode",
+  providerName: "OfeCode",
   account: work,
   final: false,
   catalog,
@@ -102,7 +102,7 @@ test("a failed request restores every Console provider with one toast", () => {
 
   expect(connectedProviders(result.state, [opencode, consoleGoogle])).toEqual([opencode, consoleGoogle])
   expect(result.effects.filter((effect) => effect.type === "toast.failed")).toEqual([
-    { type: "toast.failed", providerName: "OpenCode", reason: { kind: "request", error } },
+    { type: "toast.failed", providerName: "OfeCode", reason: { kind: "request", error } },
   ])
 })
 
@@ -178,7 +178,7 @@ test("the dialog's late catalog refresh does not unfreeze the list while an acco
       type: "account.activate.run",
       attempt: 2,
       integrationID: "opencode",
-      providerName: "OpenCode",
+      providerName: "OfeCode",
       account: personal,
     },
   ])
@@ -245,7 +245,7 @@ test("an account action closes a rename and blocks renames and other account act
       type: "account.remove.run",
       attempt: 2,
       integrationID: "opencode",
-      providerName: "OpenCode",
+      providerName: "OfeCode",
       account: work,
       final: false,
     },

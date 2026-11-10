@@ -143,7 +143,7 @@ export function ConnectServerScreen(props: { url?: string } = {}) {
           <Show when={view().draft.method === "link"}>
             <footer>
               <p>{language.t("server.connect.pair.link")}</p>
-              <code dir="ltr">opencode pair</code>
+              <code dir="ltr">ofecode pair</code>
             </footer>
           </Show>
         </Show>

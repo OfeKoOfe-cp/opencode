@@ -310,7 +310,7 @@ export function DocsCodeGallery(props: { reference?: boolean }) {
           </li>
           <li>
             <p>
-              <strong>Restart OpenCode.</strong> Plugins load on start.
+              <strong>Restart OfeCode.</strong> Plugins load on start.
             </p>
             <Terminal lines={["$ opencode service restart"]} />
           </li>
@@ -649,7 +649,7 @@ const permissionsFile = `{
   ],
 }`
 
-const workflow = `name: OpenCode review
+const workflow = `name: OfeCode review
 on: [pull_request]
 
 jobs:

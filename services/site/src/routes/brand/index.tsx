@@ -750,7 +750,7 @@ export default function Brand() {
                           // The files' own sizes: the logo 240 × 300 (square 300 × 300), the wordmarks 640 × 115.
                           width={family.kind === "logo" ? (asset.file.endsWith("-square") ? 300 : 240) : 640}
                           height={family.kind === "logo" ? 300 : 115}
-                          alt={`OpenCode ${lower(family.title)}, ${lower(asset.name)}`}
+                          alt={`OfeCode ${lower(family.title)}, ${lower(asset.name)}`}
                         />
                       </div>
                       <div data-slot="meta">
@@ -840,7 +840,7 @@ export default function Brand() {
                                   src={tile.svg}
                                   width={tile.file.includes("-logo-") ? 240 : 640}
                                   height={tile.file.includes("-logo-") ? 300 : 115}
-                                  alt={`OpenCode ${lower(row.title)}, ${lower(group.name)}, ${lower(tile.name)}`}
+                                  alt={`OfeCode ${lower(row.title)}, ${lower(group.name)}, ${lower(tile.name)}`}
                                 />
                               </div>
                               <div data-slot="meta">
@@ -1113,7 +1113,7 @@ export default function Brand() {
                         <Match when={example.id === "lockup"}>
                           <div data-slot="lockup">
                             <Mark code="var(--logo-code)" inner="var(--logo-inner)" />
-                            <span>OpenCode Pro</span>
+                            <span>OfeCode Pro</span>
                           </div>
                         </Match>
                         <Match when={example.id === "color"}>
@@ -1175,7 +1175,7 @@ export default function Brand() {
                           <PartnerLockup partner={partner.name} />
                         </div>
                         <span data-slot="name">
-                          OpenCode × {partner.name}, {themeName(tone)}
+                          OfeCode × {partner.name}, {themeName(tone)}
                         </span>
                       </li>
                     )}
@@ -1231,7 +1231,7 @@ const partnerMarks: Record<string, { path: string; size: number }> = {
 }
 
 /**
- * The OpenCode logo at 32 × 40px (an 8px stroke), a 12px ×, and a partner's logo, with 3 strokes (24px)
+ * The OfeCode logo at 32 × 40px (an 8px stroke), a 12px ×, and a partner's logo, with 3 strokes (24px)
  * on each side of the ×.
  */
 function PartnerLockup(props: { partner: string }) {

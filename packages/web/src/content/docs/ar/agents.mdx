@@ -15,7 +15,7 @@ description: هيّئ الوكلاء المتخصصين واستخدمهم.
 
 ## الأنواع
 
-يوجد نوعان من الوكلاء في OpenCode: وكلاء أساسيون ووكلاء فرعيون.
+يوجد نوعان من الوكلاء في OfeCode: وكلاء أساسيون ووكلاء فرعيون.
 
 ---
 
@@ -27,7 +27,7 @@ description: هيّئ الوكلاء المتخصصين واستخدمهم.
 يمكنك استخدام مفتاح **Tab** للتبديل بين الوكلاء الأساسيين أثناء الجلسة.
 :::
 
-يأتي OpenCode مع وكيلين أساسيين مدمجين: **Build** و **Plan**. سنلقي نظرة عليهما أدناه.
+يأتي OfeCode مع وكيلين أساسيين مدمجين: **Build** و **Plan**. سنلقي نظرة عليهما أدناه.
 
 ---
 
@@ -35,13 +35,13 @@ description: هيّئ الوكلاء المتخصصين واستخدمهم.
 
 الوكلاء الفرعيون هم مساعدين متخصصين يمكن للوكلاء الأساسيين استدعاؤهم لمهام محددة. يمكنك أيضا استدعاؤهم يدويا عبر **الإشارة بـ @** في رسائلك.
 
-يأتي OpenCode مع ثلاثة وكلاء فرعيين مدمجين: **General** و **Explore** و **Scout**. سنلقي نظرة على ذلك أدناه.
+يأتي OfeCode مع ثلاثة وكلاء فرعيين مدمجين: **General** و **Explore** و **Scout**. سنلقي نظرة على ذلك أدناه.
 
 ---
 
 ## المدمجة
 
-يأتي OpenCode مع وكيلين أساسيين مدمجين وثلاثة وكلاء فرعيين مدمجين.
+يأتي OfeCode مع وكيلين أساسيين مدمجين وثلاثة وكلاء فرعيين مدمجين.
 
 ---
 
@@ -87,7 +87,7 @@ _الوضع_: `subagent`
 
 _الوضع_: `subagent`
 
-وكيل للقراءة فقط مخصص للوثائق الخارجية وأبحاث التبعيات. استخدمه عندما تحتاج إلى استنساخ مستودع تبعية داخل ذاكرة التخزين المؤقت المُدارة في OpenCode، أو فحص الشفرة المصدرية لمكتبة، أو إجراء مراجع متقاطعة بين الشفرة المحلية والتنفيذات upstream بدون تعديل مساحة العمل الخاصة بك.
+وكيل للقراءة فقط مخصص للوثائق الخارجية وأبحاث التبعيات. استخدمه عندما تحتاج إلى استنساخ مستودع تبعية داخل ذاكرة التخزين المؤقت المُدارة في OfeCode، أو فحص الشفرة المصدرية لمكتبة، أو إجراء مراجع متقاطعة بين الشفرة المحلية والتنفيذات upstream بدون تعديل مساحة العمل الخاصة بك.
 
 ---
 
@@ -188,10 +188,10 @@ _الوضع_: `primary`
 
 يمكنك أيضا تعريف الوكلاء باستخدام ملفات Markdown. ضعها في:
 
-- عام: `~/.config/opencode/agents/`
-- لكل مشروع: `.opencode/agents/`
+- عام: `~/.config/ofecode/agents/`
+- لكل مشروع: `.ofecode/agents/`
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Reviews code for quality and best practices
 mode: subagent
@@ -284,7 +284,7 @@ Provide constructive feedback without making direct changes.
 }
 ```
 
-إذا لم يتم تحديد temperature، يستخدم OpenCode القيم الافتراضية الخاصة بالنموذج؛ عادة 0 لمعظم النماذج و 0.55 لنماذج Qwen.
+إذا لم يتم تحديد temperature، يستخدم OfeCode القيم الافتراضية الخاصة بالنموذج؛ عادة 0 لمعظم النماذج و 0.55 لنماذج Qwen.
 
 ---
 
@@ -344,7 +344,7 @@ Provide constructive feedback without making direct changes.
 }
 ```
 
-هذا المسار نسبي لمكان وجود ملف الإعدادات. لذلك يعمل هذا لكل من إعدادات OpenCode العامة وإعدادات المشروع.
+هذا المسار نسبي لمكان وجود ملف الإعدادات. لذلك يعمل هذا لكل من إعدادات OfeCode العامة وإعدادات المشروع.
 
 ---
 
@@ -366,7 +366,7 @@ Provide constructive feedback without making direct changes.
 }
 ```
 
-يستخدم معرّف النموذج في إعدادات OpenCode الصيغة `provider/model-id`. على سبيل المثال، إذا كنت تستخدم [OpenCode Models](https://opencode.ai/docs/console/)، فستستخدم `opencode/gpt-6.1-sol` لـ GPT-6.1 Sol.
+يستخدم معرّف النموذج في إعدادات OfeCode الصيغة `provider/model-id`. على سبيل المثال، إذا كنت تستخدم [OfeCode Models](https://opencode.ai/docs/console/)، فستستخدم `ofecode/gpt-6.1-sol` لـ GPT-6.1 Sol.
 
 ---
 
@@ -454,7 +454,7 @@ Provide constructive feedback without making direct changes.
 
 يمكنك أيضا ضبط الأذونات في وكلاء Markdown.
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent
@@ -664,16 +664,16 @@ Only analyze code and suggest changes.
 هذه الخيارات الإضافية تعتمد على النموذج والمزود. راجع توثيق مزودك لمعرفة المعاملات المتاحة.
 
 :::tip
-شغّل `opencode models` لعرض قائمة بالنماذج المتاحة.
+شغّل `ofecode models` لعرض قائمة بالنماذج المتاحة.
 :::
 
 ---
 
 ## إنشاء وكلاء
 
-أنشئ وكيلا جديدا بإضافة ملف Markdown إلى `.opencode/agents/` للمشروع أو إلى `~/.config/opencode/agents/` على المستوى العام. يصبح اسم الملف اسم الوكيل، وتضبط الواجهة الأمامية (frontmatter) وصفه ووضعه ونموذجه وصلاحياته. راجع [Markdown](#markdown) أعلاه لمعرفة تنسيق الملف.
+أنشئ وكيلا جديدا بإضافة ملف Markdown إلى `.ofecode/agents/` للمشروع أو إلى `~/.config/ofecode/agents/` على المستوى العام. يصبح اسم الملف اسم الوكيل، وتضبط الواجهة الأمامية (frontmatter) وصفه ووضعه ونموذجه وصلاحياته. راجع [Markdown](#markdown) أعلاه لمعرفة تنسيق الملف.
 
-شغّل `opencode agent list` لعرض الوكلاء الذين حمّلهم OpenCode.
+شغّل `ofecode agent list` لعرض الوكلاء الذين حمّلهم OfeCode.
 
 ---
 
@@ -694,14 +694,14 @@ Only analyze code and suggest changes.
 فيما يلي بعض أمثلة الوكلاء التي قد تجدها مفيدة.
 
 :::tip
-هل لديك وكيل تود مشاركته؟ [قدّم PR](https://github.com/anomalyco/opencode).
+هل لديك وكيل تود مشاركته؟ [قدّم PR](https://github.com/anomalyco/ofecode).
 :::
 
 ---
 
 ### وكيل التوثيق
 
-```markdown title="~/.config/opencode/agents/docs-writer.md"
+```markdown title="~/.config/ofecode/agents/docs-writer.md"
 ---
 description: Writes and maintains project documentation
 mode: subagent
@@ -723,7 +723,7 @@ Focus on:
 
 ### مدقق أمني
 
-```markdown title="~/.config/opencode/agents/security-auditor.md"
+```markdown title="~/.config/ofecode/agents/security-auditor.md"
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent

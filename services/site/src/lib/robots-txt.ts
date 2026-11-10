@@ -9,7 +9,7 @@ const sitemap = "Sitemap: https://opencode.ai/sitemap.xml"
 
 // The agent message, laid out to fit the payload frame.
 const message = [
-  "Hello, agent. OpenCode is a coding agent, so you are welcome here.",
+  "Hello, agent. OfeCode is a coding agent, so you are welcome here.",
   "Every page on this site is also written for you, in Markdown.",
   "",
   ...[
@@ -31,7 +31,7 @@ const notes = [
 ]
 
 // A 3 × 5 face for the banner, drawn in ▀ ▄ █ (two pixel rows per text row), square like the
-// OpenCode font.
+// OfeCode font.
 const face: Record<string, string[]> = {
   A: ["###", "#.#", "###", "#.#", "#.#"],
   C: ["###", "#..", "#..", "#..", "###"],

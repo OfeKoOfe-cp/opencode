@@ -60,7 +60,7 @@ ${installRows}
   DEVTOOLS
   ├── Open           Cmd+Opt+J or Ctrl+Shift+J in Chrome
   ├── Run            opencode.help() in the DevTools console
-  └── Try            opencode.try() for OpenCode Lite, nothing to install
+  └── Try            opencode.try() for OfeCode Lite, nothing to install
 
   BUGS
   ├── Report         github.com/anomalyco/opencode/issues/new

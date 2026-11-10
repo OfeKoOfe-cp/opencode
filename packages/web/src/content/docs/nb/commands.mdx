@@ -17,9 +17,9 @@ Egendefinerte kommandoer kommer i tillegg til de innebygde kommandoene som `/ini
 
 Lag nedmerkingsfiler i `commands/`-katalogen for å definere egendefinerte kommandoer.
 
-Opprett `.opencode/commands/test.md`:
+Opprett `.ofecode/commands/test.md`:
 
-```md title=".opencode/commands/test.md"
+```md title=".ofecode/commands/test.md"
 ---
 description: Run tests with coverage
 agent: build
@@ -42,13 +42,13 @@ Bruk kommandoen ved å skrive `/` etterfulgt av kommandonavnet.
 
 ## Konfigurasjon
 
-Du kan legge til egendefinerte kommandoer gjennom OpenCode-konfigurasjonen eller ved å lage markdown-filer i katalogen `commands/`.
+Du kan legge til egendefinerte kommandoer gjennom OfeCode-konfigurasjonen eller ved å lage markdown-filer i katalogen `commands/`.
 
 ---
 
 ### JSON
 
-Bruk alternativet `command` i OpenCode [config](/docs/config):
+Bruk alternativet `command` i OfeCode [config](/docs/config):
 
 ```json title="opencode.jsonc" {4-12}
 {
@@ -79,10 +79,10 @@ Nå kan du kjøre denne kommandoen i TUI:
 
 Du kan også definere kommandoer ved å bruke markdown-filer. Plasser dem i:
 
-- Globalt: `~/.config/opencode/commands/`
-- Per prosjekt: `.opencode/commands/`
+- Globalt: `~/.config/ofecode/commands/`
+- Per prosjekt: `.ofecode/commands/`
 
-```markdown title="~/.config/opencode/commands/test.md"
+```markdown title="~/.config/ofecode/commands/test.md"
 ---
 description: Run tests with coverage
 agent: build
@@ -112,7 +112,7 @@ Ledetekstene for de egendefinerte kommandoene støtter flere spesielle plasshold
 
 Send argumenter til kommandoer ved å bruke plassholderen `$ARGUMENTS`.
 
-```md title=".opencode/commands/component.md"
+```md title=".ofecode/commands/component.md"
 ---
 description: Create a new component
 ---
@@ -138,7 +138,7 @@ Du kan også få tilgang til individuelle argumenter ved å bruke posisjonelle p
 
 For eksempel:
 
-```md title=".opencode/commands/create-file.md"
+```md title=".ofecode/commands/create-file.md"
 ---
 description: Create a new file with content
 ---
@@ -167,7 +167,7 @@ Bruk _!`command`_ for å injisere [shell-kommando](/docs/tui#shell-commands)-utd
 
 For eksempel, for å lage en egendefinert kommando som analyserer testdekning:
 
-```md title=".opencode/commands/analyze-coverage.md"
+```md title=".ofecode/commands/analyze-coverage.md"
 ---
 description: Analyze test coverage
 ---
@@ -180,7 +180,7 @@ Based on these results, suggest improvements to increase coverage.
 
 Eller for å se gjennom nylige endringer:
 
-```md title=".opencode/commands/review-changes.md"
+```md title=".ofecode/commands/review-changes.md"
 ---
 description: Review recent changes
 ---
@@ -199,7 +199,7 @@ Kommandoer kjøres i prosjektets rotkatalog og utdataene deres blir en del av le
 
 Inkluder filer i kommandoen din ved å bruke `@` etterfulgt av filnavnet.
 
-```md title=".opencode/commands/review-component.md"
+```md title=".ofecode/commands/review-component.md"
 ---
 description: Review component
 ---
@@ -314,7 +314,7 @@ Dette er et **valgfritt** konfigurasjonsalternativ.
 
 ## Innebygd
 
-OpenCode inkluderer flere innebygde kommandoer som `/init`, `/undo`, `/redo`, `/help`; [finn ut mer](/docs/tui#commands).
+OfeCode inkluderer flere innebygde kommandoer som `/init`, `/undo`, `/redo`, `/help`; [finn ut mer](/docs/tui#commands).
 
 :::note
 Egendefinerte kommandoer kan overstyre innebygde kommandoer.

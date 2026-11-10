@@ -49,7 +49,7 @@ export const lenient = <const S extends Schema.Top>(schema: S) =>
 /** A billed amount in USD; a malformed or negative one decodes as absent. */
 const billedAmount = lenient(Schema.Finite.check(Schema.isGreaterThanOrEqualTo(0)))
 
-/** Billing an endpoint reports beside its token usage: `cost` is the USD it charged (OpenRouter, LiteLLM, OpenCode Zen). */
+/** Billing an endpoint reports beside its token usage: `cost` is the USD it charged (OpenRouter, LiteLLM, OfeCode Zen). */
 export const ReportedBilling = Schema.Struct({
   cost: billedAmount,
 })

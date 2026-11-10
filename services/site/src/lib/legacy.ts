@@ -39,7 +39,7 @@ export function legacyRedirect(request: Legacy): Response | undefined {
   if (/^\/(auth|workspace)(\/|$)/.test(request.path))
     return redirect(302, "https://opencode.ai/console/login", "no-store")
 
-  // OpenCode Black was discontinued; its subscriptions moved to Go. Old links, about 100 a day.
+  // OfeCode Black was discontinued; its subscriptions moved to Go. Old links, about 100 a day.
   if (/^\/black(\/|$)/.test(request.path)) return redirect(301, "/console/go")
 
   // The stats site's old name: it lives at /data (the Stats Worker). Old links, about 130 a day.

@@ -322,7 +322,7 @@ const layer = Layer.effect(
 
 export const node = makeLocationNode({ service: Service, layer, deps: [Provider.node, Bus.node, Location.node] })
 
-// Signed out, only free OpenCode models are enabled. Clients default to the first available model, so keep
+// Signed out, only free OfeCode models are enabled. Clients default to the first available model, so keep
 // these free models ahead of each new free launch instead of letting release order pick the default.
 const PREFERRED_FREE = [
   "big-pickle",

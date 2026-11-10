@@ -10,7 +10,7 @@ const pad = (value: number, length: number) => String(value).padStart(length, "0
 /** Plate 01: the specimen's cover, like the first page of a printed type specimen. */
 export function Cover() {
   const facts = [
-    ["Typeface", "OpenCode"],
+    ["Typeface", "OfeCode"],
     ["Glyphs", "o p e n c d"],
     ["Grid", "4 × 7 modules"],
     ["Module", "120 / 1,000 em"],
@@ -81,7 +81,7 @@ export function Cover() {
 export function Poster() {
   return (
     <Plate id="poster" tone="blue" aside="Offset · 1 colour + paper">
-      <div data-slot="poster" role="img" aria-label="Poster: open, code, node, done, encoded, set in the OpenCode font">
+      <div data-slot="poster" role="img" aria-label="Poster: open, code, node, done, encoded, set in the OfeCode font">
         <span data-slot="crop" data-corner="tl" />
         <span data-slot="crop" data-corner="tr" />
         <span data-slot="crop" data-corner="bl" />
@@ -602,10 +602,10 @@ export function Colophon() {
     })
   })
   const credits = [
-    ["Typeface", "OpenCode 1.001"],
+    ["Typeface", "OfeCode 1.001"],
     ["Drawn on", "4 × 7 modules of 120 units"],
-    ["Source", "The OpenCode wordmark"],
-    ["Specimen set in", "OpenCode, OpenTUI Mono and Inter"],
+    ["Source", "The OfeCode wordmark"],
+    ["Specimen set in", "OfeCode, OpenTUI Mono and Inter"],
     ["Built with", "SVG and CSS, no images"],
     ["Published by", "Anomaly"],
   ]

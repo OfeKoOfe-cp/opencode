@@ -99,7 +99,7 @@ interface Hub {
   fiber?: Fiber.Fiber<void>
 }
 
-// Every Location the OpenCode server loads runs this plugin; they share one connection per Console workspace.
+// Every Location the OfeCode server loads runs this plugin; they share one connection per Console workspace.
 const hubs = new Map<string, Hub>()
 
 /**
@@ -222,16 +222,16 @@ export const make = Effect.fnUntraced(function* (ctx: Context, http: HttpClient.
       const failure = (cause: unknown) =>
         cause instanceof ToolFailure
           ? cause
-          : new ToolFailure({ message: "OpenCode Console didn't answer", error: cause })
+          : new ToolFailure({ message: "OfeCode Console didn't answer", error: cause })
       editor.namespace({
         name: namespace,
         description:
-          "Watch Slack threads, GitHub pull requests, issues, commits and Actions runs, and the workspace's MCP servers' events through OpenCode Console. The session wakes on its own when they change.",
+          "Watch Slack threads, GitHub pull requests, issues, commits and Actions runs, and the workspace's MCP servers' events through OfeCode Console. The session wakes on its own when they change.",
       })
       editor.add({
         name: "watch",
         description:
-          "Wake this session when a Slack thread or a GitHub pull request, issue, commit or Actions run gets a reply or changes status, or one of the workspace's MCP servers sends an event `events` lists. Use it for work started outside OpenCode Console's MCP servers, such as `gh workflow run` or a link the user shared; Console's Slack and GitHub tools, `gh pr create` and `git push` already watch what they start. People often answer a Slack post in the channel rather than its thread, so after each top-level post the channel's new top-level messages are watched for 15 minutes too. The session wakes with the update, so don't poll.",
+          "Wake this session when a Slack thread or a GitHub pull request, issue, commit or Actions run gets a reply or changes status, or one of the workspace's MCP servers sends an event `events` lists. Use it for work started outside OfeCode Console's MCP servers, such as `gh workflow run` or a link the user shared; Console's Slack and GitHub tools, `gh pr create` and `git push` already watch what they start. People often answer a Slack post in the channel rather than its thread, so after each top-level post the channel's new top-level messages are watched for 15 minutes too. The session wakes with the update, so don't poll.",
         input: Schema.Struct({
           target: Schema.optional(
             Schema.String.annotate({
@@ -573,8 +573,8 @@ function expectOk(response: HttpClientResponse.HttpClientResponse) {
         body?.limit !== undefined
           ? `This member already keeps the most watches Console allows (${body.limit}). Stop one with unwatch first.`
           : response.status === 404
-            ? "Event watches are off for this OpenCode Console workspace."
-            : (body?.message ?? `OpenCode Console answered ${response.status}`)
+            ? "Event watches are off for this OfeCode Console workspace."
+            : (body?.message ?? `OfeCode Console answered ${response.status}`)
       return Effect.fail(new ToolFailure({ message }))
     }),
   )
@@ -639,8 +639,8 @@ function line(text: string) {
 function wakeText(events: ReadonlyArray<WatchEvent>) {
   return [
     events.length === 1
-      ? "Something this session watches through OpenCode Console changed."
-      : `${events.length} updates arrived on something this session watches through OpenCode Console.`,
+      ? "Something this session watches through OfeCode Console changed."
+      : `${events.length} updates arrived on something this session watches through OfeCode Console.`,
     ...events.map(describe),
   ].join("\n\n")
 }

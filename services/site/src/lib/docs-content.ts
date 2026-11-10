@@ -142,22 +142,22 @@ export const docsToc = [
 export const docsIntro = {
   title: "Intro",
   /** The page's `<title>`, 50–60 characters. */
-  metaTitle: "OpenCode | Install OpenCode and connect a provider",
+  metaTitle: "OfeCode | Install OfeCode and connect a provider",
   description:
-    "Get started with OpenCode. Install the CLI, desktop app, web or Docker version, connect a model provider, and find your way around the rest of the docs.",
-  lead: "OpenCode is an open source coding agent. It's available as a desktop app, a terminal interface, a mobile app and an SDK.",
+    "Get started with OfeCode. Install the CLI, desktop app, web or Docker version, connect a model provider, and find your way around the rest of the docs.",
+  lead: "OfeCode is an open source coding agent. It's available as a desktop app, a terminal interface, a mobile app and an SDK.",
   cli: [
     [
       "The npm package uses a postinstall script to select the native ",
       { code: "opencode" },
-      " binary for your platform. The Bun and pnpm commands explicitly allow the required script; Vite+ requires no additional flag. The mise command requires mise 2026.10.9 or later; older versions install OpenCode 1.",
+      " binary for your platform. The Bun and pnpm commands explicitly allow the required script; Vite+ requires no additional flag. The mise command requires mise 2026.10.9 or later; older versions install OfeCode 1.",
     ],
     ["Windows package managers are not supported."],
     ["Download a standalone CLI binary for your platform."],
   ] satisfies RichText[],
-  desktop: "Download the latest OpenCode Desktop build for your platform.",
+  desktop: "Download the latest OfeCode Desktop build for your platform.",
   web: {
-    lead: ["Access the OpenCode web interface with the ", { code: "opencode pair" }, " command."] satisfies RichText,
+    lead: ["Access the OfeCode web interface with the ", { code: "opencode pair" }, " command."] satisfies RichText,
     command: "opencode pair",
     output: "  Open a link to connect. Links work once and expire in 5 minutes.",
     url: "http://127.0.0.1:49374/auth/connect/...",
@@ -169,7 +169,7 @@ export const docsIntro = {
   ] satisfies RichText,
   connect: [
     [
-      "OpenCode has built-in support for many LLM providers. You can connect to them directly ",
+      "OfeCode has built-in support for many LLM providers. You can connect to them directly ",
       { text: "in the TUI", href: docsUrl("/cli/providers") },
       " with ",
       { code: "/connect" },
@@ -178,18 +178,18 @@ export const docsIntro = {
     ["See ", { text: "Providers", href: docsUrl("/providers") }, " to configure custom providers."],
     [
       "If you'd like easy access to the best coding models, you can try out ",
-      { text: "OpenCode Console", href: docsUrl("/console") },
+      { text: "OfeCode Console", href: docsUrl("/console") },
       ".",
     ],
     [
       "You can also try ",
-      { text: "OpenCode Go", href: docsUrl("/console/go") },
+      { text: "OfeCode Go", href: docsUrl("/console/go") },
       ", a subscription plan from $10/month that grants you access to the best coding models.",
     ],
   ] satisfies RichText[],
   customize: [
-    "Make OpenCode your own by editing the ",
-    { text: "OpenCode config", href: docsUrl("/config") },
+    "Make OfeCode your own by editing the ",
+    { text: "OfeCode config", href: docsUrl("/config") },
     ", ",
     { text: "loading plugins", href: docsUrl("/plugins") },
     ", ",
@@ -201,8 +201,8 @@ export const docsIntro = {
     ".",
   ] satisfies RichText,
   learn: [
-    "If you are interested in an in-depth course on OpenCode, Boot.dev has created an excellent ",
-    { text: "AI Coding with OpenCode", href: "https://www.boot.dev/courses/learn-ai-coding", external: true },
+    "If you are interested in an in-depth course on OfeCode, Boot.dev has created an excellent ",
+    { text: "AI Coding with OfeCode", href: "https://www.boot.dev/courses/learn-ai-coding", external: true },
     " course in consultation with our team. All the information in the course is free to read and watch, though some interactive features may require payment.",
   ] satisfies RichText,
 }

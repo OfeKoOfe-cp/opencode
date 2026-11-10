@@ -124,7 +124,7 @@ export default [
         return new Response(event.request.method === "HEAD" ? null : await robotsTxt(), {
           headers: textHeaders,
         })
-      // The people behind OpenCode (https://humanstxt.org). Served here because public/ files get no
+      // The people behind OfeCode (https://humanstxt.org). Served here because public/ files get no
       // charset, and without one browsers garble its block characters.
       if (path === "/humans.txt")
         return new Response(event.request.method === "HEAD" ? null : humansTxt, {

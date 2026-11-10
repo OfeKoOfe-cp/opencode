@@ -882,7 +882,7 @@ export const dict = {
   "settings.about.firstIllustrated": "First illustrated in London, England",
   "settings.about.website": "www.opencode.ai",
   "settings.about.description": "OfeCode, the open source coding agent",
-  "settings.about.trademark": "OpenCode is a registered trademark of Anomaly Innovations, Inc. OfeCode is an unaffiliated community fork.",
+  "settings.about.trademark": "OfeCode is a registered trademark of Anomaly Innovations, Inc. OfeCode is an unaffiliated community fork.",
   "settings.about.typeset": "Typeset in Inter and IBM Plex Mono",
   "settings.about.notices.title": "Third-party notices",
   "settings.about.notices.description": "OfeCode includes the following open source software.",

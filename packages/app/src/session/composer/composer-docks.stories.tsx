@@ -201,7 +201,7 @@ function ComposerDocksPreview(props: DockArgs) {
 }
 
 export default {
-  title: "OpenCode/Session/Composer docks",
+  title: "OfeCode/Session/Composer docks",
   id: "session-composer-docks",
   component: ComposerDocksPreview,
   parameters: {

@@ -34,7 +34,7 @@ import {
 } from "../storybook/current-session-fixtures"
 
 export default {
-  title: "OpenCode/Conversation/Message states",
+  title: "OfeCode/Conversation/Message states",
   id: "current-session-timeline-rows",
   component: SessionTimeline,
   parameters: {

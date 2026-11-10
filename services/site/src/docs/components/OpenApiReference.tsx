@@ -45,7 +45,7 @@ export function OpenApiReference(props: { assets: DocsAssets }) {
   return (
     <DocsLayout
       title="API"
-      description="OpenCode HTTP API reference and OpenAPI specification."
+      description="OfeCode HTTP API reference and OpenAPI specification."
       currentSlug="api"
       headings={[
         ...groups.map((group) => ({ depth: 2, slug: group.id, text: group.title })),

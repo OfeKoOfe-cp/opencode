@@ -3,12 +3,12 @@ title: "Pi"
 description: "Use Console and Go models from the Pi coding agent."
 ---
 
-[Pi](https://pi.dev) includes OpenCode providers for pay-as-you-go and Go. It picks the right API for each paid or Go
-model. Free-tier chat models require OpenCode and return HTTP `403` from Pi.
+[Pi](https://pi.dev) includes OfeCode providers for pay-as-you-go and Go. It picks the right API for each paid or Go
+model. Free-tier chat models require OfeCode and return HTTP `403` from Pi.
 
 | Provider      | Plan          |
 | ------------- | ------------- |
-| `opencode`    | Pay-as-you-go |
+| `ofecode`    | Pay-as-you-go |
 | `opencode-go` | Go            |
 
 ## Configure
@@ -17,13 +17,13 @@ Both providers read the key from `OPENCODE_API_KEY`. Create a [personal API key]
 
 ```bash
 export OPENCODE_API_KEY="oc_sk_..."
-pi --model opencode/claude-sonnet-5-5
+pi --model ofecode/claude-sonnet-5-5
 ```
 
 You can also run `/login` in Pi and select the provider. Pi stores the key in `~/.pi/agent/auth.json`.
 
 ```text
-/login opencode
+/login ofecode
 ```
 
 ## Go

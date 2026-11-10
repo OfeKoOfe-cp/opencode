@@ -33,7 +33,7 @@ const selectors: Record<HomeSection, string> = {
 const labels: Record<HomeSection, string> = {
   logos: "Logo row",
   products: "Product carousel",
-  what: "What is OpenCode?",
+  what: "What is OfeCode?",
   getStarted: "Get started",
   byos: "Bring your own subs",
   tools: "Bring your own tools",

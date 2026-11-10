@@ -91,7 +91,7 @@ html:has([data-site][data-theme="dark"]) {
   --text-inverted: light-dark(hsl(0, 0%, 100%), #0c0c0c);
   --border: light-dark(hsl(0, 0%, 88%), hsl(0, 0%, 18%));
   --border-strong: light-dark(hsl(0, 0%, 78%), hsl(0, 0%, 28%));
-  /* The OpenCode Console accent blue; dark mode uses a lighter blue from Settings › Dark blue. */
+  /* The OfeCode Console accent blue; dark mode uses a lighter blue from Settings › Dark blue. */
   --link-dark: #4f8bff;
   --link: light-dark(#3b5cf6, var(--link-dark));
   --status-ok: light-dark(hsl(142, 64%, 38%), hsl(142, 60%, 58%));
@@ -189,7 +189,7 @@ html:has([data-site][data-theme="dark"]) {
   --mono-size: var(--fs-ui);
   /* Body copy. Phones raise it (see the mobile type scale near the end of this file). */
   --body-size: var(--fs-body);
-  /* Section titles ("What is OpenCode?", "FAQ") and product names. The site serves OpenTUI Mono
+  /* Section titles ("What is OfeCode?", "FAQ") and product names. The site serves OpenTUI Mono
      in Regular and Bold only, so a hairline stroke adds the "medium" weight; drop it for a real medium face. */
   --title-size: var(--fs-title);
   --title-stroke: 0.2px currentColor;

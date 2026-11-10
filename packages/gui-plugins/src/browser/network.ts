@@ -59,7 +59,7 @@ export const createBrowserNetwork = Effect.fn("BrowserNetwork.create")(function*
           auth.scheme !== "basic" ||
           auth.host !== proxy.host ||
           auth.port !== proxy.port ||
-          auth.realm !== "OpenCode Browser Proxy"
+          auth.realm !== "OfeCode Browser Proxy"
         )
           return
         event.preventDefault()

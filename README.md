@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/OfeKoOfe-cp/opencode">
+  <a href="https://github.com/OfeKoOfe-cp/ofecode">
     <picture>
       <source srcset=".github/assets/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset=".github/assets/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
@@ -10,7 +10,7 @@
 <p align="center">The open source AI coding agent.</p>
 
 <p align="center">
-  <a href="https://github.com/OfeKoOfe-cp/opencode/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/OfeKoOfe-cp/opencode/release.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/OfeKoOfe-cp/ofecode/actions/workflows/release.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/OfeKoOfe-cp/ofecode/release.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -38,15 +38,15 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![OfeCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://github.com/OfeKoOfe-cp/opencode)
+[![OfeCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://github.com/OfeKoOfe-cp/ofecode)
 
 ---
 
-OfeCode is a fork of [OpenCode](https://github.com/anomalyco/opencode), rebranded and extended. It reads the same configuration layout as OpenCode (`opencode.json`, `.opencode/`, and the same data directories), so an existing OpenCode configuration works unchanged.
+OfeCode is a fork of [OfeCode](https://github.com/anomalyco/ofecode), rebranded and extended. It reads the same configuration layout as OfeCode (`opencode.json`, `.ofecode/`, and the same data directories), so an existing OfeCode configuration works unchanged.
 
 ### Channels and data
 
-A build takes its channel from the git branch it is built on, so a fork branch keeps its own database and background service registration alongside an existing OpenCode install:
+A build takes its channel from the git branch it is built on, so a fork branch keeps its own database and background service registration alongside an existing OfeCode install:
 
 ```bash
 bun run build --single                        # channel from the current branch
@@ -60,8 +60,8 @@ Share the upstream `dev` channel with `OPENCODE_CHANNEL=dev`.
 OfeCode requires the Bun version pinned in the `packageManager` field of [`package.json`](./package.json) or newer.
 
 ```bash
-git clone https://github.com/OfeKoOfe-cp/opencode.git
-cd opencode
+git clone https://github.com/OfeKoOfe-cp/ofecode.git
+cd ofecode
 bun install
 bun run build --single        # compile the CLI for the current platform
 bun run dev                   # run the TUI from source
@@ -80,11 +80,11 @@ curl -fsSL https://opencode.ai/v2/install | bash
 # Package managers
 npm i -g @opencode/cli@latest      # or bun/pnpm/yarn
 brew install anomalyco/tap/opencode-v2 # macOS and Linux (recommended, always up to date)
-brew install opencode              # macOS and Linux (official brew formula, updated less)
-sudo pacman -S opencode            # Arch Linux (Stable)
+brew install ofecode              # macOS and Linux (official brew formula, updated less)
+sudo pacman -S ofecode            # Arch Linux (Stable)
 paru -S opencode-beta              # Arch Linux (Latest from AUR)
-mise use -g opencode               # Any OS
-nix run github:anomalyco/opencode  # Nix
+mise use -g ofecode               # Any OS
+nix run github:anomalyco/ofecode  # Nix
 ```
 
 > [!TIP]
@@ -108,7 +108,7 @@ brew install --cask opencode-desktop
 
 #### Installation Directory
 
-The install script installs OpenCode to `$HOME/.opencode/bin`.
+The install script installs OfeCode to `$HOME/.ofecode/bin`.
 
 ### Agents
 
@@ -135,4 +135,4 @@ If you're interested in contributing to OfeCode, please read our [contributing d
 
 ---
 
-**Join the upstream community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)
+**Join the upstream community** [Discord](https://discord.gg/ofecode) | [X.com](https://x.com/ofecode)

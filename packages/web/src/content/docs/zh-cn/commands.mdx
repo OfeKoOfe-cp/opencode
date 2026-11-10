@@ -17,9 +17,9 @@ description: 为重复任务创建自定义命令。
 
 在 `commands/` 目录中创建 markdown 文件来定义自定义命令。
 
-创建 `.opencode/commands/test.md`：
+创建 `.ofecode/commands/test.md`：
 
-```md title=".opencode/commands/test.md"
+```md title=".ofecode/commands/test.md"
 ---
 description: Run tests with coverage
 agent: build
@@ -42,13 +42,13 @@ frontmatter 定义命令属性，内容则成为模板。
 
 ## 配置
 
-你可以通过 OpenCode 配置或在 `commands/` 目录中创建 markdown 文件来添加自定义命令。
+你可以通过 OfeCode 配置或在 `commands/` 目录中创建 markdown 文件来添加自定义命令。
 
 ---
 
 ### JSON
 
-在 OpenCode [配置](/docs/config)中使用 `command` 选项：
+在 OfeCode [配置](/docs/config)中使用 `command` 选项：
 
 ```json title="opencode.jsonc" {4-12}
 {
@@ -79,10 +79,10 @@ frontmatter 定义命令属性，内容则成为模板。
 
 你还可以使用 markdown 文件定义命令。将它们放在：
 
-- 全局：`~/.config/opencode/commands/`
-- 项目级：`.opencode/commands/`
+- 全局：`~/.config/ofecode/commands/`
+- 项目级：`.ofecode/commands/`
 
-```markdown title="~/.config/opencode/commands/test.md"
+```markdown title="~/.config/ofecode/commands/test.md"
 ---
 description: Run tests with coverage
 agent: build
@@ -111,7 +111,7 @@ markdown 文件名即为命令名。例如，`test.md` 允许你运行：
 
 使用 `$ARGUMENTS` 占位符向命令传递参数。
 
-```md title=".opencode/commands/component.md"
+```md title=".ofecode/commands/component.md"
 ---
 description: Create a new component
 ---
@@ -137,7 +137,7 @@ Include proper typing and basic structure.
 
 例如：
 
-```md title=".opencode/commands/create-file.md"
+```md title=".ofecode/commands/create-file.md"
 ---
 description: Create a new file with content
 ---
@@ -166,7 +166,7 @@ with the following content: $3
 
 例如，创建一个分析测试覆盖率的自定义命令：
 
-```md title=".opencode/commands/analyze-coverage.md"
+```md title=".ofecode/commands/analyze-coverage.md"
 ---
 description: Analyze test coverage
 ---
@@ -179,7 +179,7 @@ Based on these results, suggest improvements to increase coverage.
 
 或者查看最近的更改：
 
-```md title=".opencode/commands/review-changes.md"
+```md title=".ofecode/commands/review-changes.md"
 ---
 description: Review recent changes
 ---
@@ -198,7 +198,7 @@ Review these changes and suggest any improvements.
 
 使用 `@` 后跟文件名在命令中引用文件。
 
-```md title=".opencode/commands/review-component.md"
+```md title=".ofecode/commands/review-component.md"
 ---
 description: Review component
 ---
@@ -313,7 +313,7 @@ Check for performance issues and suggest improvements.
 
 ## 内置命令
 
-opencode 包含多个内置命令，如 `/init`、`/undo`、`/redo`、`/help`；[了解更多](/docs/tui#commands)。
+ofecode 包含多个内置命令，如 `/init`、`/undo`、`/redo`、`/help`；[了解更多](/docs/tui#commands)。
 
 :::note
 自定义命令可以覆盖内置命令。

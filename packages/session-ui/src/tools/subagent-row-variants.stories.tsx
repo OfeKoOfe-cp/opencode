@@ -6,7 +6,7 @@ import { timelinePresets } from "../timeline/detail"
 import { SessionTimeline } from "../timeline/session-timeline"
 
 export default {
-  title: "OpenCode/Work/Subagent row variants",
+  title: "OfeCode/Work/Subagent row variants",
   id: "current-subagent-row-variants",
   parameters: {
     layout: "fullscreen",

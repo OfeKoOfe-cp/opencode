@@ -13,11 +13,11 @@ const items = [
   },
   {
     title: "Safer Remote Pairing",
-    body: "The first `opencode pair --remote` now warns that it will expose your server and asks for confirmation. For non-interactive use, pass `opencode pair --remote --yes`.",
+    body: "The first `ofecode pair --remote` now warns that it will expose your server and asks for confirmation. For non-interactive use, pass `ofecode pair --remote --yes`.",
   },
   {
     title: "Installable Web App",
-    body: "Use Chrome or Edge’s Install button to install the OpenCode web app, including when it runs behind an authenticating proxy.",
+    body: "Use Chrome or Edge’s Install button to install the OfeCode web app, including when it runs behind an authenticating proxy.",
   },
   {
     title: "Clear Session Failures",

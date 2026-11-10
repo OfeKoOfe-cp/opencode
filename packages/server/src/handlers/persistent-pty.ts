@@ -120,7 +120,7 @@ export const PersistentPtyHandler = HttpApiBuilder.group(Api, "server.experiment
                 "PersistentPty.UnsupportedError": (error) =>
                   new PtyFeatureUnsupportedError({
                     feature: error.feature,
-                    message: "Terminal renaming will be available after OpenCode's terminal service restarts",
+                    message: "Terminal renaming will be available after OfeCode's terminal service restarts",
                   }),
                 "PersistentPty.UnavailableError": unavailable,
               }),

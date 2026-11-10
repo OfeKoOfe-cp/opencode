@@ -169,14 +169,14 @@ export function architectLayout(coverConcept: CoverConcept, interiorConcept: Int
 
 /** The default labels and static text the editor can change. */
 export const defaultText = {
-  kicker: "OpenCode legal",
+  kicker: "OfeCode legal",
   project: "Project",
   number: "Number",
   name: "Name",
   date: "Date",
   versionLabel: "Version",
   sections: "Sections",
-  projectValue: "OpenCode",
+  projectValue: "OfeCode",
   headerLeft: "opencode",
 }
 
@@ -358,7 +358,7 @@ export function ruleTop(index: number, row: number, metrics: RowMetrics) {
   return index * row + metrics.baseline + (row - metrics.cap - rule) / 2
 }
 
-/** The OpenCode logo mark, ink version, in its 240 × 300 artwork. */
+/** The OfeCode logo mark, ink version, in its 240 × 300 artwork. */
 const logoMark = `<path d="M180 240H60V120H180V240Z" fill="#D2D2D2"/><path d="M180 60H60V240H180V60ZM240 300H0V0H240V300Z" fill="#1F1F1F"/>`
 
 /**

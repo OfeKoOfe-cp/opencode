@@ -80,7 +80,7 @@ const tones = {
 type Tone = keyof typeof tones
 
 /**
- * "OpenCode. Six letters.": the whole film as a pure function of `time`, in seconds. Every frame is
+ * "OfeCode. Six letters.": the whole film as a pure function of `time`, in seconds. Every frame is
  * SVG built from the font's own outlines and module maps, so a recorder can step it frame by frame.
  * Wide is 1920 × 1080 letterboxed to 2:1; tall is 1080 × 1350 for social.
  */
@@ -106,7 +106,7 @@ export function Film(props: {
       style={{ width: `${outer}px`, height: `${full}px` }}
     >
       <div data-slot="film-bar">
-        <span>OpenCode Font — The film</span>
+        <span>OfeCode Font — The film</span>
         <span>
           {props.poster
             ? "Pl. 00 · The film"

@@ -1,7 +1,7 @@
 import { blocks } from "~/lib/markdown"
 
 /**
- * The OpenCode font: the six letters of the wordmark, cut on a 24 × 42 cell from the official SVG
+ * The OfeCode font: the six letters of the wordmark, cut on a 24 × 42 cell from the official SVG
  * logo. `ink` is the letter, `shadow` the lighter shade in its counter. The same outlines live in
  * public/font/glyphs.mjs, which the font download and the GIF worker load at runtime.
  */
@@ -284,10 +284,10 @@ export const versions = [
 
 /** The page copy, shared by the page, its Markdown version and the ⌘K search. */
 export const fontContent = {
-  title: "OpenCode Font",
-  metaTitle: "OpenCode | Font, a typeface cut from the wordmark",
+  title: "OfeCode Font",
+  metaTitle: "OfeCode | Font, a typeface cut from the wordmark",
   description:
-    "A six-letter typeface cut from the OpenCode wordmark on a 4 × 7 grid. Type with it, see how every letter is built, then download your own installable font.",
+    "A six-letter typeface cut from the OfeCode wordmark on a 4 × 7 grid. Type with it, see how every letter is built, then download your own installable font.",
   combinations: { base: "6", exponent: "3,591" },
   download: "Download",
   plates: [
@@ -309,7 +309,7 @@ export const fontContent = {
     { id: "colophon", title: "Colophon" },
   ],
   cover: {
-    lead: "Six letters cut from the OpenCode wordmark. No curves, no diagonals, no exceptions: every edge falls on a grid of 120-unit modules.",
+    lead: "Six letters cut from the OfeCode wordmark. No curves, no diagonals, no exceptions: every edge falls on a grid of 120-unit modules.",
   },
   construction: {
     lead: "Each letter, rebuilt from nothing: the grid, the metrics, one module at a time, the shade, the outline, and the measurements that prove it.",
@@ -340,15 +340,15 @@ export const fontContent = {
   },
   loupe: {
     lead: "Look closer. Every module of every letter is a grid of 144 smaller squares.",
-    label: "opencode, set large in the OpenCode font. Hover or press and hold to look through a loupe.",
+    label: "opencode, set large in the OfeCode font. Hover or press and hold to look through a loupe.",
   },
   tester: {
     lead: "Type with the six letters. Other characters stay empty.",
-    label: "Text to preview in the OpenCode font",
+    label: "Text to preview in the OfeCode font",
     initial: "open code node done",
   },
   colophon: {
-    lead: "Download the font, install it, then choose OpenCode in any app. Every copy carries its own substitution map.",
+    lead: "Download the font, install it, then choose OfeCode in any app. Every copy carries its own substitution map.",
   },
 }
 

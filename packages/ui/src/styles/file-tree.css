@@ -52,16 +52,16 @@ file-tree-container.opencode-pierre-file-tree {
   padding-inline-end: 8px;
   overflow: clip;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   background-color: transparent;
   color: var(--v2-text-text-muted);
   text-align: start;
   cursor: pointer;
   scroll-margin-block: 8px;
   transition:
-    background-color 120ms ease,
-    color 120ms ease,
-    --file-tree-v2-row-overlay 120ms ease;
+    background-color var(--v2-duration-smooth) var(--v2-ease-smooth),
+    color var(--v2-duration-smooth) var(--v2-ease-smooth),
+    --file-tree-v2-row-overlay var(--v2-duration-smooth) var(--v2-ease-smooth);
 }
 
 [data-component="file-tree-v2"] [data-slot="file-tree-v2-label"] {

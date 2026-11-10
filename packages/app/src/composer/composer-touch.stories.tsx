@@ -61,7 +61,7 @@ const selectedModel = {
   headers: {},
   release_date: "2026-05-22",
   variants: { medium: {}, high: {} },
-  provider: { id: STORY_MODEL.providerID, name: "OpenCode", source: "custom", env: [], options: {}, models: {} },
+  provider: { id: STORY_MODEL.providerID, name: "OfeCode", source: "custom", env: [], options: {}, models: {} },
   latest: true,
 } satisfies NonNullable<ReturnType<ModelSelection["current"]>>
 
@@ -272,7 +272,7 @@ function TouchStates(props: { state: State }) {
 }
 
 export default {
-  title: "OpenCode/Composer/Touch",
+  title: "OfeCode/Composer/Touch",
   parameters: { layout: "fullscreen" },
   args: { state: "steer" },
   argTypes: { state: { control: "select", options: states.map((state) => state.id) } },

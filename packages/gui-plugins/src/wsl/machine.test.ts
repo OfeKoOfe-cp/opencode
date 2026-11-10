@@ -37,7 +37,7 @@ function play(state: WslMachineState, ...events: WslMachineEvent[]) {
   )
 }
 
-// Ubuntu is added with its server up as start `s0`, reporting an older OpenCode than the desktop.
+// Ubuntu is added with its server up as start `s0`, reporting an older OfeCode than the desktop.
 function readyUbuntu() {
   return play(
     createWslMachineState([ubuntu]),

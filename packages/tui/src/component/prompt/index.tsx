@@ -1573,7 +1573,7 @@ export function Prompt(props: PromptProps) {
       variant: undefined,
     },
   )
-  // What the workspace's limits leave for the selected model, once it is running low. Only OpenCode Console limits
+  // What the workspace's limits leave for the selected model, once it is running low. Only OfeCode Console limits
   // models, so only a model it serves loads them.
   const limits = useUsageLimits()
   createEffect(() => {

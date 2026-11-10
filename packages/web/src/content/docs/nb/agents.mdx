@@ -15,7 +15,7 @@ Du kan bytte mellom agenter under en økt eller påkalle dem med `@`-omtalen.
 
 ## Typer
 
-Det er to typer agenter i OpenCode; primære agenter og underagenter.
+Det er to typer agenter i OfeCode; primære agenter og underagenter.
 
 ---
 
@@ -27,7 +27,7 @@ Primæragenter er de viktigste assistentene du samhandler direkte med. Du kan bl
 Du kan bruke **Tab**-tasten for å bytte mellom primære agenter under en økt.
 :::
 
-OpenCode kommer med to innebygde primære agenter, **Build** og **Plan**. Vi ser nærmere på disse nedenfor.
+OfeCode kommer med to innebygde primære agenter, **Build** og **Plan**. Vi ser nærmere på disse nedenfor.
 
 ---
 
@@ -35,13 +35,13 @@ OpenCode kommer med to innebygde primære agenter, **Build** og **Plan**. Vi ser
 
 Underagenter er spesialiserte assistenter som primære agenter kan påkalle for spesifikke oppgaver. Du kan også starte dem manuelt ved å **@ nevne** dem i meldingene dine.
 
-OpenCode kommer med tre innebygde underagenter, **General**, **Explore** og **Scout**. Vi skal se på dette nedenfor.
+OfeCode kommer med tre innebygde underagenter, **General**, **Explore** og **Scout**. Vi skal se på dette nedenfor.
 
 ---
 
 ## Innebygd
 
-OpenCode kommer med to innebygde primære agenter og tre innebygde underagenter.
+OfeCode kommer med to innebygde primære agenter og tre innebygde underagenter.
 
 ---
 
@@ -87,7 +87,7 @@ En rask, skrivebeskyttet agent for å utforske kodebaser. Kan ikke endre filer. 
 
 _Modus_: `subagent`
 
-En skrivebeskyttet agent for ekstern dokumentasjon og forskning på avhengigheter. Bruk denne når du trenger å klone et avhengighetsrepo inn i OpenCode sin administrerte cache, inspisere kildekoden til et bibliotek eller kryssjekke lokal kode mot upstream-implementasjoner uten å endre arbeidsområdet ditt.
+En skrivebeskyttet agent for ekstern dokumentasjon og forskning på avhengigheter. Bruk denne når du trenger å klone et avhengighetsrepo inn i OfeCode sin administrerte cache, inspisere kildekoden til et bibliotek eller kryssjekke lokal kode mot upstream-implementasjoner uten å endre arbeidsområdet ditt.
 
 ---
 
@@ -188,10 +188,10 @@ Konfigurer agenter i konfigurasjonsfilen `opencode.json`:
 
 Du kan også definere agenter ved å bruke markdown-filer. Plasser dem i:
 
-- Globalt: `~/.config/opencode/agents/`
-- Per prosjekt: `.opencode/agents/`
+- Globalt: `~/.config/ofecode/agents/`
+- Per prosjekt: `.ofecode/agents/`
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Reviews code for quality and best practices
 mode: subagent
@@ -284,7 +284,7 @@ Temperaturverdier varierer vanligvis fra 0,0 til 1,0:
 }
 ```
 
-Hvis ingen temperatur er spesifisert, bruker OpenCode modellspesifikke standardinnstillinger; typisk 0 for de fleste modeller, 0,55 for Qwen-modeller.
+Hvis ingen temperatur er spesifisert, bruker OfeCode modellspesifikke standardinnstillinger; typisk 0 for de fleste modeller, 0,55 for Qwen-modeller.
 
 ---
 
@@ -344,7 +344,7 @@ Spesifiser en tilpasset systemmeldingsfil for denne agenten med `prompt`-konfigu
 }
 ```
 
-Denne banen er i forhold til hvor konfigurasjonsfilen er plassert. Så dette fungerer for både den globale OpenCode-konfigurasjonen og den prosjektspesifikke konfigurasjonen.
+Denne banen er i forhold til hvor konfigurasjonsfilen er plassert. Så dette fungerer for både den globale OfeCode-konfigurasjonen og den prosjektspesifikke konfigurasjonen.
 
 ---
 
@@ -366,7 +366,7 @@ Hvis du ikke spesifiserer en modell, bruker primæragenter [modell globalt konfi
 }
 ```
 
-Modellen ID i OpenCode-konfigurasjonen din bruker formatet `provider/model-id`. For eksempel, hvis du bruker [OpenCode Models](https://opencode.ai/docs/console/), vil du bruke `opencode/gpt-6.1-sol` for GPT-6.1 Sol.
+Modellen ID i OfeCode-konfigurasjonen din bruker formatet `provider/model-id`. For eksempel, hvis du bruker [OfeCode Models](https://opencode.ai/docs/console/), vil du bruke `ofecode/gpt-6.1-sol` for GPT-6.1 Sol.
 
 ---
 
@@ -454,7 +454,7 @@ Du kan overstyre disse tillatelsene per agent.
 
 Du kan også angi tillatelser i Markdown-agenter.
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent
@@ -664,16 +664,16 @@ For eksempel, med OpenAIs resonneringsmodeller kan du kontrollere resonnementinn
 Disse tilleggsalternativene er modell- og leverandørspesifikke. Sjekk leverandørens dokumentasjon for tilgjengelige parametere.
 
 :::tip
-Kjør `opencode models` for å se en liste over tilgjengelige modeller.
+Kjør `ofecode models` for å se en liste over tilgjengelige modeller.
 :::
 
 ---
 
 ## Opprette agenter
 
-Opprett en ny agent ved å legge til en markdown-fil i `.opencode/agents/` for prosjektet eller i `~/.config/opencode/agents/` globalt. Filnavnet blir agentens navn, og frontmatter konfigurerer beskrivelse, modus, modell og tillatelser. Se [Markdown](#markdown) ovenfor for filformatet.
+Opprett en ny agent ved å legge til en markdown-fil i `.ofecode/agents/` for prosjektet eller i `~/.config/ofecode/agents/` globalt. Filnavnet blir agentens navn, og frontmatter konfigurerer beskrivelse, modus, modell og tillatelser. Se [Markdown](#markdown) ovenfor for filformatet.
 
-Kjør `opencode agent list` for å liste agentene som OpenCode har lastet inn.
+Kjør `ofecode agent list` for å liste agentene som OfeCode har lastet inn.
 
 ---
 
@@ -694,14 +694,14 @@ Her er noen vanlige bruksområder for forskjellige agenter.
 Her er noen eksempler på agenter du kan finne nyttige.
 
 :::tip
-Har du en agent du vil dele? [Send inn en PR](https://github.com/anomalyco/opencode).
+Har du en agent du vil dele? [Send inn en PR](https://github.com/anomalyco/ofecode).
 :::
 
 ---
 
 ### Dokumentasjonsagent
 
-```markdown title="~/.config/opencode/agents/docs-writer.md"
+```markdown title="~/.config/ofecode/agents/docs-writer.md"
 ---
 description: Writes and maintains project documentation
 mode: subagent
@@ -723,7 +723,7 @@ Focus on:
 
 ### Sikkerhetsrevisor
 
-```markdown title="~/.config/opencode/agents/security-auditor.md"
+```markdown title="~/.config/ofecode/agents/security-auditor.md"
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent

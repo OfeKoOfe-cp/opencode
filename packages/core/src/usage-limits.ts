@@ -20,7 +20,7 @@ export class UnavailableError extends Schema.TaggedError<UnavailableError>()("Us
 }) {}
 
 export interface Interface {
-  /** The usage limits of the OpenCode Console workspace this location is signed in to, if it is. */
+  /** The usage limits of the OfeCode Console workspace this location is signed in to, if it is. */
   readonly get: () => Effect.Effect<Info | undefined, UnavailableError>
 }
 
@@ -48,7 +48,7 @@ export const layer = Layer.effect(
       ).pipe(
         Effect.timeoutOrElse({
           duration: Duration.seconds(15),
-          orElse: () => Effect.fail(new UnavailableError({ message: "OpenCode Console usage limits timed out" })),
+          orElse: () => Effect.fail(new UnavailableError({ message: "OfeCode Console usage limits timed out" })),
         }),
       )
       return {
@@ -144,7 +144,7 @@ function readBudgets(http: HttpClient.HttpClient, server: string, credential: Cr
       ),
       Effect.scoped,
       Effect.mapError(
-        (error) => new UnavailableError({ message: `OpenCode Console budgets are unavailable: ${error.message}` }),
+        (error) => new UnavailableError({ message: `OfeCode Console budgets are unavailable: ${error.message}` }),
       ),
     )
 }
@@ -182,7 +182,7 @@ function readGo(
       ),
       Effect.scoped,
       Effect.mapError(
-        (error) => new UnavailableError({ message: `OpenCode Go usage is unavailable: ${error.message}` }),
+        (error) => new UnavailableError({ message: `OfeCode Go usage is unavailable: ${error.message}` }),
       ),
     )
 }

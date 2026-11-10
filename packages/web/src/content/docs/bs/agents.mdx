@@ -15,7 +15,7 @@ Možete se prebacivati ​​između agenata tokom sesije ili ih pozvati spominj
 
 ## Vrste
 
-Postoje dvije vrste agenata u OpenCode: primarni agenti i podagenti.
+Postoje dvije vrste agenata u OfeCode: primarni agenti i podagenti.
 
 ---
 
@@ -27,7 +27,7 @@ Primarni agenti su glavni pomoćnici s kojima direktno komunicirate. Možete se 
 Možete koristiti tipku **Tab** za prebacivanje između primarnih agenata tokom sesije.
 :::
 
-OpenCode dolazi sa dva ugrađena primarna agenta, **Build** i **Plan**. Pogledat ćemo ih u nastavku.
+OfeCode dolazi sa dva ugrađena primarna agenta, **Build** i **Plan**. Pogledat ćemo ih u nastavku.
 
 ---
 
@@ -35,13 +35,13 @@ OpenCode dolazi sa dva ugrađena primarna agenta, **Build** i **Plan**. Pogledat
 
 Subagenti su specijalizovani pomoćnici koje primarni agenti mogu pozvati za određene zadatke. Možete ih i ručno pozvati **@ spominjanjem** u svojim porukama.
 
-OpenCode dolazi sa tri ugrađena subagenta, **General**, **Explore** i **Scout**. Ovo ćemo pogledati u nastavku.
+OfeCode dolazi sa tri ugrađena subagenta, **General**, **Explore** i **Scout**. Ovo ćemo pogledati u nastavku.
 
 ---
 
 ## Ugrađeni
 
-OpenCode dolazi sa dva ugrađena primarna agenta i tri ugrađena subagenta.
+OfeCode dolazi sa dva ugrađena primarna agenta i tri ugrađena subagenta.
 
 ---
 
@@ -87,7 +87,7 @@ Brzi agent samo za čitanje za istraživanje kodnih baza. Nije moguće mijenjati
 
 _Režim_: `subagent`
 
-Agent samo za čitanje za istraživanje eksterne dokumentacije i zavisnosti. Koristite ga kada trebate klonirati repozitorij zavisnosti u OpenCode-ov upravljani cache, pregledati izvorni kod biblioteke ili uporediti lokalni kod sa upstream implementacijama bez mijenjanja vašeg radnog prostora.
+Agent samo za čitanje za istraživanje eksterne dokumentacije i zavisnosti. Koristite ga kada trebate klonirati repozitorij zavisnosti u OfeCode-ov upravljani cache, pregledati izvorni kod biblioteke ili uporediti lokalni kod sa upstream implementacijama bez mijenjanja vašeg radnog prostora.
 
 ---
 
@@ -188,10 +188,10 @@ Konfigurirajte agente u svom konfiguracijskom fajlu `opencode.json`:
 
 Također možete definirati agente koristeći markdown datoteke. Stavite ih u:
 
-- Globalno: `~/.config/opencode/agents/`
-- Po projektu: `.opencode/agents/`
+- Globalno: `~/.config/ofecode/agents/`
+- Po projektu: `.ofecode/agents/`
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Reviews code for quality and best practices
 mode: subagent
@@ -284,7 +284,7 @@ Vrijednosti temperature se obično kreću od 0.0 do 1.0:
 }
 ```
 
-Ako temperatura nije navedena, OpenCode koristi standardne postavke specifične za model; obično 0 za većinu modela, 0.55 za Qwen modele.
+Ako temperatura nije navedena, OfeCode koristi standardne postavke specifične za model; obično 0 za većinu modela, 0.55 za Qwen modele.
 
 ---
 
@@ -344,7 +344,7 @@ Navedite prilagođenu sistemsku prompt datoteku za ovog agenta sa `prompt` konfi
 }
 ```
 
-Ova putanja je relativna u odnosu na mjesto gdje se nalazi konfiguracijski fajl. Dakle, ovo radi i za globalnu OpenCode konfiguraciju i za konfiguraciju specifične za projekat.
+Ova putanja je relativna u odnosu na mjesto gdje se nalazi konfiguracijski fajl. Dakle, ovo radi i za globalnu OfeCode konfiguraciju i za konfiguraciju specifične za projekat.
 
 ---
 
@@ -366,7 +366,7 @@ Ako ne navedete model, primarni agenti koriste [model globalno konfiguriran](/do
 }
 ```
 
-ID modela u vašoj OpenCode konfiguraciji koristi format `provider/model-id`. Na primjer, ako koristite [OpenCode Models](https://opencode.ai/docs/console/), koristili biste `opencode/gpt-6.1-sol` za GPT-6.1 Sol.
+ID modela u vašoj OfeCode konfiguraciji koristi format `provider/model-id`. Na primjer, ako koristite [OfeCode Models](https://opencode.ai/docs/console/), koristili biste `ofecode/gpt-6.1-sol` za GPT-6.1 Sol.
 
 ---
 
@@ -454,7 +454,7 @@ Možete nadjačati ove dozvole po agentu.
 
 Također možete postaviti dozvole u Markdown agentima.
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent
@@ -664,16 +664,16 @@ Na primjer, sa OpenAI-jevim modelima rezonovanja, možete kontrolisati napor ras
 Ove dodatne opcije su specifične za model i dobavljača. U dokumentaciji vašeg provajdera provjerite dostupne parametre.
 
 :::tip
-Pokrenite `opencode models` da vidite listu dostupnih modela.
+Pokrenite `ofecode models` da vidite listu dostupnih modela.
 :::
 
 ---
 
 ## Kreiranje agenata
 
-Novog agenta kreirate dodavanjem markdown datoteke u `.opencode/agents/` za projekat ili u `~/.config/opencode/agents/` globalno. Naziv datoteke postaje naziv agenta, a frontmatter konfiguriše njegov opis, način rada, model i dozvole. Format datoteke pogledajte u odjeljku [Markdown](#markdown) iznad.
+Novog agenta kreirate dodavanjem markdown datoteke u `.ofecode/agents/` za projekat ili u `~/.config/ofecode/agents/` globalno. Naziv datoteke postaje naziv agenta, a frontmatter konfiguriše njegov opis, način rada, model i dozvole. Format datoteke pogledajte u odjeljku [Markdown](#markdown) iznad.
 
-Pokrenite `opencode agent list` da biste vidjeli listu agenata koje je OpenCode učitao.
+Pokrenite `ofecode agent list` da biste vidjeli listu agenata koje je OfeCode učitao.
 
 ---
 
@@ -694,14 +694,14 @@ Evo nekoliko uobičajenih slučajeva upotrebe različitih agenata.
 Evo nekoliko primjera agenata koji bi vam mogli biti korisni.
 
 :::tip
-Imate li agenta kojeg biste željeli podijeliti? [Pošalji PR](https://github.com/anomalyco/opencode).
+Imate li agenta kojeg biste željeli podijeliti? [Pošalji PR](https://github.com/anomalyco/ofecode).
 :::
 
 ---
 
 ### Agent za dokumentaciju
 
-```markdown title="~/.config/opencode/agents/docs-writer.md"
+```markdown title="~/.config/ofecode/agents/docs-writer.md"
 ---
 description: Writes and maintains project documentation
 mode: subagent
@@ -723,7 +723,7 @@ Focus on:
 
 ### Sigurnosni revizor
 
-```markdown title="~/.config/opencode/agents/security-auditor.md"
+```markdown title="~/.config/ofecode/agents/security-auditor.md"
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent

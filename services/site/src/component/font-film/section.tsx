@@ -65,7 +65,7 @@ export function FilmPlate() {
           playsinline
           width="1920"
           height="1080"
-          aria-label="A film about the OpenCode font."
+          aria-label="A film about the OfeCode font."
           onPlay={() => {
             setStarted(true)
             setPlaying(true)

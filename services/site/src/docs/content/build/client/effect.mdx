@@ -2,8 +2,8 @@
 title: "Effect"
 ---
 
-`@opencode/client/effect` is the Effect-native client for the OpenCode HTTP API. It returns typed Effects and Streams
-and decodes responses into OpenCode schema values.
+`@opencode/client/effect` is the Effect-native client for the OfeCode HTTP API. It returns typed Effects and Streams
+and decodes responses into OfeCode schema values.
 
 ```sh
 bun add @opencode/client effect@4.0.1
@@ -44,7 +44,7 @@ per-call location, header, and signal options.
 import { HttpClient, HttpClientRequest } from "effect/http"
 
 const httpClient = yield* HttpClient.HttpClient
-const client = yield* OpenCode.make({ baseUrl: "https://opencode.example.com" }).pipe(
+const client = yield* OpenCode.make({ baseUrl: "https://ofecode.example.com" }).pipe(
   Effect.provideService(
     HttpClient.HttpClient,
     HttpClient.mapRequest(httpClient, (request) =>
@@ -66,7 +66,7 @@ import { Effect, Stream } from "effect"
 
 yield* client.event
   .subscribe()
-  .pipe(Stream.runForEach((event) => Effect.logInfo("OpenCode event", { type: event.type })))
+  .pipe(Stream.runForEach((event) => Effect.logInfo("OfeCode event", { type: event.type })))
 ```
 
 Native and RPC event Streams share one lazy connection per client. Constructing

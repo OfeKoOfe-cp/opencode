@@ -13,11 +13,11 @@ export { installs } from "~/lib/install-commands"
 // the script in the SDK video. `sessions.create()` without a location uses the working directory.
 // Lines stay within 32 characters so the card sizes code to its width.
 export const sdkSnippet = [
-  `<span data-k>import</span> <span data-p>{</span> <span data-v>OpenCode</span> <span data-p>}</span>`,
+  `<span data-k>import</span> <span data-p>{</span> <span data-v>OfeCode</span> <span data-p>}</span>`,
   `  <span data-k>from</span> <span data-s>"@opencode/sdk"</span>`,
   ``,
   `<span data-k>await using</span> <span data-v>oc</span> <span data-o>=</span>`,
-  `  <span data-k>await</span> OpenCode<span data-p>.</span><span data-f>create</span><span data-p>()</span>`,
+  `  <span data-k>await</span> OfeCode<span data-p>.</span><span data-f>create</span><span data-p>()</span>`,
   `<span data-k>const</span> <span data-v>s</span> <span data-o>=</span>`,
   `  <span data-k>await</span> <span data-v>oc</span><span data-p>.</span>sessions<span data-p>.</span><span data-f>create</span><span data-p>()</span>`,
   `<span data-k>await</span> <span data-v>oc</span><span data-p>.</span>sessions<span data-p>.</span><span data-f>prompt</span><span data-p>({</span>`,
@@ -59,7 +59,7 @@ export const products = [
   {
     slug: "sdk",
     name: "SDK",
-    body: "Drive OpenCode from your own scripts, CI jobs and tools.",
+    body: "Drive OfeCode from your own scripts, CI jobs and tools.",
     action: "Read docs",
   },
 ] as const satisfies readonly {
@@ -80,7 +80,7 @@ export const moreProducts = [
   {
     slug: "ide",
     name: "IDE extensions",
-    body: "Open OpenCode in VS Code, Cursor and Windsurf, or in Zed and JetBrains IDEs through ACP.",
+    body: "Open OfeCode in VS Code, Cursor and Windsurf, or in Zed and JetBrains IDEs through ACP.",
     action: "Install",
   },
   {
@@ -111,12 +111,12 @@ export const productPages = allProductPages.filter((product) => product.slug !==
 export const acpDocs = docsUrl("/cli/acp/")
 
 /**
- * Settings › Extensions card: OpenCode inside editors. The VS Code extension is sdks/vscode
+ * Settings › Extensions card: OfeCode inside editors. The VS Code extension is sdks/vscode
  * (publisher sst-dev); Zed and other ACP clients run `opencode acp` (docs: /cli/acp).
  */
 export const extensions = {
   name: "Extensions",
-  body: "Use OpenCode inside VS Code, or in Zed and other editors through ACP.",
+  body: "Use OfeCode inside VS Code, or in Zed and other editors through ACP.",
   action: "Install",
   href: "https://marketplace.visualstudio.com/items?itemName=sst-dev.opencode",
 }
@@ -179,9 +179,9 @@ export const productDetails: Record<
   }
 > = {
   desktop: {
-    title: "OpenCode | Desktop app for macOS, Windows and Linux",
+    title: "OfeCode | Desktop app for macOS, Windows and Linux",
     description:
-      "Run as many OpenCode agents as you want in parallel, see every change in a browser beside them and pick them up on any device. For macOS, Windows and Linux.",
+      "Run as many OfeCode agents as you want in parallel, see every change in a browser beside them and pick them up on any device. For macOS, Windows and Linux.",
     operatingSystem: "macOS, Windows, Linux",
     intro:
       "Run several agents at once, each session in its own tab. Review every change as a diff, comment on any line, and check the result in the built-in browser. For macOS, Windows and Linux.",
@@ -206,14 +206,14 @@ export const productDetails: Record<
       // No footage yet: the row shows a placeholder until its clip lands.
       {
         title: "Extend it",
-        body: "Connect your tools and services so the agent can work with anything. Or have OpenCode build plugins for itself, with their own UI in the sidebar.",
+        body: "Connect your tools and services so the agent can work with anything. Or have OfeCode build plugins for itself, with their own UI in the sidebar.",
       },
     ],
   },
   terminal: {
-    title: "OpenCode | Terminal UI for the open source coding agent",
+    title: "OfeCode | Terminal UI for the open source coding agent",
     description:
-      "A fast terminal UI for OpenCode that works in any shell, editor or remote server. Describe what you want, see each edit as a diff and approve commands.",
+      "A fast terminal UI for OfeCode that works in any shell, editor or remote server. Describe what you want, see each edit as a diff and approve commands.",
     operatingSystem: "macOS, Linux, Windows",
     intro:
       "A fast terminal UI that works in any shell, editor or remote server. Describe what you want in plain words, watch each edit land as a diff, and choose which commands run on their own.",
@@ -224,7 +224,7 @@ export const productDetails: Record<
       { title: "One-off runs", body: "opencode run sends one message and prints the reply." },
       { title: "Agents and commands", body: "Switch agents with shift+tab and open every command with ctrl+p." },
       { title: "Auto-approve", body: "Run with --auto to allow every action you haven't denied." },
-      { title: "Any server", body: "Connect to an OpenCode server by URL with --server." },
+      { title: "Any server", body: "Connect to an OfeCode server by URL with --server." },
       { title: "Usage stats", body: "opencode stats shows shareable usage statistics." },
     ],
     showcase: [
@@ -251,13 +251,13 @@ export const productDetails: Record<
     ],
   },
   mobile: {
-    title: "OpenCode | Mobile, your coding sessions on your phone",
+    title: "OfeCode | Mobile, your coding sessions on your phone",
     description:
-      "Start and steer OpenCode sessions from your phone. Talk to the agent while it runs on your computer.",
+      "Start and steer OfeCode sessions from your phone. Talk to the agent while it runs on your computer.",
     // Android joins when it is available (androidStatus).
     operatingSystem: androidSoon ? "iOS" : "iOS, Android",
     intro:
-      "Start and steer sessions from your phone, wherever you are. Call a session and talk to the agent, or open any session to pick up where you left off, all on OpenCode running on your own computer.",
+      "Start and steer sessions from your phone, wherever you are. Call a session and talk to the agent, or open any session to pick up where you left off, all on OfeCode running on your own computer.",
     // The page shows only its four clips for now (5 Nov 2026). The grid's points, checked against
     // the iOS app's What's New entries (anomalyco/opencode-ios), are kept here to bring back:
     // "Every computer" takes two taps (the drawer title, then the server), and muting leaves
@@ -267,7 +267,7 @@ export const productDetails: Record<
     // { title: "Every computer", body: "Switch between the computers you've paired in one tap." },
     // { title: "Siri and Shortcuts", body: "Start a call or a session from Siri or Control Center." },
     // { title: "Follow along", body: "Watch the timeline update as the agent works." },
-    // { title: "Your computer", body: "Connects to OpenCode running on your own machine." },
+    // { title: "Your computer", body: "Connects to OfeCode running on your own machine." },
     // { title: "Share sheet", body: "Share anything to a session without opening the app." },
     // { title: "Mute sessions", body: "Keep a session in your list without getting its notifications." },
     features: [],
@@ -296,21 +296,21 @@ export const productDetails: Record<
     ],
   },
   sdk: {
-    title: "OpenCode | TypeScript SDK for scripts, CI jobs and tools",
+    title: "OfeCode | TypeScript SDK for scripts, CI jobs and tools",
     description:
-      "Drive OpenCode from your own scripts, CI jobs and tools. The typed TypeScript client creates sessions, sends prompts and streams every event as it happens.",
+      "Drive OfeCode from your own scripts, CI jobs and tools. The typed TypeScript client creates sessions, sends prompts and streams every event as it happens.",
     operatingSystem: "macOS, Linux, Windows",
     intro:
-      "Drive OpenCode from your own scripts, CI jobs and tools. The SDK runs OpenCode inside your process, with your config and models, and its typed client creates sessions, sends prompts and streams every event.",
+      "Drive OfeCode from your own scripts, CI jobs and tools. The SDK runs OfeCode inside your process, with your config and models, and its typed client creates sessions, sends prompts and streams every event.",
     features: [
       { title: "TypeScript client", body: "Typed requests and events, the same values as @opencode/client." },
       { title: "Sessions from code", body: "Create sessions and send prompts from any script." },
-      { title: "Any model", body: "Uses whichever models your OpenCode setup has." },
+      { title: "Any model", body: "Uses whichever models your OfeCode setup has." },
       { title: "npm or bun", body: "Install it with npm i @opencode/sdk or bun add @opencode/sdk." },
-      { title: "In-process host", body: "Runs OpenCode in memory, with no network hop." },
+      { title: "In-process host", body: "Runs OfeCode in memory, with no network hop." },
       { title: "Your plugins", body: "Pass your own plugins in when you create the in-process host." },
       { title: "Promise or Effect", body: "A Promise API and an Effect API with the same values." },
-      { title: "Cloudflare Workers", body: "Run OpenCode inside a Cloudflare Durable Object on Workers." },
+      { title: "Cloudflare Workers", body: "Run OfeCode inside a Cloudflare Durable Object on Workers." },
     ],
     // Text only: the four points without their clips, so the page loads no video for them.
     showcaseMedia: false,
@@ -318,7 +318,7 @@ export const productDetails: Record<
       {
         title: "Fix CI from code",
         clip: "/product-videos/features/sdk-1",
-        body: "A short script asks OpenCode to fix failing tests, then runs them again.",
+        body: "A short script asks OfeCode to fix failing tests, then runs them again.",
       },
       {
         title: "Follow every step",
@@ -328,48 +328,48 @@ export const productDetails: Record<
       {
         title: "Build your own tools",
         clip: "/product-videos/features/sdk-3",
-        body: "Wire OpenCode into bots, dashboards and workflows with a few lines.",
+        body: "Wire OfeCode into bots, dashboards and workflows with a few lines.",
       },
       {
         title: "In your process",
         clip: "/product-videos/features/sdk-4",
-        body: "Runs OpenCode inside your process, with your config and models.",
+        body: "Runs OfeCode inside your process, with your config and models.",
       },
     ],
   },
   ide: {
-    title: "OpenCode | Editor integrations for VS Code, Cursor and Zed",
+    title: "OfeCode | Editor integrations for VS Code, Cursor and Zed",
     description:
-      "Use OpenCode inside your editor, with the extension for VS Code, Cursor, Windsurf and VSCodium, and opencode acp for Zed, JetBrains IDEs and other ACP editors.",
+      "Use OfeCode inside your editor, with the extension for VS Code, Cursor, Windsurf and VSCodium, and opencode acp for Zed, JetBrains IDEs and other ACP editors.",
     operatingSystem: "macOS, Windows, Linux",
     intro:
-      "Use OpenCode inside your editor. In VS Code, Cursor, Windsurf and VSCodium, run opencode in the integrated terminal and the extension installs itself. Zed, JetBrains IDEs and other editors that support the Agent Client Protocol run OpenCode with opencode acp.",
+      "Use OfeCode inside your editor. In VS Code, Cursor, Windsurf and VSCodium, run opencode in the integrated terminal and the extension installs itself. Zed, JetBrains IDEs and other editors that support the Agent Client Protocol run OfeCode with opencode acp.",
     features: [
-      { title: "Quick launch", body: "Cmd+Esc or Ctrl+Esc opens OpenCode in a split terminal." },
+      { title: "Quick launch", body: "Cmd+Esc or Ctrl+Esc opens OfeCode in a split terminal." },
       { title: "New session", body: "Cmd+Shift+Esc or Ctrl+Shift+Esc starts another session." },
-      { title: "Context", body: "Shares your current selection or tab with OpenCode." },
+      { title: "Context", body: "Shares your current selection or tab with OfeCode." },
       { title: "File references", body: "Cmd+Option+K or Alt+Ctrl+K inserts @File#L37-42." },
       { title: "Installs itself", body: "Run opencode in the integrated terminal to add it." },
       { title: "ACP editors", body: "Zed, JetBrains IDEs, Avante.nvim and CodeCompanion.nvim." },
       { title: "Open VSX", body: "Also on Open VSX for Cursor, Windsurf and VSCodium." },
-      { title: "Same agent", body: "The OpenCode you run in the terminal, beside your code." },
+      { title: "Same agent", body: "The OfeCode you run in the terminal, beside your code." },
     ],
     showcase: [],
   },
   mini: {
-    title: "OpenCode | Mini, a minimal terminal interface for the agent",
+    title: "OfeCode | Mini, a minimal terminal interface for the agent",
     description:
-      "Mini runs OpenCode in a minimal terminal interface. Replies print into your terminal's own scrollback, and only a prompt and a status line stay below.",
+      "Mini runs OfeCode in a minimal terminal interface. Replies print into your terminal's own scrollback, and only a prompt and a status line stay below.",
     operatingSystem: "macOS, Linux, Windows",
     intro:
-      "A minimal terminal interface for OpenCode. Run opencode mini and replies print straight into your terminal's own scrollback, so you scroll, search and copy them like any other output. Only the prompt and a status line stay at the bottom.",
+      "A minimal terminal interface for OfeCode. Run opencode mini and replies print straight into your terminal's own scrollback, so you scroll, search and copy them like any other output. Only the prompt and a status line stay at the bottom.",
     features: [
       { title: "Your scrollback", body: "Replies become ordinary terminal history." },
       { title: "One prompt", body: "Agent, model, context and cost on one status line." },
       { title: "Permissions", body: "Allow edits and commands from the prompt area." },
       { title: "How much shows", body: "Quiet, default or everything, for thinking and tool output." },
       { title: "Pick up later", body: "Continue the last session with -c, or any with -s." },
-      { title: "Same OpenCode", body: "The same server, agents and models as the other apps." },
+      { title: "Same OfeCode", body: "The same server, agents and models as the other apps." },
       { title: "Agents", body: "Switch agents right from the prompt." },
       { title: "Compact", body: "Shrink a long session with /compact." },
     ],

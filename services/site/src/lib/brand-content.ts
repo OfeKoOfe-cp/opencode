@@ -53,7 +53,7 @@ export function brandContent(t: Translate) {
     },
     naming: {
       title: "Naming",
-      body: "Write OpenCode as one word, with a capital O and a capital C. Do not write Opencode, Open Code, OpenCode AI or Open-Code.",
+      body: "Write OfeCode as one word, with a capital O and a capital C. Do not write Opencode, Open Code, OfeCode AI or Open-Code.",
       // Names between backticks show as code.
       code: "Use the lowercase `opencode` only in code and package names, such as `opencode-figma` or `@acme/opencode-plugin`.",
     },
@@ -83,7 +83,7 @@ export function brandContent(t: Translate) {
       },
       {
         title: "Wordmark",
-        body: "The full name in the OpenCode letterforms. Use it wherever there is room to spell out the name.",
+        body: "The full name in the OfeCode letterforms. Use it wherever there is room to spell out the name.",
         kind: "wordmark",
         assets: [
           {
@@ -300,7 +300,7 @@ export function brandContent(t: Translate) {
     },
     integrations: {
       title: "Integrations",
-      body: "Plugins, providers and tools that work with OpenCode, and projects built with it, can say so. Use a badge or a partner lockup, and name your project so it is clear that it is yours.",
+      body: "Plugins, providers and tools that work with OfeCode, and projects built with it, can say so. Use a badge or a partner lockup, and name your project so it is clear that it is yours.",
       badges: {
         body: "Put a badge in your README, docs or website and link it to opencode.ai. Pick the light or dark file for your background (the HTML switches by itself), and do not change the colors or the text.",
         sizes: "Every style comes in 20, 32 and 44px (Shields only in 20px), as SVG and as PNG at 2×.",
@@ -309,14 +309,14 @@ export function brandContent(t: Translate) {
           {
             label: "works-with",
             title: "Works with",
-            alt: "Works with OpenCode",
-            body: "For plugins, providers and tools that run with OpenCode.",
+            alt: "Works with OfeCode",
+            body: "For plugins, providers and tools that run with OfeCode.",
           },
           {
             label: "built-with",
             title: "Built with",
-            alt: "Built with OpenCode",
-            body: "For projects made with OpenCode.",
+            alt: "Built with OfeCode",
+            body: "For projects made with OfeCode.",
           },
         ],
         // The styles David picked from the badge options (A, C, F, G); G is shields.io "flat", 20px only.
@@ -329,19 +329,19 @@ export function brandContent(t: Translate) {
       },
       lockup: {
         title: "Partner lockup",
-        body: "Put the OpenCode logo and the partner logo side by side, with a × between them. Leave 3 strokes of space on each side of the ×, size the partner logo to look as tall as the OpenCode logo, and keep clear space around the whole lockup.",
+        body: "Put the OfeCode logo and the partner logo side by side, with a × between them. Leave 3 strokes of space on each side of the ×, size the partner logo to look as tall as the OfeCode logo, and keep clear space around the whole lockup.",
         partners: [{ name: "GitHub", tones: ["light", "dark"] }],
       },
       naming: {
         title: "Naming your project",
         body: "Lead with your own name, so it is clear that the project is yours.",
         // Names between backticks show as code.
-        rule: "Write `Linear for OpenCode` or name the package `opencode-linear`. Do not write `OpenCode Linear` or `Linear by OpenCode`.",
+        rule: "Write `Linear for OfeCode` or name the package `opencode-linear`. Do not write `OfeCode Linear` or `Linear by OfeCode`.",
       },
     },
     trademarks: {
       title: "Trademarks",
-      body: "OpenCode and the OpenCode logo are trademarks of Anomaly. Do not use them to suggest that Anomaly endorses or sponsors you, in your product or company name, or on merchandise without permission.",
+      body: "OfeCode and the OfeCode logo are trademarks of Anomaly. Do not use them to suggest that Anomaly endorses or sponsors you, in your product or company name, or on merchandise without permission.",
       contact: { before: "For questions, email ", email: pressEmail, after: "." },
     },
   }

@@ -3,7 +3,7 @@ import { z } from "zod"
 import { matchAnswer, voiceAnswers, type VoiceLink } from "~/lib/voice-answers"
 import { voiceMode } from "~/component/site/voice/flag"
 
-// Answers a question for the voice assistant. With OPENCODE_API_KEY set (an OpenCode Models key), a
+// Answers a question for the voice assistant. With OPENCODE_API_KEY set (an OfeCode Models key), a
 // model answers from the site's own Markdown; otherwise, and whenever the model fails, the closest
 // curated answer does. Curated answers have pre-generated audio in public/voice.
 
@@ -61,7 +61,7 @@ async function askModel(key: string, question: string, current: string | undefin
         {
           role: "system",
           content: [
-            "You are the voice assistant on opencode.ai. Answer questions about OpenCode and the website in one to three short spoken sentences, using only the facts and pages below. If they don't cover it, say so and suggest the docs.",
+            "You are the voice assistant on opencode.ai. Answer questions about OfeCode and the website in one to three short spoken sentences, using only the facts and pages below. If they don't cover it, say so and suggest the docs.",
             'Reply with JSON: {"text": "the answer", "links": [{"label": "short label", "href": "a path or URL from the pages"}]} with at most two links.',
             `Facts:\n${facts}`,
             ...pages.filter(Boolean),

@@ -1,9 +1,9 @@
 ---
 title: "GUI"
-description: "Build the GUI part of an OpenCode plugin for OpenCode Desktop with @opencode/plugin/gui."
+description: "Build the GUI part of an OfeCode plugin for OfeCode Desktop with @opencode/plugin/gui."
 ---
 
-A GUI plugin adds panels, commands, settings pages, and native integrations to OpenCode Desktop with the GUI plugin SDK,
+A GUI plugin adds panels, commands, settings pages, and native integrations to OfeCode Desktop with the GUI plugin SDK,
 `@opencode/plugin/gui`. It is the `./gui-experimental` part of a [plugin package](/build/plugins), alone or beside a
 [server part](/build/plugins/server) and a [TUI part](/build/plugins/cli).
 
@@ -43,7 +43,7 @@ A GUI plugin can run in two processes:
 ## Package
 
 A plugin package can ship server, TUI, and GUI code from one npm package. Add one `./gui-experimental` export beside
-`./tui`, and OpenCode Desktop loads it for each plugin on its own background server.
+`./tui`, and OfeCode Desktop loads it for each plugin on its own background server.
 
 ```json title="package.json"
 {
@@ -135,7 +135,7 @@ The preset does the following:
   bundled copy would not share the app's instance.
 
 ```text
-effect/Schema is not a module the OpenCode app provides to plugin GUIs: effect, @opencode/plugin/gui, …
+effect/Schema is not a module the OfeCode app provides to plugin GUIs: effect, @opencode/plugin/gui, …
 ```
 
 Import from the shared entry instead, for example `import { Schema } from "effect"`.
@@ -196,7 +196,7 @@ import { readFile } from "node:fs/promises" // The main process; an inert placeh
 
 ## Where GUI entries load
 
-OpenCode Desktop loads GUI entries from its own background server, which already loads the plugins from your config, so
+OfeCode Desktop loads GUI entries from its own background server, which already loads the plugins from your config, so
 they never add a new source of code. Configure the plugin in the global `opencode.json(c)` to make its GUI available in
 every window.
 
@@ -225,13 +225,13 @@ vite build --watch
 - Each rebuild reloads the plugin's GUI in every window and in the main process. The server entry does not restart.
 - An installed package's GUI changes only with its version.
 - Changing the plugin's `options` in `opencode.json(c)` reloads the plugin.
-- `opencode plugin update` replaces a package's GUI once the update finishes.
+- `ofecode plugin update` replaces a package's GUI once the update finishes.
 - [**Settings > Extensions > Plugins**](/plugins#desktop) lists the plugin with a switch that turns its GUI off. To
-  remove it, remove it from `opencode.json(c)` or run `opencode plugin remove <package>`.
+  remove it, remove it from `opencode.json(c)` or run `ofecode plugin remove <package>`.
 
 <Callout type="note">
   The app's own plugins reserve their ids. If your plugin's id is one of them, nests under one with a `.`, has one
-  nested under it, or is in the `opencode` namespace, its GUI does not load, and **Settings > Extensions > Plugins**
+  nested under it, or is in the `ofecode` namespace, its GUI does not load, and **Settings > Extensions > Plugins**
   lists it as not loaded.
 </Callout>
 
@@ -358,7 +358,7 @@ export default Plugin.define({ ...definition, setup, main })
 
 ## Shared context
 
-Both setups receive the plugin's options, a client for the OpenCode server, and app metadata, like the server and TUI
+Both setups receive the plugin's options, a client for the OfeCode server, and app metadata, like the server and TUI
 parts.
 
 ### Options
@@ -381,7 +381,7 @@ setup(ctx) {
 
 ### Server client
 
-`ctx.client` is the OpenCode client of the server that runs the plugin: the desktop app's own server. Use it to call
+`ctx.client` is the OfeCode client of the server that runs the plugin: the desktop app's own server. Use it to call
 your server part through its [RPC](/build/plugins/rpc).
 
 ```ts
@@ -409,7 +409,7 @@ ctx.add(Command, () => ({
 if (!ctx.app.packaged) console.log(`Acme on ${ctx.app.name} ${ctx.app.version} (${ctx.app.channel})`)
 ```
 
-- `name` is `"opencode"`, as in a server plugin's `ctx.app.name`.
+- `name` is `"ofecode"`, as in a server plugin's `ctx.app.name`.
 - `platform` is `"desktop"` in the Electron app and in `main`, and `"web"` in a browser tab.
 - `packaged` is `true` when the desktop app runs packaged. It is always `false` on the web.
 - Server plugins get `name`, `version`, and `channel`; TUI plugins get `version` and `channel`.
@@ -2599,7 +2599,7 @@ interface NotifyResult {
 ### Usage data
 
 A session's token, cost and plan figures are in its server's data, the same reactive store the app reads for the
-header's "28k · $0.28". Read them there rather than from opencode's database.
+header's "28k · $0.28". Read them there rather than from ofecode's database.
 
 ```ts
 import { lastAssistantWithUsage } from "@opencode/client/solid"
@@ -2615,7 +2615,7 @@ const limits = () => (session.location ? data.location.usage.limits(session.loca
 
 - `step()` is the assistant step whose tokens fill the context window now, as the app's context ring uses. Compare its
   `tokens` with the model's `limit.context` from `data.location.model.list`.
-- `limits()` holds the OpenCode Console budgets and Go plan allowance once `data.location.usage.sync(location)` has
+- `limits()` holds the OfeCode Console budgets and Go plan allowance once `data.location.usage.sync(location)` has
   loaded them. It is `null` when the server reports none.
 
 ### Tabs
@@ -3193,7 +3193,7 @@ interface Browser {
 
 ## The main process
 
-On OpenCode Desktop, a plugin's `main` setup runs once in the Electron main process as an app-wide singleton. It has
+On OfeCode Desktop, a plugin's `main` setup runs once in the Electron main process as an app-wide singleton. It has
 full access to Node.js built-ins, `electron`, and the main host APIs. Pass it to `Plugin.define` in the plugin's
 [`./gui-experimental` file](#define-the-gui-plugin), beside the window `setup` or on its own.
 
@@ -3258,7 +3258,7 @@ main(ctx) {
 - `ctx.windows` lists the app's windows and reports when one opens or closes.
 - `ctx.embeds` places a `WebContentsView` in a window's layout; see [Embedded web views](#embedded-web-views).
 - `ctx.serverEndpoints.get(id)` returns a server's URL and credentials. The desktop app's own server is `"sidecar"`.
-- `ctx.cli` describes the OpenCode CLI the desktop app runs.
+- `ctx.cli` describes the OfeCode CLI the desktop app runs.
 - `ctx.log.write` writes to the desktop log file.
 
 #### Reference

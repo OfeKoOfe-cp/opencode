@@ -21,9 +21,9 @@ const ISOLATION_ENV = {
   MAX_MCP_OUTPUT_TOKENS: "200000",
   // Skips OAuth, so the subscription would not be used
   CLAUDE_CODE_SIMPLE: undefined,
-  // A shell-level effort override would take precedence over OpenCode's live effort settings.
+  // A shell-level effort override would take precedence over OfeCode's live effort settings.
   CLAUDE_CODE_EFFORT_LEVEL: undefined,
-  // Caps every OpenCode tool call, which would fail subagents and permission prompts that run longer
+  // Caps every OfeCode tool call, which would fail subagents and permission prompts that run longer
   MCP_TOOL_TIMEOUT: undefined,
 }
 
@@ -61,7 +61,7 @@ export function base(input: {
     env: { ...input.io.env(), ...input.connection, ...ISOLATION_ENV },
     settingSources: [],
     settings: { disableAllHooks: true },
-    // Without summaries, OpenCode has no reasoning text to display
+    // Without summaries, OfeCode has no reasoning text to display
     thinking: { type: "adaptive", display: "summarized" },
     strictMcpConfig: true,
     skills: [],

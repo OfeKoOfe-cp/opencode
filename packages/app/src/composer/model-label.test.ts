@@ -23,13 +23,13 @@ function label(labels: ReturnType<typeof composerModelLabels>, providerID: strin
   return labels.get(composerModelLabelKey(providerID, modelID))
 }
 
-const root = provider("opencode", "Anomaly / OpenCode", { integrationID: "opencode", models: [] })
+const root = provider("opencode", "Anomaly / OfeCode", { integrationID: "opencode", models: [] })
 
 const managed = provider("console-openai", "Anomaly / OpenAI", { integrationID: "opencode", canonical: "openai" })
 
 test.each([
-  provider("opencode", "Anomaly / OpenCode", { integrationID: "opencode" }),
-  provider("opencode", "OpenCode"),
+  provider("opencode", "Anomaly / OfeCode", { integrationID: "opencode" }),
+  provider("opencode", "OfeCode"),
 ])("omits native provider $name", (native) => {
   const all = catalog(native)
 
@@ -39,11 +39,11 @@ test.each([
 
 test.each([
   { direct: provider("openai", "Renamed", { models: [] }), connected: [], expected: "OpenAI" },
-  { direct: provider("openai", "Renamed", { models: [] }), connected: ["openai"], expected: "OpenCode / OpenAI" },
+  { direct: provider("openai", "Renamed", { models: [] }), connected: ["openai"], expected: "OfeCode / OpenAI" },
   {
     direct: provider("account", "Owls", { integrationID: "openai", models: [] }),
     connected: ["account"],
-    expected: "OpenCode / OpenAI",
+    expected: "OfeCode / OpenAI",
   },
   {
     direct: provider("proxy", "OpenAI", { canonical: "openai", models: [] }),

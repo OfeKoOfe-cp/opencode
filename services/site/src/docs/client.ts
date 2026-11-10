@@ -160,7 +160,7 @@ phone.addEventListener("change", () => {
   closeLockup()
 })
 
-// The logo menu and the product menu (on DOCS), shared with the site and the other OpenCode sites (packages/nav-menus).
+// The logo menu and the product menu (on DOCS), shared with the site and the other OfeCode sites (packages/nav-menus).
 // Opening one closes the lockup's own menus.
 installNavMenus({ link: (path) => path })
 on("opencode-nav-menu-open" as keyof DocumentEventMap, () => closeLockup())

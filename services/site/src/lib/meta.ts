@@ -54,7 +54,7 @@ function client(origin: string) {
   })
 }
 
-// Lets https://opencode.ai/pair links open the OpenCode iOS app. Only /pair may open the app.
+// Lets https://opencode.ai/pair links open the OfeCode iOS app. Only /pair may open the app.
 const APPLE_APP_SITE_ASSOCIATION = JSON.stringify({
   applinks: {
     details: [

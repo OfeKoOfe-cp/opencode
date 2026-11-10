@@ -100,7 +100,7 @@ function fromClaude(models: readonly ClaudeProbe.Model[], saved: readonly Catalo
   for (const model of saved) known.set(model.id, model.contextWindow)
   const result: CatalogModel[] = []
   for (const model of models) {
-    // "default" follows Claude Code's own default, which can change under a running opencode session
+    // "default" follows Claude Code's own default, which can change under a running ofecode session
     if (model.value === "default") continue
     result.push({
       id: model.value,
@@ -130,9 +130,9 @@ function toModel(model: CatalogModel, prices: ReadonlyMap<string, Model.Info> | 
   return {
     ...defaults,
     name: model.name,
-    // The SDK reports context windows before a prompt, but not output limits. 0 means unknown in OpenCode.
+    // The SDK reports context windows before a prompt, but not output limits. 0 means unknown in OfeCode.
     limit: { context: model.contextWindow ?? defaults.limit.context, output: 0 },
-    // OpenCode picks the title model by family (Model.small).
+    // OfeCode picks the title model by family (Model.small).
     family: model.id.includes("haiku") ? Model.Family.make("claude-haiku") : undefined,
     capabilities: { tools: true, input: ["text", "image", "pdf"], output: ["text"] },
     variants: model.efforts.map((effort) => ({ id: Model.VariantID.make(effort), settings: { effort } })),

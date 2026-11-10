@@ -511,7 +511,7 @@ export function Typewriter() {
           claim centred in the top bar and the downloads on its right. */}
       <div ref={canvas} data-slot="canvas" tabIndex={-1}>
         <label data-slot="sr-only" for="font-typing-input">
-          Type anything to create OpenCode logo letters
+          Type anything to create OfeCode logo letters
         </label>
         <textarea
           ref={input}

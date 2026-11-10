@@ -644,7 +644,7 @@ export function Session(props: {
   onCleanup(() => {
     sessionDisposed = true
   })
-  // Restore the prompt when the free allowance or an OpenCode Go limit stops it, and offer OpenCode Go on the first free
+  // Restore the prompt when the free allowance or an OfeCode Go limit stops it, and offer OfeCode Go on the first free
   // allowance hit in a day.
   onCleanup(
     data.on("session.step.failed", async (event) => {

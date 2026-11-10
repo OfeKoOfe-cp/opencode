@@ -8,7 +8,7 @@ export function SocialMeta(props: { title: string; description: string; path: st
   return (
     <>
       <Meta property="og:type" content="website" />
-      <Meta property="og:site_name" content="OpenCode" />
+      <Meta property="og:site_name" content="OfeCode" />
       <Meta property="og:url" content={`${config.baseUrl}${language.route(props.path)}`} />
       <Meta property="og:title" content={props.title} />
       <Meta property="og:description" content={props.description} />

@@ -12,7 +12,7 @@ import { sdkInstalls } from "~/lib/install-commands"
 // opencode.install.pick() load Text.js console apps from /textjs/ (services/site/textjs) on
 // demand, so React and Text.js never enter the site's own bundles.
 //
-// OpenCode Lite also starts on its own once a visitor shows they want the console: DevTools docks,
+// OfeCode Lite also starts on its own once a visitor shows they want the console: DevTools docks,
 // they press a DevTools shortcut on the page, or it already started in this tab. Text.js's
 // onConsoleIntent watches for that; its ~2 kB chunk is all a desktop visitor downloads until then,
 // and touch screens skip it. Quitting Lite turns this off for the browser until opencode.try().
@@ -72,7 +72,7 @@ export function install() {
 
   const manifest = {
     site: location.origin,
-    about: "OpenCode, the open source coding agent",
+    about: "OfeCode, the open source coding agent",
     pages: {
       product: url("/product"),
       docs: url(docsTopics[0].href),
@@ -105,13 +105,13 @@ export function install() {
       say(["› ", dim], [found, strong])
       return found
     }
-    say([`Install OpenCode${os ? ` on ${os}` : ""}:`, dim])
+    say([`Install OfeCode${os ? ` on ${os}` : ""}:`, dim])
     forThisComputer.forEach((id) => say(["› ", dim], [command(id) ?? "", strong], [`   # ${id}`, dim]))
     say(["Others: opencode.install('npm' | 'bun' | 'brew' | 'paru' | 'curl'). Pick one: opencode.install.pick()", dim])
     return command(forThisComputer[0])
   }
 
-  // One OpenCode Lite at a time. Quitting it brings the greeting back, and stops it from starting on
+  // One OfeCode Lite at a time. Quitting it brings the greeting back, and stops it from starting on
   // its own in this browser (people who debug the site open DevTools all day) until opencode.try().
   let lite: Promise<{ stop: () => void }> | undefined
   const startLite = (reason?: string) => {
@@ -135,7 +135,7 @@ export function install() {
           )
           greet(colors, say)
           say([
-            "OpenCode Lite won't start on its own in this browser again. Type opencode.try() to bring it back.",
+            "OfeCode Lite won't start on its own in this browser again. Type opencode.try() to bring it back.",
             dim,
           ])
         },
@@ -146,7 +146,7 @@ export function install() {
   }
 
   const pick = async () => {
-    // Two apps can't share the console: the picker takes it from OpenCode Lite.
+    // Two apps can't share the console: the picker takes it from OfeCode Lite.
     await lite?.then((app) => app.stop()).catch(() => undefined)
     lite = undefined
     say(["Click an empty part of the page, then use ↑ ↓ and Enter: keys reach the console app through the page.", dim])
@@ -186,9 +186,9 @@ export function install() {
         "opencode.models()": "the free models, live from models.dev",
         "opencode.docs('agents')": "open a docs page; docs() lists them",
         "opencode.agents()": "this site, for agents",
-        "opencode.contribute()": "help build OpenCode",
+        "opencode.contribute()": "help build OfeCode",
         "opencode.manifest": "all of the above, as one object",
-        "opencode.try()": "OpenCode Lite in this console: a sandbox, nothing to install",
+        "opencode.try()": "OfeCode Lite in this console: a sandbox, nothing to install",
       })
     },
     install: Object.assign(
@@ -212,7 +212,7 @@ export function install() {
     mobile() {
       const devices = (soon: boolean) =>
         mobileStores.filter((store) => store.soon === soon).map((store) => store.device)
-      say([`OpenCode Mobile for ${devices(false).join(" and ")}: ${url("/mobile")}`])
+      say([`OfeCode Mobile for ${devices(false).join(" and ")}: ${url("/mobile")}`])
       for (const store of mobileStores.filter((item) => item.beta))
         say([`The ${store.device} app is a public beta on TestFlight: ${store.href}`, dim])
       if (devices(true).length > 0) say([`Coming soon to ${devices(true).join(" and ")}.`, dim])
@@ -260,12 +260,12 @@ export function install() {
         "One page as Markdown": `${url("/desktop.md")} (or send Accept: text/markdown)`,
         Sitemap: manifest.agents.sitemap,
         Releases: `${manifest.agents.releases.rss}  ${manifest.agents.releases.json}`,
-        "OpenCode server API": manifest.agents.openapi,
+        "OfeCode server API": manifest.agents.openapi,
       })
       return manifest.agents.llms
     },
     contribute() {
-      say(["OpenCode is open source (MIT). Come build it with us:"])
+      say(["OfeCode is open source (MIT). Come build it with us:"])
       say([`  Good first issues  ${config.github.repoUrl}/contribute`, dim])
       say([`  Contributing       ${config.github.repoUrl}/blob/dev/CONTRIBUTING.md`, dim])
       say([`  Discord            ${config.social.discord}`, dim])
@@ -274,10 +274,10 @@ export function install() {
     manifest,
     async try() {
       localStorage.removeItem(liteQuitKey)
-      if (lite) return say(["OpenCode Lite is already running. Click an empty part of the page, then type.", dim])
+      if (lite) return say(["OfeCode Lite is already running. Click an empty part of the page, then type.", dim])
       say(["Click an empty part of the page, then type: keys reach the console app through the page.", dim])
       if (["ios", "android"].includes(detectPlatform() ?? ""))
-        return say(["OpenCode Lite needs a desktop browser with DevTools. Try https://textjs.org/opencode", dim])
+        return say(["OfeCode Lite needs a desktop browser with DevTools. Try https://textjs.org/opencode", dim])
       if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent))
         say(["In Safari, turn on Settings › Advanced › Show features for web developers.", dim])
       const started = await startLite().then(
@@ -286,14 +286,14 @@ export function install() {
       )
       if (!started)
         return say([
-          "OpenCode Lite couldn't load here. Try it at https://textjs.org/opencode, or install OpenCode: opencode.install()",
+          "OfeCode Lite couldn't load here. Try it at https://textjs.org/opencode, or install OfeCode: opencode.install()",
           dim,
         ])
     },
     toString: () => "opencode: type opencode.help()",
   }
   Object.defineProperty(window, "opencode", { value: api, configurable: true, writable: true })
-  // The greeting waits in the console for whoever opens DevTools later, and OpenCode Lite's first
+  // The greeting waits in the console for whoever opens DevTools later, and OfeCode Lite's first
   // frame replaces it then. When DevTools is already docked (or Lite already ran in this tab), Lite
   // starts at once and the greeting is skipped. If Lite can't load, the greeting shows instead.
   // After a visitor quits Lite, only the greeting shows.
@@ -357,13 +357,13 @@ function greet(colors: typeof brand.light, say: (...parts: [string, string?][]) 
     text += "\n"
   })
   console.log(text, ...styles)
-  say(["OpenCode, the open source coding agent.", `font-weight:bold;color:${colors.code}`])
+  say(["OfeCode, the open source coding agent.", `font-weight:bold;color:${colors.code}`])
   say(
     ["Type ", `color:${colors.dim}`],
     ["opencode.help()", `color:${colors.link}`],
     [" to install, download or read the docs from here.", `color:${colors.dim}`],
   )
-  say(["Or try OpenCode right in this console: ", `color:${colors.dim}`], ["opencode.try()", `color:${colors.link}`])
+  say(["Or try OfeCode right in this console: ", `color:${colors.dim}`], ["opencode.try()", `color:${colors.link}`])
   const links = [
     ["Contribute", config.github.repoUrl],
     ["Good first issues", `${config.github.repoUrl}/labels/good%20first%20issue`],

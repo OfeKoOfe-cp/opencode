@@ -448,7 +448,7 @@ export function CoverTitle() {
 
   return (
     <span data-slot="cover-word" ref={root}>
-      <canvas ref={canvas} role="img" aria-label="OpenCode" />
+      <canvas ref={canvas} role="img" aria-label="OfeCode" />
     </span>
   )
 }

@@ -24,7 +24,7 @@ export async function downloadFont() {
     ])
     const file = font.createLogoFont(opentype, mapCharacter)
     downloadFile(new Blob([file.toArrayBuffer()], { type: "font/otf" }), font.FONT_FILENAME)
-    return "Font downloaded. Open the file to install it, then select OpenCode in your app."
+    return "Font downloaded. Open the file to install it, then select OfeCode in your app."
   } catch (error) {
     console.error("Font export failed:", error)
     return "Could not create the font. Please try again."

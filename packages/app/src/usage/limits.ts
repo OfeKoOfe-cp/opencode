@@ -127,7 +127,7 @@ export type ModelUsage = { readonly left: number; readonly reached: boolean; rea
 
 /**
  * What the Console budgets leave for a model, when any covers it. A budget on all spend covers every model the
- * workspace serves; OpenCode Go bills its own allowance instead.
+ * workspace serves; OfeCode Go bills its own allowance instead.
  */
 export function modelUsage(
   info: UsageLimitsInfo,

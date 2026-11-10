@@ -1,68 +1,68 @@
 ---
 title: GitLab
-description: Verwenden Sie OpenCode in GitLab-Issues und Merge Requests.
+description: Verwenden Sie OfeCode in GitLab-Issues und Merge Requests.
 ---
 
-OpenCode lässt sich über Ihre GitLab CI/CD-Pipeline oder mit GitLab Duo in Ihren GitLab-Workflow integrieren.
+OfeCode lässt sich über Ihre GitLab CI/CD-Pipeline oder mit GitLab Duo in Ihren GitLab-Workflow integrieren.
 
-In beiden Fällen läuft OpenCode auf Ihren GitLab Runners.
+In beiden Fällen läuft OfeCode auf Ihren GitLab Runners.
 
 ---
 
 ## GitLab CI
 
-OpenCode funktioniert in einer regulären GitLab-Pipeline. Sie können es als [CI component](https://docs.gitlab.com/ee/ci/components/) in eine Pipeline einbauen.
+OfeCode funktioniert in einer regulären GitLab-Pipeline. Sie können es als [CI component](https://docs.gitlab.com/ee/ci/components/) in eine Pipeline einbauen.
 
-Hier verwenden wir eine von der Community erstellte CI/CD-Komponente für OpenCode – [nagyv/gitlab-opencode](https://gitlab.com/nagyv/gitlab-opencode).
+Hier verwenden wir eine von der Community erstellte CI/CD-Komponente für OfeCode – [nagyv/gitlab-ofecode](https://gitlab.com/nagyv/gitlab-ofecode).
 
 ---
 
 ### Funktionen
 
-- **Benutzerdefinierte Konfiguration pro Job verwenden**: Konfigurieren Sie OpenCode mit einem benutzerdefinierten Konfigurationsverzeichnis, zum Beispiel `./config/#custom-directory`, um die Funktionalität pro OpenCode-Aufruf zu aktivieren oder zu deaktivieren.
-- **Minimale Einrichtung**: Die CI-Komponente richtet OpenCode im Hintergrund ein. Sie müssen lediglich die OpenCode-Konfiguration und die erste Eingabeaufforderung erstellen.
+- **Benutzerdefinierte Konfiguration pro Job verwenden**: Konfigurieren Sie OfeCode mit einem benutzerdefinierten Konfigurationsverzeichnis, zum Beispiel `./config/#custom-directory`, um die Funktionalität pro OfeCode-Aufruf zu aktivieren oder zu deaktivieren.
+- **Minimale Einrichtung**: Die CI-Komponente richtet OfeCode im Hintergrund ein. Sie müssen lediglich die OfeCode-Konfiguration und die erste Eingabeaufforderung erstellen.
 - **Flexibel**: Die CI-Komponente unterstützt mehrere Eingaben zum Anpassen ihres Verhaltens
 
 ---
 
 ### Einrichtung
 
-1. Speichern Sie Ihre OpenCode-Authentifizierung JSON als Umgebungsvariablen vom Dateityp CI unter **Einstellungen** > **CI/CD** > **Variablen**. Stellen Sie sicher, dass Sie sie als „Maskiert und ausgeblendet“ markieren.
+1. Speichern Sie Ihre OfeCode-Authentifizierung JSON als Umgebungsvariablen vom Dateityp CI unter **Einstellungen** > **CI/CD** > **Variablen**. Stellen Sie sicher, dass Sie sie als „Maskiert und ausgeblendet“ markieren.
 2. Fügen Sie Folgendes zu Ihrer `.gitlab-ci.yml`-Datei hinzu.
 
    ```yaml title=".gitlab-ci.yml"
    include:
-     - component: $CI_SERVER_FQDN/nagyv/gitlab-opencode/opencode@2
+     - component: $CI_SERVER_FQDN/nagyv/gitlab-ofecode/ofecode@2
        inputs:
          config_dir: ${CI_PROJECT_DIR}/opencode-config
-         auth_json: $OPENCODE_AUTH_JSON # Die variable name für ihre OpenCode authentifizierung JSON
+         auth_json: $OPENCODE_AUTH_JSON # Die variable name für ihre OfeCode authentifizierung JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```
 
-Weitere Eingaben und Anwendungsfälle finden Sie unter [check out the docs](https://gitlab.com/explore/catalog/nagyv/gitlab-opencode) für diese Komponente.
+Weitere Eingaben und Anwendungsfälle finden Sie unter [check out the docs](https://gitlab.com/explore/catalog/nagyv/gitlab-ofecode) für diese Komponente.
 
 ---
 
 ## GitLab Duo
 
-OpenCode lässt sich in Ihren GitLab-Workflow integrieren.
-Erwähnen Sie `@opencode` in einem Kommentar und OpenCode führt Aufgaben innerhalb Ihrer GitLab CI-Pipeline aus.
+OfeCode lässt sich in Ihren GitLab-Workflow integrieren.
+Erwähnen Sie `@ofecode` in einem Kommentar und OfeCode führt Aufgaben innerhalb Ihrer GitLab CI-Pipeline aus.
 
 ---
 
 ### Funktionen
 
-- **Issue Triage**: Bitten Sie OpenCode, ein Problem zu untersuchen und es Ihnen zu erklären.
-- **Reparieren und implementieren**: Bitten Sie OpenCode, ein Problem zu beheben oder eine Funktion zu implementieren.
+- **Issue Triage**: Bitten Sie OfeCode, ein Problem zu untersuchen und es Ihnen zu erklären.
+- **Reparieren und implementieren**: Bitten Sie OfeCode, ein Problem zu beheben oder eine Funktion zu implementieren.
   Es wird ein neuer Branch erstellt und eine Merge Request mit den Änderungen ausgelöst.
-- **Sicher**: OpenCode läuft auf Ihren GitLab Runners.
+- **Sicher**: OfeCode läuft auf Ihren GitLab Runners.
 
 ---
 
 ### Einrichtung
 
-OpenCode wird in Ihrer GitLab CI/CD-Pipeline ausgeführt. Folgendes müssen Sie zum Einrichten benötigen:
+OfeCode wird in Ihrer GitLab CI/CD-Pipeline ausgeführt. Folgendes müssen Sie zum Einrichten benötigen:
 
 :::tip
 Aktuelle Anweisungen finden Sie im [**GitLab docs**](https://docs.gitlab.com/user/duo_agent_platform/agent_assistant/).
@@ -82,7 +82,7 @@ Aktuelle Anweisungen finden Sie im [**GitLab docs**](https://docs.gitlab.com/use
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing opencode"
+      - echo "Installing ofecode"
       - npm install --global opencode-ai
       - echo "Installing glab"
       - export GITLAB_TOKEN=$GITLAB_TOKEN_OPENCODE
@@ -91,10 +91,10 @@ Aktuelle Anweisungen finden Sie im [**GitLab docs**](https://docs.gitlab.com/use
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating OpenCode auth configuration"
-      - mkdir --parents ~/.local/share/opencode
+      - echo "Creating OfeCode auth configuration"
+      - mkdir --parents ~/.local/share/ofecode
       - |
-        cat > ~/.local/share/opencode/auth.json << EOF
+        cat > ~/.local/share/ofecode/auth.json << EOF
         {
           "anthropic": {
             "type": "api",
@@ -103,13 +103,13 @@ Aktuelle Anweisungen finden Sie im [**GitLab docs**](https://docs.gitlab.com/use
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "opencode@gitlab.com"
-      - git config --global user.name "OpenCode"
+      - git config --global user.email "ofecode@gitlab.com"
+      - git config --global user.name "OfeCode"
       - echo "Testing glab"
       - glab issue list
-      - echo "Running OpenCode"
+      - echo "Running OfeCode"
       - |
-        opencode run "
+        ofecode run "
         You are an AI assistant helping with GitLab operations.
 
         Context: $AI_FLOW_CONTEXT
@@ -158,10 +158,10 @@ Ausführliche Anweisungen finden Sie unter [GitLab CLI agents docs](https://docs
 
 ### Beispiele
 
-Hier sind einige Beispiele, wie Sie OpenCode in GitLab verwenden können.
+Hier sind einige Beispiele, wie Sie OfeCode in GitLab verwenden können.
 
 :::tip
-Sie können die Verwendung einer anderen Triggerphrase als `@opencode` konfigurieren.
+Sie können die Verwendung einer anderen Triggerphrase als `@ofecode` konfigurieren.
 :::
 
 - **Erklären Sie ein Problem**
@@ -169,27 +169,27 @@ Sie können die Verwendung einer anderen Triggerphrase als `@opencode` konfiguri
   Fügen Sie diesen Kommentar in einer GitLab-Ausgabe hinzu.
 
   ```
-  @opencode explain this issue
+  @ofecode explain this issue
   ```
 
-  OpenCode liest das Problem und antwortet mit einer klaren Erklärung.
+  OfeCode liest das Problem und antwortet mit einer klaren Erklärung.
 
 - **Ein Problem beheben**
 
   Sagen Sie in einer GitLab-Ausgabe:
 
   ```
-  @opencode fix this
+  @ofecode fix this
   ```
 
-  OpenCode erstellt einen neuen Branch, implementiert die Änderungen und öffnet eine Merge Request mit den Änderungen.
+  OfeCode erstellt einen neuen Branch, implementiert die Änderungen und öffnet eine Merge Request mit den Änderungen.
 
 - **Merge Requests prüfen**
 
   Hinterlassen Sie den folgenden Kommentar zu einer GitLab Merge Request.
 
   ```
-  @opencode review this merge request
+  @ofecode review this merge request
   ```
 
-  OpenCode prüft die Merge Request und gibt Feedback.
+  OfeCode prüft die Merge Request und gibt Feedback.

@@ -2,8 +2,8 @@
 title: "JavaScript"
 ---
 
-`@opencode/client` is the TypeScript client for the OpenCode HTTP
-API. Use it when your application connects to an OpenCode server over the
+`@opencode/client` is the TypeScript client for the OfeCode HTTP
+API. Use it when your application connects to an OfeCode server over the
 network. Its native types and methods are generated from the same contract as the
 [API reference](/api). Plugin RPC types come from imported RPC definitions.
 
@@ -44,7 +44,7 @@ subscriber-local cancellation and use the base client's headers.
 
 ```ts
 const client = OpenCode.make({
-  baseUrl: "https://opencode.example.com",
+  baseUrl: "https://ofecode.example.com",
   headers: {
     authorization: `Bearer ${process.env.OPENCODE_TOKEN}`,
   },
@@ -175,9 +175,9 @@ compatibility predicate:
 
 ```ts
 const endpoint = await Service.ensure({
-  file: "/var/run/opencode/service.json",
+  file: "/var/run/ofecode/service.json",
   version: (version) => version.startsWith("2."),
-  command: ["opencode", "serve", "--service"],
+  command: ["ofecode", "serve", "--service"],
   onStart(reason, previousVersion) {
     console.log(reason, previousVersion)
   },
@@ -185,4 +185,4 @@ const endpoint = await Service.ensure({
 ```
 
 Omit these options to use the standard registration path and
-`opencode serve --service` command.
+`ofecode serve --service` command.

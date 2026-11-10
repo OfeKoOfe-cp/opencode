@@ -101,7 +101,7 @@ describe("normalizeProviderList", () => {
     ["disabled-only none variant", [{ id: "none" }], undefined, false],
   ] as const)("derives reasoning capability from %s", (_, variants, compatibility, expected) => {
     const providers: ProviderListOutput["data"] = [
-      { id: "opencode", name: "OpenCode", activation: "auto", package: "@opencode/ai/providers/openai-compatible" },
+      { id: "opencode", name: "OfeCode", activation: "auto", package: "@opencode/ai/providers/openai-compatible" },
     ]
 
     const models: ModelListOutput["data"] = [

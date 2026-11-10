@@ -16,10 +16,10 @@ import { OpenCodeWorkerd } from "@opencode/sdk/workerd"
 import myPlugin from "./my-plugin"
 
 export class OpenCodeDO {
-  private readonly opencode: Promise<OpenCodeWorkerd.Interface>
+  private readonly ofecode: Promise<OpenCodeWorkerd.Interface>
 
   constructor(state: DurableObjectState) {
-    this.opencode = state.blockConcurrencyWhile(() =>
+    this.ofecode = state.blockConcurrencyWhile(() =>
       OpenCodeWorkerd.create({
         storage: state.storage,
         config: { default_agent: "build" },
@@ -29,8 +29,8 @@ export class OpenCodeDO {
   }
 
   async fetch() {
-    const opencode = await this.opencode
-    return Response.json(await opencode.server.info())
+    const ofecode = await this.ofecode
+    return Response.json(await ofecode.server.info())
   }
 }
 ```
@@ -40,13 +40,13 @@ initialization fails. The retained Promise gives request handlers direct access 
 
 ```ts
 constructor(state: DurableObjectState) {
-  this.opencode = state.blockConcurrencyWhile(() =>
+  this.ofecode = state.blockConcurrencyWhile(() =>
     OpenCodeWorkerd.create({ storage: state.storage }),
   )
 }
 ```
 
-Wrangler selects OpenCode's Workerd-safe implementations through the `workerd` package condition. Cloudflare may evict
+Wrangler selects OfeCode's Workerd-safe implementations through the `workerd` package condition. Cloudflare may evict
 a Durable Object without running cleanup, so correctness does not depend on `close()` being called.
 
 ```jsonc title="wrangler.jsonc"
@@ -57,7 +57,7 @@ a Durable Object without running cleanup, so correctness does not depend on `clo
 
 ## Route outbound requests
 
-Pass `fetch` to route OpenCode's outbound HTTP requests (OpenCode Console config, model requests, web fetch and
+Pass `fetch` to route OfeCode's outbound HTTP requests (OfeCode Console config, model requests, web fetch and
 search, well-known config, and remote MCP servers) through a custom handler such as a Service Binding. Agent code in
 Code Mode continues to use `globalThis.fetch`.
 
@@ -73,7 +73,7 @@ OpenCodeWorkerd.create({
 
 ## Customize
 
-Customize your OpenCode instance by registering plugins bundled with your
+Customize your OfeCode instance by registering plugins bundled with your
 Worker. Pass plugins to `OpenCodeWorkerd.create()` to customize agents, models,
 tools, and other behavior:
 

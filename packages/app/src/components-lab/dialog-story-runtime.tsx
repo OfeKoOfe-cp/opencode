@@ -113,8 +113,8 @@ export const STORY_PROJECTS = [
 ]
 
 const defaultProviders = [
-  { id: "opencode-go", name: "OpenCode Go", package: "opencode-go", activation: "enabled" },
-  { id: "opencode", name: "OpenCode Zen", package: "opencode", activation: "enabled" },
+  { id: "opencode-go", name: "OfeCode Go", package: "opencode-go", activation: "enabled" },
+  { id: "opencode", name: "OfeCode Zen", package: "opencode", activation: "enabled" },
   { id: "anthropic", name: "Anthropic", package: "anthropic", activation: "enabled" },
 ]
 
@@ -220,17 +220,17 @@ const integrations = [
   },
   {
     id: "opencode",
-    name: "OpenCode Console",
+    name: "OfeCode Console",
     methods: [
-      { type: "oauth", id: "console", label: "OpenCode Console account" },
+      { type: "oauth", id: "console", label: "OfeCode Console account" },
       { type: "key", label: "API key (service account)" },
     ],
     connections: [],
   },
   {
     id: "opencode-go",
-    name: "OpenCode Go",
-    methods: [{ type: "oauth", id: "go", label: "Sign in with OpenCode" }],
+    name: "OfeCode Go",
+    methods: [{ type: "oauth", id: "go", label: "Sign in with OfeCode" }],
     connections: [],
   },
   {
@@ -270,7 +270,7 @@ function jsonResponse<T>(body: T, status = 200) {
 }
 
 function errorResponse(tag: string, message: string, status: number) {
-  // SAFETY: the server's HTTP wire body for a tagged error, decoded at the OpenCode client boundary.
+  // SAFETY: the server's HTTP wire body for a tagged error, decoded at the OfeCode client boundary.
   // oxlint-disable-next-line anti-slop-effect/no-manual-tagged-construction -- see SAFETY above
   return jsonResponse({ _tag: tag, message }, status)
 }

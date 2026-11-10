@@ -738,8 +738,8 @@ export const dict = {
   "server.connect.address.invalid": "Унесите важећу HTTP или HTTPS адресу сервера.",
   "server.connect.failed": "Није могуће повезати се. Проверите адресу сервера и лозинку, па покушајте поново.",
   "server.connect.scan": "Скенирај QR код",
-  "server.connect.scan.description": "Усмерите камеру на QR код који приказује opencode pair.",
-  "server.connect.scan.invalid": "Ово није OfeCode код за повезивање. Скенирајте код који приказује opencode pair.",
+  "server.connect.scan.description": "Усмерите камеру на QR код који приказује ofecode pair.",
+  "server.connect.scan.invalid": "Ово није OfeCode код за повезивање. Скенирајте код који приказује ofecode pair.",
   "server.connect.camera": "Камера за упаривање",
   "server.connect.camera.starting": "Отварање камере…",
   "server.connect.mixedContent":

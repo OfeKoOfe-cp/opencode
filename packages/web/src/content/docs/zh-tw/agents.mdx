@@ -15,7 +15,7 @@ description: 設定和使用專門的代理。
 
 ## 類型
 
-OpenCode 中有兩種類型的代理：主代理和子代理。
+OfeCode 中有兩種類型的代理：主代理和子代理。
 
 ---
 
@@ -27,7 +27,7 @@ OpenCode 中有兩種類型的代理：主代理和子代理。
 您可以在工作階段期間使用 **Tab** 鍵在主代理之間切換。
 :::
 
-OpenCode 內建了兩個主代理：**Build** 和 **Plan**。我們將在下面介紹它們。
+OfeCode 內建了兩個主代理：**Build** 和 **Plan**。我們將在下面介紹它們。
 
 ---
 
@@ -35,13 +35,13 @@ OpenCode 內建了兩個主代理：**Build** 和 **Plan**。我們將在下面�
 
 子代理是主代理可以呼叫來執行特定任務的專業助手。您也可以透過在訊息中 **@ 提及**它們來手動呼叫。
 
-OpenCode 內建了三個子代理：**General**、**Explore** 和 **Scout**。我們將在下面介紹它們。
+OfeCode 內建了三個子代理：**General**、**Explore** 和 **Scout**。我們將在下面介紹它們。
 
 ---
 
 ## 內建代理
 
-OpenCode 內建了兩個主代理和三個子代理。
+OfeCode 內建了兩個主代理和三個子代理。
 
 ---
 
@@ -87,7 +87,7 @@ _模式_：`subagent`
 
 _模式_：`subagent`
 
-一個用於外部文件與依賴研究的唯讀代理。當您需要將某個依賴儲存庫 clone 到 OpenCode 的託管快取中、檢查函式庫的原始碼，或在不修改工作區的情況下將本機程式碼與 upstream 實作交叉比對時，請使用此代理。
+一個用於外部文件與依賴研究的唯讀代理。當您需要將某個依賴儲存庫 clone 到 OfeCode 的託管快取中、檢查函式庫的原始碼，或在不修改工作區的情況下將本機程式碼與 upstream 實作交叉比對時，請使用此代理。
 
 ---
 
@@ -188,10 +188,10 @@ _模式_：`primary`
 
 您還可以使用 Markdown 檔案定義代理。將它們放在：
 
-- 全域：`~/.config/opencode/agents/`
-- 專案級：`.opencode/agents/`
+- 全域：`~/.config/ofecode/agents/`
+- 專案級：`.ofecode/agents/`
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Reviews code for quality and best practices
 mode: subagent
@@ -284,7 +284,7 @@ Markdown 檔案名稱即為代理名稱。例如，`review.md` 會建立一個�
 }
 ```
 
-如果未指定溫度，OpenCode 將使用模型特定的預設值；大多數模型通常為 0，Qwen 模型為 0.55。
+如果未指定溫度，OfeCode 將使用模型特定的預設值；大多數模型通常為 0，Qwen 模型為 0.55。
 
 ---
 
@@ -344,7 +344,7 @@ Markdown 檔案名稱即為代理名稱。例如，`review.md` 會建立一個�
 }
 ```
 
-此路徑相對於設定檔所在位置。因此它同時適用於全域 OpenCode 設定和專案級設定。
+此路徑相對於設定檔所在位置。因此它同時適用於全域 OfeCode 設定和專案級設定。
 
 ---
 
@@ -366,7 +366,7 @@ Markdown 檔案名稱即為代理名稱。例如，`review.md` 會建立一個�
 }
 ```
 
-OpenCode 設定中的模型 ID 使用 `provider/model-id` 格式。例如，如果您使用 [OpenCode Models](https://opencode.ai/docs/console/)，則可以使用 `opencode/gpt-6.1-sol` 來表示 GPT-6.1 Sol。
+OfeCode 設定中的模型 ID 使用 `provider/model-id` 格式。例如，如果您使用 [OfeCode Models](https://opencode.ai/docs/console/)，則可以使用 `ofecode/gpt-6.1-sol` 來表示 GPT-6.1 Sol。
 
 ---
 
@@ -454,7 +454,7 @@ OpenCode 設定中的模型 ID 使用 `provider/model-id` 格式。例如，如�
 
 您還可以在 Markdown 代理中設定權限。
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent
@@ -664,16 +664,16 @@ Only analyze code and suggest changes.
 這些附加選項是模型和提供商特定的。請查閱您的提供商文件以取得可用參數。
 
 :::tip
-執行 `opencode models` 查看可用模型列表。
+執行 `ofecode models` 查看可用模型列表。
 :::
 
 ---
 
 ## 建立代理
 
-要建立新代理，請將 Markdown 檔案新增到專案的 `.opencode/agents/` 或全域的 `~/.config/opencode/agents/` 中。檔案名稱即為代理名稱，frontmatter 用於設定其描述、模式、模型和權限。檔案格式請參閱上文的 [Markdown](#markdown)。
+要建立新代理，請將 Markdown 檔案新增到專案的 `.ofecode/agents/` 或全域的 `~/.config/ofecode/agents/` 中。檔案名稱即為代理名稱，frontmatter 用於設定其描述、模式、模型和權限。檔案格式請參閱上文的 [Markdown](#markdown)。
 
-執行 `opencode agent list` 可列出 OpenCode 已載入的代理。
+執行 `ofecode agent list` 可列出 OfeCode 已載入的代理。
 
 ---
 
@@ -694,14 +694,14 @@ Only analyze code and suggest changes.
 以下是一些您可能會覺得有用的範例代理。
 
 :::tip
-您有想要分享的代理嗎？[提交 PR](https://github.com/anomalyco/opencode)。
+您有想要分享的代理嗎？[提交 PR](https://github.com/anomalyco/ofecode)。
 :::
 
 ---
 
 ### 文件代理
 
-```markdown title="~/.config/opencode/agents/docs-writer.md"
+```markdown title="~/.config/ofecode/agents/docs-writer.md"
 ---
 description: Writes and maintains project documentation
 mode: subagent
@@ -723,7 +723,7 @@ Focus on:
 
 ### 安全稽核代理
 
-```markdown title="~/.config/opencode/agents/security-auditor.md"
+```markdown title="~/.config/ofecode/agents/security-auditor.md"
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent

@@ -3,7 +3,7 @@ import { providerLogo } from "~/lib/providers"
 
 /**
  * Settings › Subscriptions style A, B and C (component/site/byos-options.tsx): explorations of showing
- * that OpenCode works with nearly every subscription, provider and model. English only while they
+ * that OfeCode works with nearly every subscription, provider and model. English only while they
  * are explorations; the chosen one's copy moves into lib/byos.ts (and its translations). A module of
  * its own, so production, which folds the options out, never loads it. Checked on 2026-11-06 against
  * this repo:
@@ -20,16 +20,16 @@ import { providerLogo } from "~/lib/providers"
  */
 export const byosOptions = {
   leads: {
-    rows: "Use the subscriptions, API keys and local models you already have, or an OpenCode subscription.",
-    wall: "Log in with ChatGPT Plus or Pro, GitHub Copilot, SuperGrok or GitLab Duo, or connect any of 200+ providers with an API key. Or use an OpenCode subscription.",
+    rows: "Use the subscriptions, API keys and local models you already have, or an OfeCode subscription.",
+    wall: "Log in with ChatGPT Plus or Pro, GitHub Copilot, SuperGrok or GitLab Duo, or connect any of 200+ providers with an API key. Or use an OfeCode subscription.",
     names:
-      "Use the subscriptions and API keys you already have, or run models on your own machine. Or use an OpenCode subscription.",
+      "Use the subscriptions and API keys you already have, or run models on your own machine. Or use an OfeCode subscription.",
   },
   rows: {
     subscriptions: "Subscriptions",
     providers: "Providers",
     local: "Local",
-    opencode: "OpenCode",
+    opencode: "OfeCode",
     providersMore: "200+ through models.dev",
   },
   all: "All 200+ providers",
@@ -51,7 +51,7 @@ export const byosOptions = {
   // The same pages as Get started and the main nav link (lib/get-started.ts, links.ts).
   opencode: [
     { name: "Free models", href: docsUrl("/console/models/#free-models") },
-    { name: "OpenCode Go", href: "/console/go" },
-    { name: "OpenCode Models", href: "/console/models" },
+    { name: "OfeCode Go", href: "/console/go" },
+    { name: "OfeCode Models", href: "/console/models" },
   ],
 } as const

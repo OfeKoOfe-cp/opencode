@@ -52,7 +52,7 @@ export function homeContent(t: Translate, route: (path: string) => string) {
       { text: "listed in the docs", href: docs("/console/models/#privacy") },
     ],
     // Below the hero: company wordmarks (sources in public/logos/companies/README.md), or the model
-    // providers OpenCode works with (marks from models.dev), cycling in slots on the carousel's grid.
+    // providers OfeCode works with (marks from models.dev), cycling in slots on the carousel's grid.
     companies: {
       label: t("home.companies.label"),
       // Shown instead of the label when its column is too narrow for it on one line (logo-wall.tsx).
@@ -102,7 +102,7 @@ export function homeContent(t: Translate, route: (path: string) => string) {
         metrics: logoMetrics.providers[item.logo],
       })),
     },
-    // Services with official MCP servers (icons from Simple Icons), and the ways to extend OpenCode.
+    // Services with official MCP servers (icons from Simple Icons), and the ways to extend OfeCode.
     tools: {
       title: t("home.tools.title"),
       lead: rich(t("home.tools.lead"), {

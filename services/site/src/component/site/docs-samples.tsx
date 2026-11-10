@@ -27,13 +27,13 @@ export function DocsSamples(props: {
     <>
       <props.Section id="typography">
         <props.Sample variant="typography">
-          <h1>Heading 1 · Configure OpenCode</h1>
+          <h1>Heading 1 · Configure OfeCode</h1>
           <h2>Heading 2 · Providers</h2>
           <h3>Heading 3 · Local models</h3>
           <h4>Heading 4 · Ollama</h4>
           <h5>Heading 5 · Context limits</h5>
           <h6>Heading 6 · Notes</h6>
-          <p data-slot="lead">Lead · OpenCode is an open source coding agent for the terminal, desktop and web.</p>
+          <p data-slot="lead">Lead · OfeCode is an open source coding agent for the terminal, desktop and web.</p>
           <p>
             Body · Run <code>opencode</code> in a project to open the terminal interface. See{" "}
             <a href="#config">Config</a> for every option, or read the{" "}
@@ -43,7 +43,7 @@ export function DocsSamples(props: {
             .
           </p>
           <p>
-            <small>Small · Requires OpenCode 2.0 or later.</small> The <abbr title="Agent Client Protocol">ACP</abbr>{" "}
+            <small>Small · Requires OfeCode 2.0 or later.</small> The <abbr title="Agent Client Protocol">ACP</abbr>{" "}
             server speaks JSON-RPC.
           </p>
         </props.Sample>
@@ -78,7 +78,7 @@ export function DocsSamples(props: {
             <li>Sessions are saved, so you can come back to them.</li>
           </ul>
           <ol>
-            <li>Install OpenCode.</li>
+            <li>Install OfeCode.</li>
             <li>
               Connect a provider with <code>/connect</code>.
             </li>
@@ -107,7 +107,7 @@ export function DocsSamples(props: {
         <props.Sample variant="blockquote">
           <blockquote>
             <p>
-              Homebrew's own <code>brew install opencode</code> formula also installs OpenCode 2. Each release publishes
+              Homebrew's own <code>brew install opencode</code> formula also installs OfeCode 2. Each release publishes
               first to the <code>anomalyco/tap/opencode-v2</code> formula.
             </p>
           </blockquote>
@@ -413,7 +413,7 @@ export function DocsSamples(props: {
             </li>
             <li>
               <p>
-                <strong>Restart OpenCode.</strong> Plugins load on start.
+                <strong>Restart OfeCode.</strong> Plugins load on start.
               </p>
               <CodeFrame variant="terminal" kind="terminal" label="Terminal" copy="$ opencode service restart">
                 <pre data-component="code-block">
@@ -434,8 +434,8 @@ export function DocsSamples(props: {
             <For
               each={[
                 ["Plugins", "Hook into sessions, tools and events."],
-                ["Client", "Talk to a running OpenCode server from JavaScript."],
-                ["SDK", "Embed OpenCode in your own app."],
+                ["Client", "Talk to a running OfeCode server from JavaScript."],
+                ["SDK", "Embed OfeCode in your own app."],
               ]}
             >
               {([title, body]) => (
@@ -528,7 +528,7 @@ export function DocsSamples(props: {
       <props.Section id="details">
         <props.Sample variant="details">
           <details>
-            <summary>Why does OpenCode ask before running commands?</summary>
+            <summary>Why does OfeCode ask before running commands?</summary>
             <p>
               The default <code>bash</code> permission is <code>ask</code>, so nothing runs without your approval.
             </p>
@@ -543,8 +543,8 @@ export function DocsSamples(props: {
       <props.Section id="media">
         <props.Sample variant="media" label="image and video">
           <figure>
-            <img src={ogImage("/docs").src} alt="The OpenCode docs" width="1200" height="630" />
-            <figcaption>The OpenCode terminal interface.</figcaption>
+            <img src={ogImage("/docs").src} alt="The OfeCode docs" width="1200" height="630" />
+            <figcaption>The OfeCode terminal interface.</figcaption>
           </figure>
           <figure>
             <video controls muted playsinline preload="none" poster={ogImage("/docs").src} width="1200" height="630" />
@@ -586,7 +586,7 @@ export function DocsSamples(props: {
                 <code>opencode run [message..]</code>
               </pre>
             </CodeFrame>
-            <p>Run OpenCode with a message, without the terminal interface.</p>
+            <p>Run OfeCode with a message, without the terminal interface.</p>
             <table>
               <thead>
                 <tr>

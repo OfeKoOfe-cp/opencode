@@ -39,7 +39,7 @@ export function preferencePaths(user: string) {
   ]
 }
 
-// Keys macOS and MDM profiles inject into managed preferences that are not OpenCode config.
+// Keys macOS and MDM profiles inject into managed preferences that are not OfeCode config.
 const preferenceMetadata = new Set([
   "PayloadDisplayName",
   "PayloadIdentifier",

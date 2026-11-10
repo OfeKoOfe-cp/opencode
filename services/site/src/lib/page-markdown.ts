@@ -36,10 +36,10 @@ type PageMarkdown = {
  * negotiation, llms.txt and llms-full.txt all read this list.
  */
 export const pageMarkdown: Record<string, PageMarkdown> = {
-  "/": { title: "Home", description: "What OpenCode is, its apps and features", markdown: homeMarkdown },
+  "/": { title: "Home", description: "What OfeCode is, its apps and features", markdown: homeMarkdown },
   "/product": {
     title: "Product",
-    description: "Every OpenCode product and extension, more open source from Anomaly, and every download",
+    description: "Every OfeCode product and extension, more open source from Anomaly, and every download",
     markdown: productsMarkdown,
   },
   ...Object.fromEntries(
@@ -66,7 +66,7 @@ export const pageMarkdown: Record<string, PageMarkdown> = {
   ),
   "/changelog": {
     title: "Changelog",
-    description: "Release notes for every OpenCode release",
+    description: "Release notes for every OfeCode release",
     markdown: changelogMarkdown,
     changelog: (releases, query) =>
       changelogView(releases, { page: Number(query.get("page") ?? 1) || 1, filter: areaKeys(query.getAll("area")) }),
@@ -80,7 +80,7 @@ export const pageMarkdown: Record<string, PageMarkdown> = {
   "/brand": { title: "Brand", description: "Logos, wordmarks, colors and usage rules", markdown: brandMarkdown },
   "/font": {
     title: "Font",
-    description: "The OpenCode font, how its six letters are built, and how to download it",
+    description: "The OfeCode font, how its six letters are built, and how to download it",
     markdown: fontMarkdown,
     englishOnly: true,
   },
@@ -92,13 +92,13 @@ export const pageMarkdown: Record<string, PageMarkdown> = {
   },
   [privacyPolicy.path]: {
     title: privacyPolicy.title,
-    description: "How OpenCode collects, uses and shares personal data",
+    description: "How OfeCode collects, uses and shares personal data",
     markdown: (context) => legalMarkdown(privacyPolicy, context),
     englishOnly: true,
   },
   [termsOfService.path]: {
     title: termsOfService.title,
-    description: "The terms that govern the OpenCode website and hosted services",
+    description: "The terms that govern the OfeCode website and hosted services",
     markdown: (context) => legalMarkdown(termsOfService, context),
     englishOnly: true,
   },
@@ -112,7 +112,7 @@ export function findPageMarkdown(path: string): PageMarkdown | undefined {
   if (!tag) return
   return {
     title: `Changelog ${tag}`,
-    description: `Release notes for OpenCode ${tag}`,
+    description: `Release notes for OfeCode ${tag}`,
     markdown: changelogEntryPageMarkdown,
     changelog: (releases) => changelogEntryView(releases, tag),
   }

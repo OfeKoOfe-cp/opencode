@@ -37,7 +37,7 @@ export default function ChangelogRelease() {
     const full =
       plain.length >= 140
         ? plain
-        : `${plain.replace(/[.!]?$/, ".")} Release notes for OpenCode ${current.releases[0].tag}, with every new feature, improvement and fix.`
+        : `${plain.replace(/[.!]?$/, ".")} Release notes for OfeCode ${current.releases[0].tag}, with every new feature, improvement and fix.`
     return full.length <= 160 ? full : `${full.slice(0, 159).replace(/\s+\S*$/, "")}…`
   }
   // Titles fit in 60 characters: a long release title drops "changelog", then ends on a whole word.
@@ -48,7 +48,7 @@ export default function ChangelogRelease() {
   const pageTitle = () => {
     const full = i18n.t("changelog.entry.title", { title: headline() })
     if (full.length <= 60) return full
-    const short = `${headline()} | OpenCode`
+    const short = `${headline()} | OfeCode`
     return short.length <= 60 ? short : headline()
   }
 

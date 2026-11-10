@@ -15,7 +15,7 @@ Puede cambiar entre agentes durante una sesión o invocarlos con la mención `@`
 
 ## Tipos
 
-Hay dos tipos de agentes en OpenCode; agentes primarios y subagentes.
+Hay dos tipos de agentes en OfeCode; agentes primarios y subagentes.
 
 ---
 
@@ -27,7 +27,7 @@ Los agentes primarios son los asistentes principales con los que interactúas di
 Puede utilizar la tecla **Tab** para cambiar entre agentes principales durante una sesión.
 :::
 
-OpenCode viene con dos agentes principales integrados, **Build** y **Plan**. Bien
+OfeCode viene con dos agentes principales integrados, **Build** y **Plan**. Bien
 mira estos a continuación.
 
 ---
@@ -36,13 +36,13 @@ mira estos a continuación.
 
 Los subagentes son asistentes especializados que los agentes principales pueden invocar para tareas específicas. También puedes invocarlos manualmente **@ mencionándolos** en tus mensajes.
 
-OpenCode viene con tres subagentes integrados, **General**, **Explore** y **Scout**. Veremos esto a continuación.
+OfeCode viene con tres subagentes integrados, **General**, **Explore** y **Scout**. Veremos esto a continuación.
 
 ---
 
 ## Integrados
 
-OpenCode viene con dos agentes primarios integrados y tres subagentes integrados.
+OfeCode viene con dos agentes primarios integrados y tres subagentes integrados.
 
 ---
 
@@ -88,7 +88,7 @@ Un agente rápido y de solo lectura para explorar bases de código. No se pueden
 
 _Modo_: `subagent`
 
-Un agente de solo lectura para investigar documentación externa y dependencias. Úsalo cuando necesites clonar el repositorio de una dependencia en la caché administrada de OpenCode, inspeccionar el código fuente de una librería o contrastar el código local con implementaciones upstream sin modificar tu espacio de trabajo.
+Un agente de solo lectura para investigar documentación externa y dependencias. Úsalo cuando necesites clonar el repositorio de una dependencia en la caché administrada de OfeCode, inspeccionar el código fuente de una librería o contrastar el código local con implementaciones upstream sin modificar tu espacio de trabajo.
 
 ---
 
@@ -189,10 +189,10 @@ Configure agentes en su archivo de configuración `opencode.json`:
 
 También puede definir agentes utilizando archivos de Markdown. Colócalos en:
 
-- Global: `~/.config/opencode/agents/`
-- Por proyecto: `.opencode/agents/`
+- Global: `~/.config/ofecode/agents/`
+- Por proyecto: `.ofecode/agents/`
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Reviews code for quality and best practices
 mode: subagent
@@ -285,7 +285,7 @@ Los valores de temperatura suelen oscilar entre 0,0 y 1,0:
 }
 ```
 
-Si no se especifica ninguna temperatura, OpenCode utiliza valores predeterminados específicos del modelo; normalmente 0 para la mayoría de los modelos, 0,55 para los modelos Qwen.
+Si no se especifica ninguna temperatura, OfeCode utiliza valores predeterminados específicos del modelo; normalmente 0 para la mayoría de los modelos, 0,55 para los modelos Qwen.
 
 ---
 
@@ -345,7 +345,7 @@ Especifique un archivo de aviso del sistema personalizado para este agente con l
 }
 ```
 
-Esta ruta es relativa a donde se encuentra el archivo de configuración. Entonces esto funciona tanto para la configuración global OpenCode como para la configuración específica del proyecto.
+Esta ruta es relativa a donde se encuentra el archivo de configuración. Entonces esto funciona tanto para la configuración global OfeCode como para la configuración específica del proyecto.
 
 ---
 
@@ -367,7 +367,7 @@ Si no especifica un modelo, los agentes primarios usarán el [modelo configurado
 }
 ```
 
-El ID del modelo en su configuración OpenCode usa el formato `provider/model-id`. Por ejemplo, si usa [OpenCode Models](https://opencode.ai/docs/console/), usaría `opencode/gpt-6.1-sol` para GPT-6.1 Sol.
+El ID del modelo en su configuración OfeCode usa el formato `provider/model-id`. Por ejemplo, si usa [OfeCode Models](https://opencode.ai/docs/console/), usaría `ofecode/gpt-6.1-sol` para GPT-6.1 Sol.
 
 ---
 
@@ -455,7 +455,7 @@ Puede anular estos permisos por agente.
 
 También puede establecer permisos en los agentes de Markdown.
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/ofecode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent
@@ -665,16 +665,16 @@ Por ejemplo, con los modelos de razonamiento de OpenAI, puedes controlar el esfu
 Estas opciones adicionales son específicas del modelo y del proveedor. Consulte la documentación de su proveedor para conocer los parámetros disponibles.
 
 :::tip
-Ejecute `opencode models` para ver una lista de los modelos disponibles.
+Ejecute `ofecode models` para ver una lista de los modelos disponibles.
 :::
 
 ---
 
 ## Crear agentes
 
-Para crear un agente nuevo, agregue un archivo markdown en `.opencode/agents/` para el proyecto o en `~/.config/opencode/agents/` de forma global. El nombre del archivo se convierte en el nombre del agente, y el frontmatter configura su descripción, modo, modelo y permisos. Consulte [Markdown](#markdown) más arriba para ver el formato del archivo.
+Para crear un agente nuevo, agregue un archivo markdown en `.ofecode/agents/` para el proyecto o en `~/.config/ofecode/agents/` de forma global. El nombre del archivo se convierte en el nombre del agente, y el frontmatter configura su descripción, modo, modelo y permisos. Consulte [Markdown](#markdown) más arriba para ver el formato del archivo.
 
-Ejecute `opencode agent list` para listar los agentes que OpenCode ha cargado.
+Ejecute `ofecode agent list` para listar los agentes que OfeCode ha cargado.
 
 ---
 
@@ -695,14 +695,14 @@ A continuación se muestran algunos casos de uso comunes para diferentes agentes
 A continuación se muestran algunos agentes de ejemplo que pueden resultarle útiles.
 
 :::tip
-¿Tiene un agente que le gustaría compartir? [Enviar un PR](https://github.com/anomalyco/opencode).
+¿Tiene un agente que le gustaría compartir? [Enviar un PR](https://github.com/anomalyco/ofecode).
 :::
 
 ---
 
 ### Agente de documentación
 
-```markdown title="~/.config/opencode/agents/docs-writer.md"
+```markdown title="~/.config/ofecode/agents/docs-writer.md"
 ---
 description: Writes and maintains project documentation
 mode: subagent
@@ -724,7 +724,7 @@ Focus on:
 
 ### Auditor de seguridad
 
-```markdown title="~/.config/opencode/agents/security-auditor.md"
+```markdown title="~/.config/ofecode/agents/security-auditor.md"
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent
