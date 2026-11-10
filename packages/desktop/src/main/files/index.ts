@@ -138,9 +138,10 @@ function make(
 
         // PowerShell takes its working directory rather than a path argument, and needs its own console window:
         // `start` opens one, and ignored stdio keeps the console from holding cmd's pipes open until PowerShell exits.
+        // Without `-NoExit` the window closes with the application, so no console is left behind.
         return yield* Effect.tryPromise(() =>
           new Promise<void>((resolve, reject) => {
-            spawn("cmd.exe", ["/d", "/c", "start", "", application, "-NoExit"], {
+            spawn("cmd.exe", ["/d", "/c", "start", "", application], {
               cwd,
               stdio: "ignore",
               windowsHide: true,

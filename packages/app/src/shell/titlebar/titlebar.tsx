@@ -5,6 +5,7 @@ import { uuid } from "@opencode/util/uuid"
 import { useDialog } from "@opencode/ui/context/dialog"
 import { IconButton } from "@opencode/ui/icon-button"
 import { Icon } from "@opencode/ui/icon"
+import { Mark } from "@opencode/ui/logo"
 import { Keybind } from "@opencode/ui/keybind"
 import { Tooltip } from "@opencode/ui/tooltip"
 
@@ -565,6 +566,16 @@ export function Titlebar(props: { verticalTabs?: { mount?: HTMLElement } }) {
                   "ps-3.5": windows() && !props.verticalTabs,
                 }}
               >
+                <Show when={!mobile()}>
+                  <div
+                    data-slot="titlebar-brand"
+                    class="flex shrink-0 items-center gap-1.5 pe-2 select-none"
+                    aria-label="OfeCode"
+                  >
+                    <Mark class="h-[16px] w-auto" />
+                    <span class="text-[13px] font-medium tracking-tight text-v2-text-text-muted">OfeCode</span>
+                  </div>
+                </Show>
                 <Show when={windows() || linux()}>
                   <WindowsAppMenu command={command} platform={platform} />
                 </Show>

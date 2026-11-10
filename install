@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
-APP=opencode
-SOURCE_APP=opencode
+APP=ofecode
+SOURCE_APP=ofecode
 
 MUTED='\033[0;2m'
 RED='\033[0;31m'
@@ -66,7 +66,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-INSTALL_DIR=$HOME/.opencode/bin
+INSTALL_DIR=$HOME/.ofecode/bin
 mkdir -p "$INSTALL_DIR"
 
 # If --binary is provided, skip all download/detection logic
@@ -349,20 +349,20 @@ install_legacy_shim() {
             MINGW*|MSYS*|CYGWIN*) shim_os="windows" ;;
         esac
     fi
-    rm -f "$INSTALL_DIR/opencode2" "$INSTALL_DIR/opencode2.exe" "$INSTALL_DIR/opencode2.cmd"
+    rm -f "$INSTALL_DIR/ofecode2" "$INSTALL_DIR/ofecode2.exe" "$INSTALL_DIR/ofecode2.cmd"
     if [[ "$shim_os" == "windows" ]]; then
-        cat > "$INSTALL_DIR/opencode2.cmd" <<'EOF'
+        cat > "$INSTALL_DIR/ofecode2.cmd" <<'EOF'
 @echo off
-"%~dp0opencode.exe" %*
+"%~dp0ofecode.exe" %*
 exit /b %errorlevel%
 EOF
         return
     fi
-    cat > "$INSTALL_DIR/opencode2" <<'EOF'
+    cat > "$INSTALL_DIR/ofecode2" <<'EOF'
 #!/bin/sh
-exec "$(dirname "$0")/opencode" "$@"
+exec "$(dirname "$0")/ofecode" "$@"
 EOF
-    chmod 755 "$INSTALL_DIR/opencode2"
+    chmod 755 "$INSTALL_DIR/ofecode2"
 }
 
 if [ -n "$binary_path" ]; then

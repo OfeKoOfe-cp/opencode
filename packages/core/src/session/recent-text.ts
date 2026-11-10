@@ -13,7 +13,7 @@ export const kept = (message: SessionMessage.CompactionCompleted) =>
   typeof message.metadata?.recent === "string" ? message.metadata.recent : ""
 
 /** One message as the recent, verbatim part of a summary shows it. Empty for messages that part leaves out. */
-export const messageToText = (message: SessionMessage.Info | SessionStored.User): string => {
+export const messageToText = (message: SessionMessage.Info | SessionStored.User, budget = TOOL_OUTPUT_MAX_CHARS): string => {
   switch (message.type) {
     // Earlier summaries and instruction updates are handled outside the recent part.
     case "compaction":
@@ -47,7 +47,7 @@ export const messageToText = (message: SessionMessage.Info | SessionStored.User)
           const input = typeof part.state.input === "string" ? part.state.input : JSON.stringify(part.state.input)
           const call = `[Assistant tool call]: ${part.name}(${input})`
           if (part.state.status === "completed") {
-            return [call, `[Tool result]: ${truncateToolOutput(serializeToolContent(part.state.content))}`]
+            return [call, `[Tool result]: ${truncateToolOutput(serializeToolContent(part.state.content), budget)}`]
           }
           if (part.state.status === "error") return [call, `[Tool error]: ${part.state.error.message}`]
           return [call]
@@ -62,21 +62,21 @@ export const messageToText = (message: SessionMessage.Info | SessionStored.User)
 
     case "shell":
       if (message.metadata?.background === true) return ""
-      return `[Shell]: ${message.command}\n${truncateToolOutput(message.output?.output ?? "")}`
+      return `[Shell]: ${message.command}\n${truncateToolOutput(message.output?.output ?? "", budget)}`
 
     default:
       return ""
   }
 }
 
-export const truncateToolOutput = (value: string) => {
-  if (value.length <= TOOL_OUTPUT_MAX_CHARS) return value
+export const truncateToolOutput = (value: string, budget = TOOL_OUTPUT_MAX_CHARS) => {
+  if (value.length <= budget) return value
 
   // Count code points so a surrogate pair is never split.
   let end = 0
   let kept = 0
   for (const char of value) {
-    if (kept === TOOL_OUTPUT_MAX_CHARS) break
+    if (kept === budget) break
     end += char.length
     kept++
   }

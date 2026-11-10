@@ -84,6 +84,7 @@ Add `compaction` to any [OfeCode configuration file](/config):
 | --- | ---: | --- |
 | `auto` | `true` | Compact automatically near the context limit, and recover once when a provider rejects a request as too long. Manual compaction always works. |
 | `keep.tokens` | `15000` | Approximate recent conversation kept beside the summary. Larger values preserve more detail but leave less room for new work. |
+| `tool_output` | `1250` | Characters of tool output kept in the summary and in the conversation kept beside it. A larger value keeps more of each tool result. |
 | `buffer` | `"15%"`, at least 16k | Share of the model's context window kept free. Automatic compaction starts once the conversation reaches the rest. Larger values compact earlier. |
 | `context` | the model's window | The context window compaction plans for, replacing the one the model reports. |
 | `tools` | `"keep"` | What a summary does with tool output in the summarized prefix. |

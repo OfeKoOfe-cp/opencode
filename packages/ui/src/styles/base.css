@@ -36,6 +36,10 @@ html,
   font-variation-settings: var(--font-family-sans--font-variation-settings, normal); /* 6 */
   -webkit-tap-highlight-color: transparent; /* 7 */
   text-wrap-style: pretty; /* 8 */
+  /* Smoother glyph edges: light text on a warm ground reads harsh without it. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /*

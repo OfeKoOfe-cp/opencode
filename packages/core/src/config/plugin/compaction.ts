@@ -22,6 +22,7 @@ export const Plugin = define({
           ...(entry.info.compaction.auto === undefined ? {} : { auto: entry.info.compaction.auto }),
           ...(entry.info.compaction.buffer === undefined ? {} : { buffer: entry.info.compaction.buffer }),
           ...(entry.info.compaction.keep?.tokens === undefined ? {} : { keep: entry.info.compaction.keep.tokens }),
+          ...(entry.info.compaction.tool_output === undefined ? {} : { toolOutput: entry.info.compaction.tool_output }),
           ...(entry.info.compaction.context === undefined ? {} : { context: entry.info.compaction.context }),
           ...(entry.info.compaction.tools === undefined ? {} : { tools: entry.info.compaction.tools }),
           ...(entry.info.compaction.precompute === undefined ? {} : { precompute: entry.info.compaction.precompute }),

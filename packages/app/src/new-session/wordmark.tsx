@@ -16,8 +16,7 @@ import {
 } from "./wordmark-machine"
 import "./wordmark.css"
 
-// Each letter in the 234×42 logo viewBox, with its counter shadow, stem, and bottom-centre pivot.
-// Each letter in the 204x42 logo viewBox, with its counter shadow, stem, and bottom-centre pivot.
+// Each letter in the 204×42 logo viewBox, with its counter shadow, stem, and bottom-centre pivot.
 const LETTERS = [
   {
     cx: 12,
@@ -27,9 +26,9 @@ const LETTERS = [
   },
   {
     cx: 42,
-    weak: "null",
+    weak: undefined,
     fill: "var(--icon-base)",
-    stem: "M30 36V6H48V0H54V12H36V18H54V24H36V36Z",
+    stem: "M30 36V0H54V6H36V18H54V24H36V36Z",
   },
   {
     cx: 72,
@@ -39,44 +38,44 @@ const LETTERS = [
   },
   {
     cx: 102,
-    weak: "null",
+    weak: "M114 30H96V18H114V30Z",
     fill: "var(--icon-strong-base)",
     stem: "M114 12H96V30H114V36H90V6H114V12Z",
   },
   {
     cx: 132,
-    weak: "M114 30H96V18H114V30Z",
+    weak: "M138 30H126V18H138V30Z",
     fill: "var(--icon-strong-base)",
     stem: "M138 12H126V30H138V12ZM144 36H120V6H144V36Z",
   },
   {
     cx: 162,
-    weak: "M138 30H126V18H138V30Z",
+    weak: "M168 30H156V18H168V30Z",
     fill: "var(--icon-strong-base)",
     stem: "M168 12H156V30H168V12ZM174 36H150V6H168V0H174V36Z",
   },
   {
     cx: 192,
-    weak: "M168 30H156V18H168V30Z",
+    weak: "M204 24V30H186V24H204Z",
     fill: "var(--icon-strong-base)",
     stem: "M186 12V18H198V12H186ZM204 24H186V30H204V36H180V6H204V24Z",
   },
 ] as const
 
-// Lodger geometry, in the logo's 234×42 viewBox units. The lodger is drawn from its bottom centre.
+// Lodger geometry, in the logo's 204×42 viewBox units. The lodger is drawn from its bottom centre.
 const W = 204
 
 const H = 42
 
-const HOLE = { x: 222, y: 15 }
+const HOLE = { x: 194, y: 15 }
 
-const REST = { x: 222, y: 21 }
+const REST = { x: 194, y: 21 }
 
-const PIN_SLOT = { x: 226.5, y: 10.5 }
+const PIN_SLOT = { x: 197.5, y: 10.5 }
 
 const GROUND = 36
 
-const HOME = 246
+const HOME = 214
 
 const SLIP = 60
 
@@ -233,13 +232,13 @@ function WordmarkLodger(props: {
             {(item, i) => (
               <g ref={(el) => (letters[i()] = el)}>
                 <g class="opacity-[0.16]">
-                  <path d={item.weak} fill="var(--icon-weak-base)" />
+                  {item.weak ? <path d={item.weak} fill="var(--icon-weak-base)" /> : null}
                   <path d={item.stem} fill={item.fill} />
                 </g>
                 <Show when={i() === 7}>
                   <rect
                     ref={notch}
-                    x="224.6"
+                    x="195.9"
                     y="8.6"
                     width="3.8"
                     height="3.8"
@@ -648,7 +647,7 @@ function mountLodger(
 
     if (t < 1.35) {
       const u = seg(t, 1.05, 1.35)
-      c.x = lerp(HOME, 233, easeInOut(u))
+      c.x = lerp(HOME, 203, easeInOut(u))
       c.y = lerp(GROUND, 18, easeOut(u)) - Math.sin(Math.PI * u) * 7
       c.pinX = lerp(HOME, PIN_SLOT.x, easeInOut(u))
       c.pinY = lerp(GROUND - 12.5, PIN_SLOT.y, easeInOut(u))
@@ -659,7 +658,7 @@ function mountLodger(
     }
 
     const u = seg(t, 1.35, 1.72)
-    c.x = lerp(233, HOME, easeInOut(u))
+    c.x = lerp(203, HOME, easeInOut(u))
     c.y = lerp(18, GROUND, u) - Math.sin(Math.PI * u) * 10
     c.squint = t > 1.72 ? 0.35 : 1
   }

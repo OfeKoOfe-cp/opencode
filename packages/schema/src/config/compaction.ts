@@ -1,7 +1,7 @@
 export * as ConfigCompaction from "./compaction.js"
 
 import { Schema } from "effect"
-import { NonNegativeInt, optional } from "../schema.js"
+import { NonNegativeInt, optional, PositiveInt } from "../schema.js"
 
 export class Keep extends Schema.Class<Keep>("Config.Compaction.Keep")({
   tokens: NonNegativeInt.pipe(optional),
@@ -28,6 +28,10 @@ export type ToolPolicy = typeof ToolPolicy.Type
 export class Info extends Schema.Class<Info>("Config.Compaction")({
   auto: Schema.Boolean.pipe(optional),
   keep: Keep.pipe(optional),
+  tool_output: PositiveInt.pipe(optional).annotate({
+    description:
+      "Characters of tool output kept in the summary and in the conversation kept beside it. A larger value keeps more of each tool result.",
+  }),
   buffer: Schema.Union([Percent, NonNegativeInt]).pipe(optional).annotate({
     description:
       'Room kept free below the model\'s context window before automatic compaction, as a share of the window from "1%" to "99%", such as "20%" to compact at 80% full. A token count is also accepted.',

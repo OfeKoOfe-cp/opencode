@@ -487,6 +487,15 @@ it.effect("auto compaction estimates current content against the buffered prompt
       }),
     )
 
+    // A context budget also covers a model that reports no window, which otherwise never compacts.
+    yield* Effect.scoped(
+      Effect.gen(function* () {
+        yield* compaction.transform((editor) => editor.configure({ context: 200_000 }))
+        expect(yield* due(input(169_999, { context: 0, output: 0 }))).toBe(false)
+        expect(yield* due(input(170_000, { context: 0, output: 0 }))).toBe(true)
+      }),
+    )
+
     const assistant = input(89_000, contextLimited).messages[0]
     const tool = SessionMessage.AssistantTool.make({
       type: "tool",

@@ -129,7 +129,7 @@ const page = `<!doctype html>
           <svg viewBox="0 0 204 42" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path class="c" d="M18 30H6V18H18V30Z" />
           <path class="b" d="M18 12H6V30H18V12ZM24 36H0V6H24V36Z" />
-          <path class="b" d="M30 36V6H48V0H54V12H36V18H54V24H36V36Z" />
+          <path class="b" d="M30 36V0H54V6H36V18H54V24H36V36Z" />
           <path class="c" d="M84 24V30H66V24H84Z" />
           <path class="b" d="M84 24H66V30H84V36H60V6H84V24ZM66 18H78V12H66V18Z" />
           <path class="c" d="M114 30H96V18H114V30Z" />

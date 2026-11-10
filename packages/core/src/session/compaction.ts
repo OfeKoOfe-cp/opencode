@@ -49,6 +49,8 @@ export type Settings = {
   tools: "keep" | "clip" | "drop"
   /** Tokens of recent conversation kept verbatim beside the summary. */
   keep: number
+  /** Characters of tool output kept in the summary and the recent part. */
+  toolOutput: number
   /** Summarize in the background as the context nears the threshold, so automatic compaction can swap it in. */
   precompute: boolean
 }
@@ -276,7 +278,7 @@ export const layer = Layer.effect(
 
     const state = State.create<Settings, Editor>({
       name: "session-compaction",
-      initial: () => ({ auto: true, keep: 15_000, precompute: false, tools: "keep" }),
+      initial: () => ({ auto: true, keep: 15_000, toolOutput: 1_250, precompute: false, tools: "keep" }),
       editor: (settings) => ({
         configure: (update) => {
           Object.assign(settings, update)
@@ -336,7 +338,7 @@ export const layer = Layer.effect(
         ? Effect.succeed(swapped)
         : native
           ? compactNatively(selected, budget, settings.keep)
-          : summarize(selected, budget, settings.keep, settings.tools)
+          : summarize(selected, budget, settings.keep, settings.toolOutput, settings.tools)
       return yield* compaction.pipe(
         Effect.matchEffect({
           onSuccess: (result) => publish(selected, result),
@@ -397,10 +399,17 @@ export const layer = Layer.effect(
 
       const model = yield* selectModel(context, settings.buffer, false)
       const usage: SessionUsage.Recorded[] = []
-      const fiber = yield* summarize({ reason: "auto", context: model.context }, model.cap, settings.keep, settings.tools, {
-        messages: context.messages.slice(0, anchorIndex),
-        usage: (recorded) => usage.push(recorded),
-      }).pipe(Effect.forkIn(scope))
+      const fiber = yield* summarize(
+        { reason: "auto", context: model.context },
+        model.cap,
+        settings.keep,
+        settings.toolOutput,
+        settings.tools,
+        {
+          messages: context.messages.slice(0, anchorIndex),
+          usage: (recorded) => usage.push(recorded),
+        },
+      ).pipe(Effect.forkIn(scope))
       precomputed.set(sessionID, {
         firstID: context.messages[0]?.id,
         keepID: anchor.id,
@@ -479,12 +488,13 @@ export const layer = Layer.effect(
       trigger: Trigger,
       budget: number,
       keep: number,
+      toolOutput: number,
       tools: Settings["tools"],
       background?: Background,
     ): Effect.fn.Return<Result, Failure> {
       const context = trigger.context
       const messages = background?.messages ?? context.messages
-      const split = splitConversation(messages, keep)
+      const split = splitConversation(messages, keep, toolOutput)
       if (split === undefined) return yield* Effect.fail(NOTHING_TO_COMPACT)
       // A background summary covers all of its messages; what follows them is kept when it is swapped in.
       const keepID = background ? undefined : split.keepID
@@ -576,7 +586,7 @@ export const layer = Layer.effect(
       keep: number,
     ): Effect.fn.Return<Result, Failure> {
       const context = trigger.context
-      if (!context.messages.some(SessionRecentText.messageToText)) return yield* Effect.fail(NOTHING_TO_COMPACT)
+      if (!context.messages.some((message) => SessionRecentText.messageToText(message))) return yield* Effect.fail(NOTHING_TO_COMPACT)
       const unsupported = (message: string) =>
         Effect.fail<Failure>({ error: { type: "provider.unsupported-operation", message } })
       const prepared = yield* prepare(context, context.messages, budget, "keep", undefined, "session")
@@ -995,7 +1005,13 @@ const heldIndex = (held: Precomputed, context: SessionContext.Loaded) => {
 
 /** Estimated text a swapped-in summary keeps verbatim: every message from `index` on. */
 const tailTokens = (context: SessionContext.Loaded, index: number) =>
-  Token.estimate(context.messages.slice(index).map(SessionRecentText.messageToText).filter(Boolean).join("\n\n"))
+  Token.estimate(
+    context.messages
+      .slice(index)
+      .map((message) => SessionRecentText.messageToText(message))
+      .filter(Boolean)
+      .join("\n\n"),
+  )
 
 const tailLimit = (budget: number) => Math.floor(budget * PRECOMPUTED_TAIL_SHARE)
 
@@ -1029,9 +1045,13 @@ const transcript = (context: SessionContext.Loaded, messages: ReadonlyArray<Sess
  * The newest messages within `keep` tokens, from `keepID` on, are kept verbatim beside the summary.
  * Undefined when there is nothing to compact.
  */
-const splitConversation = (messages: ReadonlyArray<SessionMessage.Info>, keep: number) => {
+const splitConversation = (
+  messages: ReadonlyArray<SessionMessage.Info>,
+  keep: number,
+  toolOutput = 1_250,
+) => {
   const entries = messages.flatMap((message) => {
-    const text = SessionRecentText.messageToText(message)
+    const text = SessionRecentText.messageToText(message, toolOutput)
     return text ? [{ message, text }] : []
   })
   if (entries.length === 0) return undefined
@@ -1215,13 +1235,15 @@ const calculateCeiling = (
   context?: Settings["context"],
 ) => {
   const reported = inputWindow(limit)
-  if (reported <= 0) return Number.POSITIVE_INFINITY
-  // `context` replaces the window the model reports: a token count sets it, a share scales the reported window.
+  // `context` replaces the window the model reports: a token count sets it, a share scales the reported
+  // window. It also covers a model that reports no window at all, which otherwise never compacts.
   const window =
     context === undefined
       ? reported
       : typeof context === "string"
-        ? Math.round((reported * Number.parseFloat(context)) / 100)
+        ? reported > 0
+          ? Math.round((reported * Number.parseFloat(context)) / 100)
+          : 0
         : context
   if (window <= 0) return Number.POSITIVE_INFINITY
   const tokens = typeof buffer === "string" ? Math.round((window * Number.parseFloat(buffer)) / 100) : buffer
